@@ -26,7 +26,11 @@ class AuthController extends Controller
 
         User::create($user);
 
-        return response("User created successfully", 201);
+        return response()->json([
+            "message" => 'User created successfully',
+            'user' => $user,
+            'token' => $user->createToken('dShop')->accessToken
+        ], 201);
     }
 
     public function login(Request $request)
@@ -35,19 +39,23 @@ class AuthController extends Controller
         $credentials = $request->validate(['email' => 'required', 'password' => 'required']);
 
         if (!Auth::attempt($credentials)) {
-            return response('Invalid Credentials', 400);
+            return response()->json([
+                'errors' => ['credentials' => 'Invalid credentials']
+            ], 400);
         }
 
-        $user['user'] = Auth::user();
-        $user['token'] = Auth::user()->createToken('dShop')->accessToken;
+        $user = Auth::user();
+        $token = $user->createToken('dShop')->accessToken;
 
-        return $user;
+        return response()->json(['user' => $user, 'token' => $token]);
     }
 
     public function logout()
     {
-        if (Auth::user()) Auth::user()->logout();
+        if (Auth::user()) Auth::user()->token()->revoke();
 
-        return response('User logged out successfully', 200);
+        return response()->json([
+            'message' => 'User logged out successfully'
+        ], 200);
     }
 }
