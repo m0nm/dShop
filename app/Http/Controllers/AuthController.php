@@ -6,6 +6,7 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -20,16 +21,17 @@ class AuthController extends Controller
     public function register(RegisterRequest $request)
     {
 
-        $user = $request->validated();
+        $data = $request->validated();
 
-        $user['password'] = Hash::make($user['password']);
+        $data['password'] = Hash::make($data['password']);
 
-        User::create($user);
+        $user = User::create($data);
+
+        $token  = $user->createToken('dShop_token')->accessToken;
 
         return response()->json([
-            "message" => 'User created successfully',
             'user' => $user,
-            'token' => $user->createToken('dShop')->accessToken
+            'token' => $token
         ], 201);
     }
 
@@ -38,16 +40,19 @@ class AuthController extends Controller
 
         $credentials = $request->validate(['email' => 'required', 'password' => 'required']);
 
-        if (!Auth::attempt($credentials)) {
-            return response()->json([
-                'errors' => ['credentials' => 'Invalid credentials']
-            ], 400);
+        $remember_me = $request->has('remember_me');
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            $token = $user->createToken('dShop_token')->accessToken;
+
+
+            return response()->json(['user' => $user, 'token' => $token, 'remember_me' => $remember_me], 200);
         }
 
-        $user = Auth::user();
-        $token = $user->createToken('dShop')->accessToken;
-
-        return response()->json(['user' => $user, 'token' => $token]);
+        return response()->json([
+            'errors' => ['credentials' => 'Invalid credentials']
+        ], 400);
     }
 
     public function logout()
