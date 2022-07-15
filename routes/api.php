@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\FacebookController;
+use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\SocialController;
+use App\Http\Controllers\TwitterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,10 +19,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// user routes
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/register', [AuthController::class, 'register']);
+// auth
+Route::controller(AuthController::class)->group(function () {
+    Route::post('/login', 'login');
+    Route::post('/register', 'register');
 
-Route::group(['middleware' => 'auth:api'], function () {
-    Route::get('/logout', [AuthController::class, 'logout']);
+    Route::group(['middleware' => 'auth:api'], function () {
+        Route::get('/logout', 'logout');
+    });
+});
+
+// social routes
+Route::controller(SocialController::class)->group(function () {
+    Route::get('/auth/{provider}/redirect', 'redirect');
+    Route::get('/auth/{provider}/callback', 'callback');
 });

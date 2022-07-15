@@ -6,17 +6,10 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-
-
-    public function welcome()
-    {
-        return "hello";
-    }
 
     public function register(RegisterRequest $request)
     {
@@ -29,10 +22,8 @@ class AuthController extends Controller
 
         $token  = $user->createToken('dShop_token')->accessToken;
 
-        return response()->json([
-            'user' => $user,
-            'token' => $token
-        ], 201);
+        return response()
+            ->json(['token' => $token], 201);
     }
 
     public function login(Request $request)
@@ -42,17 +33,20 @@ class AuthController extends Controller
 
         $remember_me = $request->has('remember_me');
 
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-            $token = $user->createToken('dShop_token')->accessToken;
-
-
-            return response()->json(['user' => $user, 'token' => $token, 'remember_me' => $remember_me], 200);
+        if (!Auth::attempt($credentials)) {
+            return response()->json([
+                'errors' => ['credentials' => 'Invalid credentials']
+            ], 401);
         }
 
-        return response()->json([
-            'errors' => ['credentials' => 'Invalid credentials']
-        ], 400);
+        $user = Auth::user();
+        $token = $user->createToken('dShop_token')->accessToken;
+
+        return response()
+            ->json([
+                'token' => $token,
+                'remember_me' => $remember_me
+            ], 200);
     }
 
     public function logout()
@@ -63,4 +57,4 @@ class AuthController extends Controller
             'message' => 'User logged out successfully'
         ], 200);
     }
-}
+};
