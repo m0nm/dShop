@@ -17,18 +17,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// dashboard
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth');
-
-// auth
+// admin auth
 Route::get('/login', [AdminController::class, 'login']);
-
 Route::post('/login', [AdminController::class, 'auth'])->name('admin.login');
 
-// logout
-Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout')->middleware('auth');
+// admin routes
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware('auth')
+    ->controller(AdminController::class)
+    ->group(function () {
+        // dashboard
+        Route::get('/dashboard', 'dashboard')->name('dashboard');
 
-// settings
-Route::get('/admin/settings', [AdminController::class, 'settings']);
-Route::post('/admin/settings/change-email', [AdminController::class, 'changeEmail'])->name('admin.changeEmail');
-Route::post('/admin/settings/reset-password', [AdminController::class, 'resetPassword'])->name('admin.resetPassword');
+        // logout
+        Route::get('/logout', 'logout')->name('logout');
+
+        // settings
+        Route::get('/settings', 'settings');
+        Route::post('/settings/change-email', 'changeEmail')->name('changeEmail');
+        Route::post('/settings/reset-password', 'resetPassword')->name('resetPassword');
+    });
+
+Route::fallback(function () {
+    return redirect('/admin/dashboard');
+})->middleware('auth');
