@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\FacebookController;
-use App\Http\Controllers\GoogleController;
-use App\Http\Controllers\SocialController;
-use App\Http\Controllers\TwitterController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\User\SocialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// < ------ User ------- >
 
 // auth
 Route::controller(AuthController::class)->group(function () {
@@ -34,3 +34,10 @@ Route::controller(SocialController::class)->group(function () {
     Route::get('/auth/{provider}/redirect', 'redirect');
     Route::get('/auth/{provider}/callback', 'callback');
 });
+
+// < ------ End User ------- >
+
+// < ------ Categories ------- >
+Route::get('/categories', [CategoryController::class, 'index']);
+
+// < ------ End Categories ------- >
