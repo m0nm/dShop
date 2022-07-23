@@ -26,9 +26,16 @@
 						<div class="menu-title">Categories</div>
 					</a>
 					<ul>
-						<li> <a href="#"><i class="bx bx-right-arrow-alt"></i>See Categories</a>
+						<li> <a href="{{ route('admin.categories') }}"><i class="bx bx-right-arrow-alt"></i>View Categories</a>
 						</li>
-						<li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Add New Category</a>
+						
+						<li> <a href="{{ route('admin.categories.new') }}"><i class="bx bx-right-arrow-alt"></i>Add New Category</a>
+						</li>
+						
+						<li> <a href="#"><i class="bx bx-right-arrow-alt"></i>View Subcategories</a>
+						</li>
+
+						<li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Add New Subcategory</a>
 						</li>
 					</ul>
 				</li>

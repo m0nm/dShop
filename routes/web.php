@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,9 +34,19 @@ Route::prefix('admin')
         Route::get('/logout', 'logout')->name('logout');
 
         // settings
-        Route::get('/settings', 'settings');
+        Route::get('/settings', 'settingsPage')->name('settings');
         Route::post('/settings/change-email', 'changeEmail')->name('changeEmail');
         Route::post('/settings/reset-password', 'resetPassword')->name('resetPassword');
+
+        // categories
+        Route::get('/categories', 'categoriesPage')->name('categories');
+
+        Route::get('/categories/new', 'newCategoryPage')->name('categories.new');
+        Route::post('/categories/new', 'storeCategory')->name('storeCategory');
+
+        Route::post('/categories/edit', 'editCategory')->name('editCategory');
+
+        Route::delete('/categories', 'deleteCategory')->name('deleteCategory');
     });
 
 Route::fallback(function () {

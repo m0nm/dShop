@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,8 +13,10 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.sections.index');
+        return view('admin.content.dashboard');
     }
+
+    // <--------- ADMIN AUTH --------->
 
     public function login()
     {
@@ -42,11 +46,15 @@ class AdminController extends Controller
         return redirect('/login');
     }
 
-    public function settings()
+    // <--------- END ADMIN AUTH -------->
+
+    // <--------- sETTINGS PAGE -------->
+
+    public function settingsPage()
     {
         $email = User::find(1)->email;
 
-        return view('admin.sections.settings', compact('email'));
+        return view('admin.content.settings', compact('email'));
     }
 
     public function changeEmail(Request $request)
@@ -84,4 +92,54 @@ class AdminController extends Controller
             return back()->with('message', 'Password changed successfully');
         }
     }
+    // <--------- END SETTINGS PAGE -------->
+
+    // <--------- CATEGORIES PAGE -------->
+    public function categoriesPage()
+    {
+        $categories = Category::latest()->get();
+
+        return view('admin.content.categories', compact('categories'));
+    }
+
+    public function newCategoryPage()
+    {
+        return view('admin.content.categories_add');
+    }
+
+    public function storeCategory(Request $request)
+    {
+
+        $category = $request->validate(['name' => 'required']);
+
+        Category::create($category);
+
+        return redirect(route('admin.categories'));
+    }
+
+    public function editCategory(Request $request)
+    {
+
+        $new_category = $request->validate(['name' => 'required']);
+
+        $category = Category::find($request->id);
+
+        $category->name = $new_category['name'];
+        $category->save();
+
+        return redirect(route('admin.categories'));
+    }
+
+    public function deleteCategory(Request $request)
+    {
+        $category = Category::find($request->id);
+
+        $category->delete();
+
+        return redirect(route('admin.categories'));
+    }
+
+    // <--------- END CATEGORIES PAGE -------->
+
+
 }
