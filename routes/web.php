@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminSettingsController;
+use App\Http\Controllers\Admin\AdminSubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,9 @@ Route::prefix('admin')
 
         // categories
         Route::resource('categories', AdminCategoryController::class);
+
+        // subcategories
+        Route::resource('subcategories', AdminSubCategoryController::class);
     });
 
 Route::fallback(function () {

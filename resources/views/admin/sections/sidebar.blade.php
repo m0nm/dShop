@@ -29,13 +29,13 @@
 						<li> <a href="{{ route('admin.categories.index') }}"><i class="bx bx-right-arrow-alt"></i>View Categories</a>
 						</li>
 						
-						<li> <a href="{{ route('admin.categories.store') }}"><i class="bx bx-right-arrow-alt"></i>Add New Category</a>
+						<li> <a href="{{ route('admin.categories.create') }}"><i class="bx bx-right-arrow-alt"></i>Add New Category</a>
 						</li>
 						
-						<li> <a href="#"><i class="bx bx-right-arrow-alt"></i>View Subcategories</a>
+						<li> <a href="{{ route('admin.subcategories.index') }}"><i class="bx bx-right-arrow-alt"></i>View Subcategories</a>
 						</li>
 
-						<li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Add New Subcategory</a>
+						<li> <a href="{{ route('admin.subcategories.create') }}"><i class="bx bx-right-arrow-alt"></i>Add New Subcategory</a>
 						</li>
 					</ul>
 				</li>

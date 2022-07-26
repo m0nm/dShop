@@ -12,13 +12,13 @@ class AdminCategoryController extends Controller
     {
         $categories = Category::latest()->get();
 
-        return view('admin.content.categories', compact('categories'));
+        return view('admin.content.categories.categories', compact('categories'));
     }
     // <--------- END  -------->
 
     public function create()
     {
-        return view('admin.content.categories_add');
+        return view('admin.content.categories.categories_add');
     }
     // <--------- END  -------->
     public function store(Request $request)
@@ -55,6 +55,4 @@ class AdminCategoryController extends Controller
         return redirect(route('admin.categories.index'));
     }
     // <--------- END  -------->
-
-
 }

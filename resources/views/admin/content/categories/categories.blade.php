@@ -18,7 +18,7 @@
             
     <a href="{{ route('admin.categories.create') }}" class="btn btn-primary my-3">Add New Category</a>        
     
-    {{-- form --}}
+    {{-- table --}}
     <div class="card">
         <div class="card-body">
             <table class="table mb-0 table-hover">
