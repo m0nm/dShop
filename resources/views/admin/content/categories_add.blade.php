@@ -16,12 +16,12 @@
         </div>
 
     <div class="card">
-        <form method="post" action="{{ route('admin.storeCategory') }}" class="card-body">
+        <form method="post" action="{{ route('admin.categories.store') }}" class="card-body">
             @csrf
             
             <h5 class="my-3">Enter Category Name</h5>
             
-             @error('category_name')
+             @error('name')
                 <p class="text-danger">{{ $message }}</p>
                 @enderror
             

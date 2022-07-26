@@ -22,7 +22,7 @@
         <h5 class="my-3">Change Email</h5>
          
         <div class="card">
-            <form method="post" action={{ route('admin.changeEmail') }} class="card-body">
+            <form method="post" action={{ route('admin.settings.email') }} class="card-body">
                 @csrf
                 
                 @error('email') 
@@ -49,7 +49,7 @@
             <h5 class="mt-5 mb-3">Change Password</h5>
             
             <div class="card">
-                <form method="post" action={{ route('admin.resetPassword') }} class="card-body">
+                <form method="post" action={{ route('admin.settings.password') }} class="card-body">
                     @csrf
                     
                     

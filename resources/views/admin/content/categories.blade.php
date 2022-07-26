@@ -16,7 +16,7 @@
 			</div>
 
             
-    <a href="{{ route('admin.categories.new') }}" class="btn btn-primary my-3">Add New Category</a>        
+    <a href="{{ route('admin.categories.create') }}" class="btn btn-primary my-3">Add New Category</a>        
     
     {{-- form --}}
     <div class="card">
@@ -54,7 +54,7 @@
     <div class="modal fade" id="edit" tabindex="-1" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
         
-            <form method="post" action={{ route('admin.editCategory') }} class="modal-content">
+            <form method="post" action={{ route('admin.categories.edit') }} class="modal-content">
                 @csrf
               
                 <div class="modal-header">
@@ -95,7 +95,7 @@
       <div class="modal fade" id="delete" tabindex="-1" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
         
-            <form method="post" action={{ route('admin.deleteCategory') }} class="modal-content">
+            <form method="post" action={{ route('admin.categories.delete') }} class="modal-content">
                 @csrf @method('delete')
               
                 <div class="modal-header">

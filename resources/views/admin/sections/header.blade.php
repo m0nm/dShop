@@ -199,7 +199,7 @@
 							</div>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end">
-							<li><a class="dropdown-item" href="{{ route('admin.settings') }}"><i class="bx bx-cog"></i><span>Settings</span></a>
+							<li><a class="dropdown-item" href="{{ route('admin.settings.view') }}"><i class="bx bx-cog"></i><span>Settings</span></a>
 							</li>
 							<li><a class="dropdown-item" href="javascript:;"><i class='bx bx-home-circle'></i><span>Dashboard</span></a>
 							</li>

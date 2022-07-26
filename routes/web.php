@@ -1,9 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\AdminSettingsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,26 +26,38 @@ Route::prefix('admin')
     ->middleware('auth')
     ->controller(AdminController::class)
     ->group(function () {
-        // dashboard
         Route::get('/dashboard', 'dashboard')->name('dashboard');
-
-        // logout
         Route::get('/logout', 'logout')->name('logout');
 
         // settings
-        Route::get('/settings', 'settingsPage')->name('settings');
-        Route::post('/settings/change-email', 'changeEmail')->name('changeEmail');
-        Route::post('/settings/reset-password', 'resetPassword')->name('resetPassword');
+        Route::name('settings.')->controller(AdminSettingsController::class)->group(function () {
+            Route::get('/settings', 'settingsPage')->name('view');
+            Route::post('/settings/change-email', 'changeEmail')->name('email');
+            Route::post('/settings/reset-password', 'resetPassword')->name('password');
+        });
 
         // categories
-        Route::get('/categories', 'categoriesPage')->name('categories');
+        Route::name('categories.')->controller(AdminCategoryController::class)->group(function () {
 
-        Route::get('/categories/new', 'newCategoryPage')->name('categories.new');
-        Route::post('/categories/new', 'storeCategory')->name('storeCategory');
+            Route::get('/categories', 'view')->name('view');
 
-        Route::post('/categories/edit', 'editCategory')->name('editCategory');
+            Route::get(
+                '/categories/create',
+                'create'
+            )->name('create');
 
-        Route::delete('/categories', 'deleteCategory')->name('deleteCategory');
+            Route::post(
+                '/categories/create',
+                'store'
+            )->name('store');
+
+            Route::post('/categories/edit', 'edit')->name('edit');
+
+            Route::delete(
+                '/categories',
+                'delete'
+            )->name('delete');
+        });
     });
 
 Route::fallback(function () {
