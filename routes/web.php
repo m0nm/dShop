@@ -37,27 +37,7 @@ Route::prefix('admin')
         });
 
         // categories
-        Route::name('categories.')->controller(AdminCategoryController::class)->group(function () {
-
-            Route::get('/categories', 'view')->name('view');
-
-            Route::get(
-                '/categories/create',
-                'create'
-            )->name('create');
-
-            Route::post(
-                '/categories/create',
-                'store'
-            )->name('store');
-
-            Route::post('/categories/edit', 'edit')->name('edit');
-
-            Route::delete(
-                '/categories',
-                'delete'
-            )->name('delete');
-        });
+        Route::resource('categories', AdminCategoryController::class);
     });
 
 Route::fallback(function () {

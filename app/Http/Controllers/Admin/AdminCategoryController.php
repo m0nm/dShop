@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class AdminCategoryController extends Controller
 {
-    public function view()
+    public function index()
     {
         $categories = Category::latest()->get();
 
@@ -28,31 +28,31 @@ class AdminCategoryController extends Controller
 
         Category::create($category);
 
-        return redirect(route('admin.categories'));
+        return redirect(route('admin.categories.index'));
     }
     // <--------- END  -------->
 
-    public function edit(Request $request)
+    public function update(Request $request, $id)
     {
 
         $new_category = $request->validate(['name' => 'required']);
 
-        $category = Category::find($request->id);
+        $category = Category::find($id);
 
         $category->name = $new_category['name'];
         $category->save();
 
-        return redirect(route('admin.categories'));
+        return redirect(route('admin.categories.index'));
     }
     // <--------- END  -------->
 
-    public function delete(Request $request)
+    public function destroy($id)
     {
-        $category = Category::find($request->id);
+        $category = Category::find($id);
 
         $category->delete();
 
-        return redirect(route('admin.categories'));
+        return redirect(route('admin.categories.index'));
     }
     // <--------- END  -------->
 
