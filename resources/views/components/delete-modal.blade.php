@@ -5,7 +5,7 @@
                 @csrf @method('delete')
               
                 <div class="modal-header">
-                    <h5 class="modal-title">Delete a category</h5>
+                    <h5 class="modal-title">Delete item</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 
@@ -32,8 +32,8 @@
        
        const deleteForm = document.getElementById('delete-form')
        
-       deleteForm.action = `/admin/subcategories/${deleteId}`
+       const deleteRoute = `{{ $route }}`
+        
+       deleteForm.action = `/admin/${deleteRoute}/${deleteId}`
       
-       deleteBtn.addEventListener('click', function () {
-        })
     </script>

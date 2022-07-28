@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminSettingsController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
+use App\Http\Controllers\AdminBannerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,9 @@ Route::prefix('admin')
             Route::post('/settings/change-email', 'changeEmail')->name('email');
             Route::post('/settings/reset-password', 'resetPassword')->name('password');
         });
+
+        // banners
+        Route::resource('banners', AdminBannerController::class);
 
         // categories
         Route::resource('categories', AdminCategoryController::class);

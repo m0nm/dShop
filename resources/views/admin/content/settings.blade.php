@@ -2,22 +2,10 @@
 
 @section('content')
 
-        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-					<div class="breadcrumb-title pe-3">Settings</div>
-					<div class="ps-3">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb mb-0 p-0">
-								<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="bx bx-home-alt"></i></a>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">Change Settings</li>
-							</ol>
-						</nav>
-					</div>
-					
-				</div>
-
+    <x-breadcrump title="Settings" subtitle="Change settings" />
+        
                 
-         <div class="col-lg-8 mt-5 mx-auto">
+    <div class="col-lg-8 mt-5 mx-auto">
          {{-- email --}}
         <h5 class="my-3">Change Email</h5>
          

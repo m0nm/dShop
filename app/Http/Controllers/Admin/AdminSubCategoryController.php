@@ -53,9 +53,7 @@ class AdminSubCategoryController extends Controller
 
     public function destroy($id)
     {
-        $subcategory = SubCategory::find($id);
-
-        $subcategory->delete();
+        SubCategory::find($id)->delete();
 
         return redirect(route('admin.subcategories.index'));
     }

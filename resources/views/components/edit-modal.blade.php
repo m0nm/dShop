@@ -5,12 +5,12 @@
                 @csrf @method('put')
               
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit category name</h5>
+                    <h5 class="modal-title">Edit item</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 
                 <div class="modal-body">
-                    <input class="form-control mb-3" type="text" name="name" id="edit-name" placeholder="Enter category name" aria-label="Enter category name">
+                    <input class="form-control mb-3" type="text" name="name" id="edit-name">
                 </div>
                
                 <div class="modal-footer">
@@ -31,7 +31,9 @@
        
        const nameInput = document.getElementById('edit-name')
        
-       editForm.action = `/admin/categories/${editId}`
+       const editRoute = `{{ $route }}`
+       
+       editForm.action = `/admin/${editRoute}/${editId}`
        
        editBtn.addEventListener('click', function () {
            nameInput.value = name;

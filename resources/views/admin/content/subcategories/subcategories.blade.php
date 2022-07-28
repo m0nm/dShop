@@ -1,20 +1,9 @@
 @extends('admin.master')
 
 @section('content') 
-      <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Categories</div>
-                <div class="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="bx bx-home-alt"></i></a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">View subcategories</li>
-                        </ol>
-                    </nav>
-                </div>
-			</div>
-
-            
+     
+    <x-breadcrump title="Subcategories" subtitle="View subcategories" />
+                
     <a href="{{ route('admin.subcategories.create') }}" class="btn btn-primary my-3">Add New Subcategory</a>        
     
     {{-- table --}}
@@ -50,9 +39,10 @@
     </div>
     
     {{-- delete a subcategory modal --}}
-    @include('components.subcategories.edit-modal')
+    <x-edit-modal route="subcategories" />
     
     {{-- delete a subcategory modal --}}
-    @include('components.subcategories.delete-modal')
+    {{-- @include('components.subcategories.delete-modal') --}}
+    <x-delete-modal route="subcategories" />
    
 @endsection

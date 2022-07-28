@@ -2,19 +2,7 @@
 
 @section('content') 
     
-     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Categories</div>
-                <div class="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="bx bx-home-alt"></i></a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">View categories</li>
-                        </ol>
-                    </nav>
-                </div>
-			</div>
-
+    <x-breadcrump title="Categories" subtitle="View categories" />
             
     <a href="{{ route('admin.categories.create') }}" class="btn btn-primary my-3">Add New Category</a>        
     
@@ -51,10 +39,9 @@
     </div>
     
     {{-- edit a category modal --}}
-    @include('components.categories.edit-modal')
+    <x-edit-modal route="categories" />
     
     {{-- delete category modal --}}
-    @include('components.categories.delete-modal')
-    
+    <x-delete-modal route="categories" />    
 
 @endsection
