@@ -29,7 +29,7 @@
                                 
                                 <button type="button" class="btn btn-sm btn-danger" id="delete-btn" data-bs-toggle="modal" data-bs-target="#delete" data-id={{ $category->id }}>
                                     <i class='bx bxs-trash me-0'></i>
-									</button>
+								</button>
                             </td>
                         </tr>
                     @endforeach

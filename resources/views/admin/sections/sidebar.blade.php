@@ -33,6 +33,8 @@
 						</li>
 					</ul>
 				</li>
+				{{-- end --}}
+				
 				
 				<li>
 					<a href="javascript:;" class="has-arrow">
@@ -54,6 +56,23 @@
 						</li>
 					</ul>
 				</li>
+				{{-- end --}}
+				
+				<li>
+					<a href="javascript:;" class="has-arrow">
+						<div class="parent-icon"><i class='bx bx-images'></i>
+						</div>
+						<div class="menu-title">Products</div>
+					</a>
+					<ul>
+						<li> <a href="{{ route('admin.products.index') }}"><i class="bx bx-right-arrow-alt"></i>View Products</a>
+						</li>
+						
+						<li> <a href="{{ route('admin.products.create') }}"><i class="bx bx-right-arrow-alt"></i>Add New Product</a>
+						</li>
+					</ul>
+				</li>
+				{{-- end --}}
 				
 			
 				

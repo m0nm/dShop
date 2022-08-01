@@ -38,7 +38,4 @@
     
     {{-- delete banner modal --}}
     <x-delete-modal route="banners" />    
-
-    
-
 @endsection

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminSettingsController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\AdminBannerController;
@@ -39,13 +40,16 @@ Route::prefix('admin')
         });
 
         // banners
-        Route::resource('banners', AdminBannerController::class);
+        Route::resource('banners', AdminBannerController::class)->except(['show', 'edit', 'update']);
 
         // categories
-        Route::resource('categories', AdminCategoryController::class);
+        Route::resource('categories', AdminCategoryController::class)->except(['show']);
 
         // subcategories
-        Route::resource('subcategories', AdminSubCategoryController::class);
+        Route::resource('subcategories', AdminSubCategoryController::class)->except(['show']);
+
+        // products
+        Route::resource('products', AdminProductController::class)->except(['show']);
     });
 
 Route::fallback(function () {

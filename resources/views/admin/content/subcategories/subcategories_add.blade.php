@@ -11,7 +11,7 @@
             
             <h5 class="my-3">Parent Category</h5>
             
-            @error('parent_id')
+            @error('category_id')
                <p class="text-danger">{{ $message }}</p>
                @enderror
                

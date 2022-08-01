@@ -56,6 +56,8 @@
 	<script src="{{ asset('admin/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
 	<script src="{{ asset('admin/assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
 	<script src="{{ asset('admin/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
+	{{-- content scripts --}}
+	@yield('script')
 	<!--app JS-->
 	<script src="{{ asset('admin/assets/js/app.js') }}"></script>
 </body>
