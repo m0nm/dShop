@@ -2,11 +2,11 @@
 
 @section('content')
 
-    <x-breadcrump title="Products" subtitle="Add new products" />
+    <x-breadcrump title="Products" subtitle="Edit product" />
 
     <div class="card">
         <div class="card-body p-4">
-            <h5 class="card-title">Add New Product</h5>
+            <h5 class="card-title">Edit Product</h5>
 
             <hr>
 
@@ -143,8 +143,17 @@
                                         <option {{ $product->condition === 'featured' ? 'selected' : '' }} value="featured">featured</option>
                                     </select>
                                 </div>
+                               
+                                <div class="col-12">
+                                    <label for="status" class="form-label">Status</label>
+                                   
+                                    <select name="status" class="form-select" id="status">
+                                        <option value="active">active</option>
+                                        <option value="inactive">inactive</option>
+                                    </select>
+                                </div>
 
-
+                                
                                 <div class="col-12">
                                     <div class="d-grid">
                                         <button class="btn btn-primary">Edit Product</button>

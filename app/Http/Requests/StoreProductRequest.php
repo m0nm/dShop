@@ -32,6 +32,7 @@ class StoreProductRequest extends FormRequest
             'stock' => 'required|numeric',
             'condition' => 'required|string',
             'category_id' => 'required|string',
+            'subcategory_id' => 'nullable|string',
         ];
     }
 

@@ -70,6 +70,12 @@
 						
 						<li> <a href="{{ route('admin.products.create') }}"><i class="bx bx-right-arrow-alt"></i>Add New Product</a>
 						</li>
+						
+						<li> <a href="{{ route('admin.product_attributes.index') }}"><i class="bx bx-right-arrow-alt"></i>View Product Attributes</a>
+						</li>
+						
+						<li> <a href="{{ route('admin.product_attributes.index') }}"><i class="bx bx-right-arrow-alt"></i>Add New Product Attributes</a>
+						</li>
 					</ul>
 				</li>
 				{{-- end --}}

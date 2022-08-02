@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Attribute;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductAttribute;
 use App\Models\SubCategory;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -27,13 +28,15 @@ class AdminProductController extends Controller
     {
         $categories = Category::latest()->get();
         $subcategories = SubCategory::latest()->get();
+        $attributes = Attribute::all('name');
 
-        return view('admin.content.products.products_add', compact(['categories', 'subcategories']));
+        return view('admin.content.products.products_add', compact(['categories', 'subcategories', 'attributes']));
     }
     // <--------- END  -------->
 
     public function store(StoreProductRequest $request)
     {
+
         $data = $request->validated();
         $data['slug'] = Str::slug($data['name']);
 
@@ -50,10 +53,26 @@ class AdminProductController extends Controller
             $data['images'] = implode(',', $images);
         }
 
-        Product::create($data);
+        $product = Product::create($data);
+
+        if ($request->has('attributes')) {
+
+            foreach ($request->input('attributes') as $attribute) {
+                $attribute_id = Attribute::where('name', $attribute['name'])->first();
+
+                $product->attributes()->attach($attribute_id, ['value' => $attribute['value']]);
+            }
+        }
+
 
         return redirect(route('admin.products.index'));
     }
+    // <--------- END  -------->
+    public function show(Product $product)
+    {
+        return view('admin.content.products.products_show', compact('product'));
+    }
+
     // <--------- END  -------->
 
     public function edit(Product $product)

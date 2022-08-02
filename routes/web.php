@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminProductAttributesController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminSettingsController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
@@ -49,7 +50,10 @@ Route::prefix('admin')
         Route::resource('subcategories', AdminSubCategoryController::class)->except(['show']);
 
         // products
-        Route::resource('products', AdminProductController::class)->except(['show']);
+        Route::resource('products', AdminProductController::class);
+
+        // products attributes
+        Route::resource('product_attributes', AdminProductAttributesController::class);
     });
 
 Route::fallback(function () {

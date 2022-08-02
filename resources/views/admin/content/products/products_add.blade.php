@@ -118,11 +118,11 @@
                                         
                                     </label>
                                    
-                                    <select name="subcategory" class="form-select" id="subcategory">
+                                    <select name="subcategory_id" class="form-select" id="subcategory">
                                         <option value="">none</option>
                                         
                                         @foreach ($subcategories as $subcategory)
-                                        <option {{ old('subcategory_id') === $category->id ? 'selected' : '' }} value={{ $subcategory->id }}>{{ $subcategory->name }}</option>
+                                        <option {{ old('subcategory_id') === $subcategory->id ? 'selected' : '' }} value={{ $subcategory->id }}>{{ $subcategory->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -142,16 +142,52 @@
                                     </select>
                                 </div>
 
-
-                                <div class="col-12">
-                                    <div class="d-grid">
-                                        <button class="btn btn-primary">Save Product</button>
-                                    </div>
-                                </div>
-
                             </div> 
                             </div>
+                        </div> 
+                        {{-- end --}}
+                        
+                        
+                        
+                        <div class="col-lg-12">
+                            <div class="border border-3 p-4 rounded mt-3">
+                                <label for="" class="form-label">Product attributes</label>
+                              
+                                @error('attributes')
+                                    <p class="text-danger text-sm">{{ $message }}</p>
+                                @enderror
+                                
+                                <table class="table table-bordered" id="dynamicTable">  
+                                    <tr>
+                                        <th>Name</th>
+                                        <th class="col-lg-6">Value (seperate with column)</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    <tr>  
+                                        <td>
+                                            <select class="form-select" id="attribute_name">
+                                                @foreach ($attributes as $attribute)
+                                                    <option value="{{ $attribute->name }}">{{ $attribute->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </td>  
+                                        
+                                        <td>
+                                            <input id="attribute_value" data-role="tagsinput" style="widows: 100%">
+                                        </td>  
+                                        
+                                        <td>
+                                            <button type="button" name="add" id="add-attribute" class="btn btn-success">Add</button>
+                                        </td>  
+                                    </tr>  
+                                </table> 
+                            </div>
                         </div>
+
+                        <div class="ms-auto mt-3" style="width: fit-content">
+                            <button class="btn btn-primary">Save Product</button>
+                        </div>
+                        
                     </div><!--end row-->
             </form>
         </div>
@@ -200,5 +236,46 @@
 		  selector: '#description'
 		});
 	</script>
-
+    
 @endsection
+    
+@section('scripts') 
+    {{-- input tags --}}
+    <script src="{{ asset('admin/assets/plugins/input-tags/js/tagsinput.js') }}"></script>
+
+    {{-- add product attribute field --}}
+    <script type="text/javascript">
+    
+        let i = 0;
+        
+        $("#add-attribute").click(function(){
+            if($('#attribute_value').val()) {
+            
+                i++
+        
+                $("#dynamicTable").append(
+                `
+                <tr class="my-2">
+                <td>
+                <input type="text" name="attributes[${i}][name]" value="${$('#attribute_name').val()}" class="form-control" readonly />
+                </td>
+                
+                <td>
+                <input type="text" name="attributes[${i}][value]" value="${$('#attribute_value').val()}" class="form-control" readonly />
+                </td>
+                
+                <td>
+                <button type="button" class="btn btn-danger remove-tr bg-danger">Remove</button>
+                </td>
+                </tr>`)
+            }
+                
+            });
+    
+        $(document).on('click', '.remove-tr', function(){  
+            $(this).parents('tr').remove();
+        });  
+    
+    </script>
+
+@endsection    

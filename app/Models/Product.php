@@ -11,6 +11,11 @@ class Product extends Model
 
     protected $guarded = [];
 
+    public function attributes()
+    {
+        return $this->belongsToMany(Attribute::class)->withPivot('value');
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

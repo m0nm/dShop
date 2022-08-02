@@ -64,6 +64,10 @@
                             </td>
                             
                             <td>
+                                <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-sm btn-info text-white mb-1" title="more details">
+                                    <i class='bx bxs-detail me-0'></i>
+                                </a>
+                                
                                  <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-primary btn-sm" >
                                     <i class='bx bxs-pencil me-0'></i>
                                 </a>
