@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('oauth_type')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
+            $table->string('type')->default('user')->comment('user or admin');
             $table->rememberToken();
             $table->timestamps();
         });

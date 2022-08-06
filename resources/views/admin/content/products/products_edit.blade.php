@@ -148,8 +148,8 @@
                                     <label for="status" class="form-label">Status</label>
                                    
                                     <select name="status" class="form-select" id="status">
-                                        <option value="active">active</option>
-                                        <option value="inactive">inactive</option>
+                                        <option {{ $product->status === 'active' ? 'selected' : '' }} value="active">active</option>
+                                        <option {{ $product->status === 'inactive' ? 'selected' : '' }} value="inactive">inactive</option>
                                     </select>
                                 </div>
 

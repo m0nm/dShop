@@ -16,7 +16,7 @@
                         <th scope="col">Image</th>
                         <th scope="col">Name</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Sales Price</th>
+                        <th scope="col">Sale Price</th>
                         <th scope="col">Category</th>
                         <th scope="col">Subcategory</th>
                         <th scope="col">Stocks</th>
@@ -60,15 +60,19 @@
                                 {{ $product->condition }}
                             </td>
                             <td>
-                                {{ $product->status }}
+                                @if ($product->status === "active")
+                                    <span class="badge bg-success">active</span>
+                                @else
+                                    <span class="badge bg-secondary">inactive</span>
+                                @endif
                             </td>
                             
                             <td>
-                                <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-sm btn-info text-white mb-1" title="more details">
+                                <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-sm btn-info text-white" title="more details">
                                     <i class='bx bxs-detail me-0'></i>
                                 </a>
                                 
-                                 <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-primary btn-sm" >
+                                 <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-primary btn-sm my-1" >
                                     <i class='bx bxs-pencil me-0'></i>
                                 </a>
                                 

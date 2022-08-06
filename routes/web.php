@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminBannerController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminCouponController;
 use App\Http\Controllers\Admin\AdminProductAttributesController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminSettingsController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
-use App\Http\Controllers\AdminBannerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,6 +55,9 @@ Route::prefix('admin')
 
         // products attributes
         Route::resource('product_attributes', AdminProductAttributesController::class);
+
+        // coupons
+        Route::resource('coupons', AdminCouponController::class)->except('shows');
     });
 
 Route::fallback(function () {

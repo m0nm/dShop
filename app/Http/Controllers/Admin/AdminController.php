@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -27,9 +28,9 @@ class AdminController extends Controller
     public function auth(Request $request)
     {
 
-        $admin = User::find(1);
+        $admin = User::where('type', 'admin')->first();
 
-        if ($request->email === $admin->email && $request->password === "password") {
+        if ($request->email === $admin->email && Hash::check($request->password, $admin->password)) {
 
             Auth::login($admin);
 
