@@ -20,13 +20,18 @@ class AuthController extends Controller
 
         $data['password'] = Hash::make($data['password']);
 
-        $user = User::create($data);
+        try {
+            $user = User::create($data);
 
-        $token  = $user->createToken('dShop_token')->accessToken;
+            $token  = $user->createToken('dShop_token')->accessToken;
 
-        return response()
-            ->json(['token' => $token], 201);
+            return response()
+                ->json(['token' => $token], 201);
+        } catch (\Exception $exception) {
+            return response()->json(['message' => $exception->getMessage()], 400);
+        }
     }
+    // <-------- END --------->
 
     public function login(Request $request)
     {
@@ -41,15 +46,21 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $user = Auth::user();
-        $token = $user->createToken('dShop_token')->accessToken;
+        try {
+            /** @var User $user */
+            $user = Auth::user();
+            $token = $user->createToken('dShop_token')->accessToken;
 
-        return response()
-            ->json([
-                'token' => $token,
-                'remember_me' => $remember_me
-            ], 200);
+            return response()
+                ->json([
+                    'token' => $token,
+                    'remember_me' => $remember_me
+                ], 200);
+        } catch (\Exception $exception) {
+            return response()->json(['message' => $exception->getMessage()], 400);
+        }
     }
+    // <-------- END --------->
 
     public function logout()
     {
@@ -59,4 +70,6 @@ class AuthController extends Controller
             'message' => 'User logged out successfully'
         ], 200);
     }
+    // <-------- END --------->
+
 };
