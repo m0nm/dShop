@@ -42,7 +42,7 @@
                             </td>
                             
                             <td>
-                                {{ $product->sales_price }}
+                                {{ $product->sale_price }}
                             </td>
                             
                             <td>
@@ -76,7 +76,7 @@
                                     <i class='bx bxs-pencil me-0'></i>
                                 </a>
                                 
-                                <button type="button" class="btn btn-sm btn-danger" id="delete-btn" data-bs-toggle="modal" data-bs-target="#delete" data-id={{ $product->id }}>
+                                <button type="button" class="btn btn-sm btn-danger" onclick="deleteItem({{ $product->id }})">
                                     <i class='bx bxs-trash me-0'></i>
 								</button>
                             </td>

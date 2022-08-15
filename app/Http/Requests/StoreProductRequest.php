@@ -25,10 +25,11 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name' => 'required|string|unique:products',
-            'description' => 'required|string',
+            'description' => 'nullable|string',
             'images' => 'required',
             'images,*' => 'mimes:jpg,png,jpeg,gif,svg',
             'price' => 'required|numeric',
+            'sale_price' => 'nullable|numeric',
             'stock' => 'required|numeric',
             'condition' => 'required|string',
             'category_id' => 'required|string',

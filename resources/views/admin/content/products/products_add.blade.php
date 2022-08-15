@@ -30,7 +30,7 @@
                             </div>
                             
                             <div class="mb-3">
-                                <label for="description" class="form-label">Description</label>
+                                <label for="description" class="form-label">Description (optional)</label>
                                
                                 @error('description')
                                     <p class="text-danger text-sm">{{ $message }}</p>
@@ -60,7 +60,6 @@
                         {{-- end --}}
                         
                         
-                        
 
                         <div class="col-lg-4">
                             <div class="border border-3 p-4 rounded">
@@ -73,7 +72,7 @@
                                     <p class="text-danger text-sm">{{ $message }}</p>
                                     @enderror
                                     
-                                    <input name="price" value="{{ old('price') }}" type="number" class="form-control" id="price" placeholder="00.00">
+                                    <input name="price" value="{{ old('price') }}" type="number" step="0.01" class="form-control" id="price" placeholder="00.00">
                                 </div>
                     
                                 <div class="col-md-6">
@@ -82,7 +81,7 @@
                                         <span style="font-size: 12px">(optional)</span>
                                     </label>                              
                                        
-                                    <input name="sale_price" value="{{ old('sale_price') }}" type="number" class="form-control" id="sale-price" placeholder="00.00">
+                                    <input name="sale_price" value="{{ old('sale_price') }}" type="number" step="0.01" class="form-control" id="sale-price" placeholder="00.00">
                                 </div>
                                 
                                 <div class="col-md-6">
@@ -92,7 +91,7 @@
                                     <p class="text-danger text-sm">{{ $message }}</p>
                                     @enderror
                                     
-                                    <input name="stock" value="{{ old('stock') }}" type="number" min="0" class="form-control" id="stocks" placeholder="10">
+                                    <input name="stock" value="{{ old('stock') ?? 10 }}" type="number" min="0" class="form-control" id="stocks" placeholder="10">
                                 </div>
     
                                 <div class="col-12">
@@ -147,11 +146,11 @@
                         </div> 
                         {{-- end --}}
                         
-                        
+
                         
                         <div class="col-lg-12">
                             <div class="border border-3 p-4 rounded mt-3">
-                                <label for="" class="form-label">Product attributes</label>
+                                <label for="" class="form-label">Product attributes (optional)</label>
                               
                                 @error('attributes')
                                     <p class="text-danger text-sm">{{ $message }}</p>
@@ -183,6 +182,8 @@
                                 </table> 
                             </div>
                         </div>
+                        {{-- end --}}
+                        
 
                         <div class="ms-auto mt-3" style="width: fit-content">
                             <button class="btn btn-primary">Save Product</button>
@@ -277,5 +278,4 @@
         });  
     
     </script>
-
 @endsection    

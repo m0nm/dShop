@@ -43,7 +43,7 @@ class AdminBannerController extends Controller
     {
         Banner::find($id)->delete();
 
-        return redirect(route('admin.banners.index'));
+        return response()->json(route('admin.banners.index'));
     }
     // <--------- END  -------->
 

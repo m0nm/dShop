@@ -28,7 +28,7 @@ class AdminProductController extends Controller
     {
         $categories = Category::latest()->get();
         $subcategories = SubCategory::latest()->get();
-        $attributes = Attribute::all('name');
+        $attributes = Attribute::all();
 
         return view('admin.content.products.products_add', compact(['categories', 'subcategories', 'attributes']));
     }
@@ -58,7 +58,7 @@ class AdminProductController extends Controller
         if ($request->has('attributes')) {
 
             foreach ($request->input('attributes') as $attribute) {
-                $attribute_id = Attribute::where('name', $attribute['name'])->first();
+                $attribute_id = Attribute::where('name', $attribute['name'])->first()->id;
 
                 $product->attributes()->attach($attribute_id, ['value' => $attribute['value']]);
             }
@@ -79,8 +79,9 @@ class AdminProductController extends Controller
     {
         $categories = Category::latest()->get();
         $subcategories = SubCategory::latest()->get();
+        $attributes = Attribute::all();
 
-        return view('admin.content.products.products_edit', compact(['product', 'categories', 'subcategories']));
+        return view('admin.content.products.products_edit', compact(['product', 'categories', 'subcategories', 'attributes']));
     }
 
     // <--------- END  -------->
@@ -108,6 +109,14 @@ class AdminProductController extends Controller
 
         $product->update($data);
 
+        if ($request->has('attributes')) {
+
+            foreach ($request->input('attributes') as $attribute) {
+                $attribute_id = Attribute::where('name', $attribute['name'])->first()->id;
+                $product->attributes()->sync([$attribute_id => ['value' => $attribute['value']]]);
+            }
+        }
+
         return redirect(route('admin.products.index'));
     }
     // <--------- END  -------->
@@ -116,7 +125,7 @@ class AdminProductController extends Controller
     {
         $product->delete();
 
-        return redirect(route('admin.products.index'));
+        return response()->json(route('admin.products.index'));
     }
     // <--------- END  -------->
 

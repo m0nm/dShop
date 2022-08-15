@@ -25,7 +25,7 @@
                                 <img src="{{ asset('/storage/images/banners/' . $banner->banner_image) }}" alt="" height="80px">
                             </td>
                             <td>
-                                <button type="button" class="btn btn-sm btn-danger" id="delete-btn" data-bs-toggle="modal" data-bs-target="#delete" data-id={{ $banner->id }}>
+                                <button type="button" class="btn btn-sm btn-danger" onclick="deleteItem({{ $banner->id }})">
                                     <i class='bx bxs-trash me-0'></i>
 									</button>
                             </td>

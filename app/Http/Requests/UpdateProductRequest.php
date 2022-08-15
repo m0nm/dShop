@@ -21,7 +21,7 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', Rule::unique('products')->ignore($this->product->id)],
-            'description' => 'required|string',
+            'description' => 'nullable|string',
             'images' => 'nullable',
             'images,*' => 'mimes:jpg,png,jpeg,gif,svg',
             'price' => 'required|numeric',

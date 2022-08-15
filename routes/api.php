@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\BannerController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ForgotPasswordController;
@@ -42,9 +44,19 @@ Route::controller(ForgotPasswordController::class)->group(function () {
     Route::post('/user/reset', 'reset');
 });
 
-// < ------ End User ------- >
+// < ------ End ------- >
 
 // < ------ Categories ------- >
 Route::get('/categories', [CategoryController::class, 'index']);
 
-// < ------ End Categories ------- >
+// < ------ End ------- >
+
+// < ------ Banners ------- >
+Route::get('/banners', [BannerController::class, 'index']);
+
+// < ------ End ------- >
+
+// < ------ productss ------- >
+Route::get('/products', [ProductController::class, 'index']);
+
+// < ------ End ------- >

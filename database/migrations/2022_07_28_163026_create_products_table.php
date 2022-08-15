@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('subcategory_id')->nullable()->constrained('sub_categories')->onDelete('cascade')->onUpdate('cascade');
             $table->text('images');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->float('price');
             $table->float('sale_price')->nullable();
             $table->integer('stock')->default(1);

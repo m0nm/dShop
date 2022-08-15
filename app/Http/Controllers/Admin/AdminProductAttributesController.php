@@ -47,7 +47,7 @@ class AdminProductAttributesController extends Controller
     {
         Attribute::find($id)->delete();
 
-        return redirect(route('admin.product_attributes.index'));
+        return response()->json(route('admin.product_attributes.index'));
     }
     // <--------- END  -------->
 

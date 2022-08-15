@@ -50,7 +50,7 @@ class AdminCategoryController extends Controller
     {
         Category::find($id)->delete();
 
-        return redirect(route('admin.categories.index'));
+        return response()->json(route('admin.categories.index'));
     }
     // <--------- END  -------->
 }

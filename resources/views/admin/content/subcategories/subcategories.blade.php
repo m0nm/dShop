@@ -14,6 +14,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Parent Category</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -22,12 +23,13 @@
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $subcategory->name }}</td>
+                            <td>{{ $subcategory->category['name'] }}</td>
                             <td>
                                 <button type="button" class="btn btn-primary btn-sm" id="edit-btn" data-bs-toggle="modal" data-bs-target="#edit" data-id={{ $subcategory->id }} data-name="{{ $subcategory->name }}">
                                     <i class='bx bxs-pencil me-0'></i>
                                 </button>
                                 
-                                <button type="button" class="btn btn-sm btn-danger" id="delete-btn" data-bs-toggle="modal" data-bs-target="#delete" data-id={{ $subcategory->id }}>
+                                <button type="button" class="btn btn-sm btn-danger" onclick="deleteItem({{ $subcategory->id }})">
                                     <i class='bx bxs-trash me-0'></i>
 								</button>
                             </td>
@@ -42,7 +44,6 @@
     <x-edit-modal route="subcategories" />
     
     {{-- delete a subcategory modal --}}
-    {{-- @include('components.subcategories.delete-modal') --}}
     <x-delete-modal route="subcategories" />
    
 @endsection

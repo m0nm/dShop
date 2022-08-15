@@ -1,8 +1,9 @@
-  <div class="modal fade" id="delete" tabindex="-1" style="display: none;" aria-hidden="true">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<div class="modal fade" id="delete" tabindex="-1" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
         
-            <form method="post" action="" class="modal-content" id="delete-form">
-                @csrf @method('delete')
+            <div class="modal-content" >
               
                 <div class="modal-header">
                     <h5 class="modal-title">Delete item</h5>
@@ -19,21 +20,36 @@
                
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger delete-btn">Delete</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
     
+@section('scripts')
     <script>
-       const deleteBtn = document.getElementById('delete-btn')
-       
-       const deleteId = deleteBtn.dataset.id
-       
-       const deleteForm = document.getElementById('delete-form')
-       
-       const deleteRoute = `{{ $route }}`
-        
-       deleteForm.action = `/admin/${deleteRoute}/${deleteId}`
-      
+        function deleteItem(id) {
+                $('.modal').modal('show')
+
+                $('.delete-btn').data('delete-id', id)
+                var token = $("meta[name='csrf-token']").attr("content");
+                const deleteRoute = `{{ $route }}`
+                
+                $('.delete-btn').click(() => {
+                    $.ajax(
+                    {
+                        url: `${deleteRoute}/${id}`,
+                        type: 'DELETE',
+                        data: {
+                            "id": id,
+                            "_token": token,
+                        },
+                        success: function (url){
+                            window.location = url
+                        }
+                    });
+                })
+        }
     </script>
+    @endsection
+    

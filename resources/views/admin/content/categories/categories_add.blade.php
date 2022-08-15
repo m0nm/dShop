@@ -14,7 +14,7 @@
                 <p class="text-danger">{{ $message }}</p>
                 @enderror
             
-            <input class="form-control mb-3" type="text" name="name" placeholder="Enter category name" aria-label="Enter category name">
+            <input class="form-control mb-3" type="text" name="name" value="{{ old('name') }}" placeholder="Enter category name" aria-label="Enter category name">
             
             <button class="btn btn-primary mt-2">Add Category</button>
         </form>

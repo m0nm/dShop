@@ -31,7 +31,7 @@
                                     <i class='bx bxs-pencil me-0'></i>
                                 </button>
                                 
-                                <button type="button" class="btn btn-sm btn-danger" id="delete-btn" data-bs-toggle="modal" data-bs-target="#delete" data-id={{ $attribute->id }}>
+                                <button type="button" class="btn btn-sm btn-danger" onclick="deleteItem({{ $attribute->id }})">
                                     <i class='bx bxs-trash me-0'></i>
 								</button>
                             </td>

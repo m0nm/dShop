@@ -27,8 +27,15 @@
                      @endforeach
                  </tbody>
              </table>
-             
-             
+         </div>
+        </div>
+     
+     
+        <div class="card">
+         
+         <div class="card-body">
+             <label class="form-label">Product description</label>
+             {!! $product->description !!}
          </div>
         </div>
         
