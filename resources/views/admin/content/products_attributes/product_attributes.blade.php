@@ -27,7 +27,7 @@
                             </td>
                             
                             <td>
-                                 <button type="button" class="btn btn-primary btn-sm" id="edit-btn" data-bs-toggle="modal" data-bs-target="#edit" data-id={{ $attribute->id }} data-name="{{ $attribute->name }}">
+                                 <button type="button" class="btn btn-primary btn-sm" onclick="editItem({{ $attribute->id }}, '{{ $attribute->name }}')">
                                     <i class='bx bxs-pencil me-0'></i>
                                 </button>
                                 

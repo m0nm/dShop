@@ -1,6 +1,4 @@
-<meta name="csrf-token" content="{{ csrf_token() }}">
-
-<div class="modal fade" id="delete" tabindex="-1" style="display: none;" aria-hidden="true">
+<div class="modal fade" id="modal-delete" tabindex="-1" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
         
             <div class="modal-content" >
@@ -11,6 +9,8 @@
                 </div>
                 
                 <div class="modal-body">
+                    <input name="delete-token" value="{{ csrf_token() }}" type="text" style="display: none;">
+                    
                     <div class="text-center">
                         <i class='bx bx-error text-danger' style="font-size: 80px"></i>
                         
@@ -26,12 +26,11 @@
         </div>
     </div>
     
-@section('scripts')
+@section('delete-item-ajax-script')
     <script>
         function deleteItem(id) {
-                $('.modal').modal('show')
+                $('#modal-delete').modal('show')
 
-                $('.delete-btn').data('delete-id', id)
                 var token = $("meta[name='csrf-token']").attr("content");
                 const deleteRoute = `{{ $route }}`
                 
@@ -42,7 +41,7 @@
                         type: 'DELETE',
                         data: {
                             "id": id,
-                            "_token": token,
+                            "_token": $('input[name=delete-token]').val(),
                         },
                         success: function (url){
                             window.location = url

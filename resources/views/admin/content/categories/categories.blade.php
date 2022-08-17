@@ -23,7 +23,7 @@
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $category->name }}</td>
                             <td>
-                                <button type="button" class="btn btn-primary btn-sm" id="edit-btn" data-bs-toggle="modal" data-bs-target="#edit" data-id={{ $category->id }} data-name="{{ $category->name }}">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="editItem({{ $category->id }}, '{{ $category->name }}')">
                                     <i class='bx bxs-pencil me-0'></i>
                                 </button>
                                 

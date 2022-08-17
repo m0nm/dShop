@@ -39,15 +39,14 @@ class AdminSubCategoryController extends Controller
 
     public function update(Request $request, $id)
     {
-
-        $new_category = $request->validate(['name' => 'required']);
+        $new_subcategory = $request->validate(['name' => 'required']);
 
         $subcategory = SubCategory::find($id);
 
-        $subcategory->name = $new_category['name'];
+        $subcategory->name = $new_subcategory['name'];
         $subcategory->save();
 
-        return redirect(route('admin.subcategories.index'));
+        return response()->json(route('admin.subcategories.index'));
     }
     // <--------- END  -------->
 

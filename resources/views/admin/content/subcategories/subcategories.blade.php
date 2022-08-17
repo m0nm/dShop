@@ -25,7 +25,7 @@
                             <td>{{ $subcategory->name }}</td>
                             <td>{{ $subcategory->category['name'] }}</td>
                             <td>
-                                <button type="button" class="btn btn-primary btn-sm" id="edit-btn" data-bs-toggle="modal" data-bs-target="#edit" data-id={{ $subcategory->id }} data-name="{{ $subcategory->name }}">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="editItem({{ $subcategory->id }}, '{{ $subcategory->name }}')">
                                     <i class='bx bxs-pencil me-0'></i>
                                 </button>
                                 

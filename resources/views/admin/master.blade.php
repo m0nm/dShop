@@ -57,6 +57,8 @@
 	<script src="{{ asset('admin/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
 	{{-- content scripts --}}
 	@yield('scripts')
+	@yield('edit-item-ajax-script')
+	@yield('delete-item-ajax-script')
 	<!--app JS-->
 	<script src="{{ asset('admin/assets/js/app.js') }}"></script>
 </body>
