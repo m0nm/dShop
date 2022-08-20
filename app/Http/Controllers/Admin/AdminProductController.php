@@ -56,7 +56,6 @@ class AdminProductController extends Controller
         $product = Product::create($data);
 
         if ($request->has('attributes')) {
-
             foreach ($request->input('attributes') as $attribute) {
                 $attribute_id = Attribute::where('name', $attribute['name'])->first()->id;
 
@@ -111,10 +110,13 @@ class AdminProductController extends Controller
 
         if ($request->has('attributes')) {
 
+            $updateAttributes = [];
+
             foreach ($request->input('attributes') as $attribute) {
                 $attribute_id = Attribute::where('name', $attribute['name'])->first()->id;
-                $product->attributes()->sync([$attribute_id => ['value' => $attribute['value']]]);
+                $updateAttributes[$attribute_id] = ['value' => $attribute['value']];
             }
+            $product->attributes()->sync($updateAttributes);
         }
 
         return redirect(route('admin.products.index'));

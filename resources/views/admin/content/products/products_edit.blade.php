@@ -193,14 +193,19 @@
                                         </td>  
                                     </tr>  
                                     
+                                    @php
+                                        // its 100 so javascript array indexes do not override php array indexes
+                                        $i = 100
+                                    @endphp
                                     @foreach ($product->attributes as $product_attribute)
+                                    {{ $i++ }}
                                         <tr class="my-2">
                                             <td>
-                                            <input type="text" name="{{ $product_attribute->name }}" value="{{ $product_attribute->name }}" class="form-control" readonly />
+                                            <input type="text" name="attributes[{{ $i }}][name]" value="{{ $product_attribute->name }}" class="form-control" readonly />
                                             </td>
                                             
                                             <td>
-                                            <input type="text" name="{{ $product_attribute->pivot->value }}" value="{{ $product_attribute->pivot->value }}" class="form-control" readonly />
+                                            <input type="text" name="attributes[{{ $i }}][value]" value="{{ $product_attribute->pivot->value }}" class="form-control" readonly />
                                             </td>
                                             
                                             <td>
