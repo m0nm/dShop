@@ -40,9 +40,15 @@ class AuthController extends Controller
 
         $remember_me = $request->has('remember_me');
 
+        if (User::where('email', $credentials['email'])->doesntExist()) {
+            return response()->json([
+                'errors' => ['credentials' => ['User does not exist']]
+            ], 404);
+        }
+
         if (!Auth::attempt($credentials)) {
             return response()->json([
-                'errors' => ['credentials' => 'Invalid credentials']
+                'errors' => ['credentials' => ['Invalid Credentials']]
             ], 401);
         }
 
