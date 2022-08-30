@@ -1,36 +1,21 @@
-import { styled } from "@/stitches.config";
-import React from "react";
-import { Container } from "../../Shared/Container";
+import React, { useState, useEffect } from "react";
+import { Container } from "../../Shared";
 import { Icon } from "ts-react-feather-icons";
 import { SelectCurrency } from "./SelectCurrency/SelectCurrency";
-
-const Menu = styled("ul", {
-  display: "flex",
-  alignItems: "center",
-});
-
-const MenuItem = styled("li", {
-  padding: "10px 5px",
-  fontSize: "13px",
-  cursor: "pointer",
-  transition: "color 50ms",
-
-  "&:hover": {
-    color: "$primary",
-  },
-
-  variants: {
-    border: {
-      true: {
-        borderLeft: "1px solid rgba(0,0,0,0.11)",
-        borderRight: "1px solid rgba(0,0,0,0.11)",
-        padding: "0 10px",
-      },
-    },
-  },
-});
+import { Account } from "./Account/Account";
+import { Menu, MenuItem } from "./topbar.styles";
+import { useAuthModalStore } from "@/features/auth";
+import { getCookie, CookieValueTypes } from "cookies-next";
 
 export const Topbar = () => {
+  const { handleOpen, handleDisplay } = useAuthModalStore();
+
+  const [token, setToken] = useState<CookieValueTypes>("");
+
+  useEffect(() => {
+    setToken(() => getCookie("token"));
+  }, []);
+
   return (
     <div>
       <Container justify={"between"}>
@@ -40,8 +25,31 @@ export const Topbar = () => {
         </Menu>
 
         <Menu css={{ gap: "1rem" }}>
-          <MenuItem>Login</MenuItem>
-          <MenuItem border>Register</MenuItem>
+          {/* account or auth links */}
+          {token ? (
+            <MenuItem>
+              <Account />
+            </MenuItem>
+          ) : (
+            <>
+              <MenuItem
+                onClick={() => {
+                  handleOpen(true), handleDisplay("login");
+                }}
+              >
+                Login
+              </MenuItem>
+              <MenuItem
+                border
+                onClick={() => {
+                  handleOpen(true), handleDisplay("register");
+                }}
+              >
+                Register
+              </MenuItem>
+            </>
+          )}
+          {/* currency */}
           <MenuItem>
             <SelectCurrency />
           </MenuItem>

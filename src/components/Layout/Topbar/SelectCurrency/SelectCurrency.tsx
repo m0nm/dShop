@@ -7,7 +7,7 @@ import {
   SelectPortal,
   SelectTrigger,
   SelectViewport,
-} from "./styles";
+} from "./selectCurrency.styles";
 
 type currency = "usd" | "dzd" | "eur";
 
