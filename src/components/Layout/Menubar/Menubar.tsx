@@ -6,13 +6,10 @@ export const Menubar = () => {
   // get y position of container element
   // to change position to fixed on scroll
   const [fixed, setFixed] = useState(false);
-  const ref = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    const rect = ref.current?.getBoundingClientRect();
-
     const changePosition = () => {
-      window.scrollY > (rect?.top as number) ? setFixed(true) : setFixed(false);
+      window.scrollY > 150 ? setFixed(true) : setFixed(false);
     };
 
     window.addEventListener("scroll", changePosition);
@@ -22,7 +19,7 @@ export const Menubar = () => {
   }, []);
 
   return (
-    <MenubarRoot ref={ref} fixed={{ "@lg": fixed }}>
+    <MenubarRoot fixed={{ "@lg": fixed }}>
       <MenubarContainer as="ul">
         <MenubarItem>
           <Link href="/">Home</Link>

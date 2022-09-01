@@ -1,7 +1,18 @@
-import type { NextPage } from "next";
+import { Banner, getBanners, IBanner } from "@/features/banner";
+import type { GetServerSideProps } from "next";
 import Head from "next/head";
 
-const Home: NextPage = () => {
+export const getServerSideProps: GetServerSideProps = async () => {
+  const banners = await getBanners();
+
+  return { props: { banners } };
+};
+
+type IProps = {
+  banners: IBanner[];
+};
+
+const Home = ({ banners }: IProps) => {
   return (
     <div>
       <Head>
@@ -9,6 +20,8 @@ const Home: NextPage = () => {
         <meta name="description" content="An ecommerce shop" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Banner banners={banners} />
     </div>
   );
 };
