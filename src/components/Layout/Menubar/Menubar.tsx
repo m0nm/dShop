@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React, { useRef, useEffect, useState } from "react";
-import { Container } from "@/components/Shared";
-import { MenubarContainer, MenubarItem } from "./menubar.styles";
+import { MenubarContainer, MenubarItem, MenubarRoot } from "./menubar.styles";
 
 export const Menubar = () => {
   // get y position of container element
@@ -23,30 +22,28 @@ export const Menubar = () => {
   }, []);
 
   return (
-    <div>
-      <MenubarContainer ref={ref} as={"ul"} fixed={fixed}>
-        <Container css={{ backgroundColor: "$primary" }}>
-          <MenubarItem>
-            <Link href="/">Home</Link>
-          </MenubarItem>
+    <MenubarRoot ref={ref} fixed={{ "@lg": fixed }}>
+      <MenubarContainer as="ul">
+        <MenubarItem>
+          <Link href="/">Home</Link>
+        </MenubarItem>
 
-          <MenubarItem>
-            <Link href="/">About us</Link>
-          </MenubarItem>
+        <MenubarItem>
+          <Link href="/">About us</Link>
+        </MenubarItem>
 
-          <MenubarItem>
-            <Link href="/">Shop</Link>
-          </MenubarItem>
+        <MenubarItem>
+          <Link href="/">Shop</Link>
+        </MenubarItem>
 
-          <MenubarItem>
-            <Link href="/">Cart</Link>
-          </MenubarItem>
+        <MenubarItem>
+          <Link href="/">Cart</Link>
+        </MenubarItem>
 
-          <MenubarItem>
-            <Link href="/">Contact us</Link>
-          </MenubarItem>
-        </Container>
+        <MenubarItem>
+          <Link href="/">Contact us</Link>
+        </MenubarItem>
       </MenubarContainer>
-    </div>
+    </MenubarRoot>
   );
 };

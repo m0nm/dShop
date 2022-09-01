@@ -6,7 +6,7 @@ import { Menubar } from "./Menubar/Menubar";
 import { Topbar } from "./Topbar";
 
 export const Layout = ({ children }: { children: ReactNode }) => {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
   return (
     <div>
@@ -14,7 +14,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 
       {isTabletOrMobile ? <MobileNavbar /> : <Navbar />}
 
-      <Menubar />
+      {!isTabletOrMobile && <Menubar />}
 
       {children}
     </div>
