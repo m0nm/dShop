@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { useMediaQuery } from "react-responsive";
 import { MobileNavbar } from "./Navbar/MobileNavbar/MobileNavbar";
 import { Navbar } from "./Navbar/Navbar";
+import { Menubar } from "./Menubar/Menubar";
 import { Topbar } from "./Topbar";
 
 export const Layout = ({ children }: { children: ReactNode }) => {
@@ -12,6 +13,8 @@ export const Layout = ({ children }: { children: ReactNode }) => {
       <Topbar />
 
       {isTabletOrMobile ? <MobileNavbar /> : <Navbar />}
+
+      <Menubar />
 
       {children}
     </div>
