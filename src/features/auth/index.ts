@@ -1,4 +1,4 @@
-export { Modal } from "./components/Modal";
+export { Modal } from "./components/AuthModal";
 export { useAuthModalStore } from "./store";
 
 export { useLogout } from "./hooks/useLogout";

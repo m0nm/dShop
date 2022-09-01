@@ -14,6 +14,8 @@ export const SelectTrigger = styled(SelectPrimitive.SelectTrigger, {
   backgroundColor: "white",
 });
 
+export const SelectValue = styled(SelectPrimitive.SelectValue, {});
+
 export const SelectPortal = styled(SelectPrimitive.Portal, {
   position: "relative",
 });

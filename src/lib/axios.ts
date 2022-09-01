@@ -20,7 +20,7 @@ axios.interceptors.request.use((config: AxiosRequestConfig) => {
 
 axios.interceptors.response.use(
   (res) => {
-    return res.data;
+    return res;
   },
   (error) => {
     const { errors } = error.response?.data;

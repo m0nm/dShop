@@ -58,12 +58,6 @@ export const DividerText = styled("p", {
 
 export const InputField = styled("div", { marginBottom: 10 });
 
-export const Label = styled("label", {
-  fontSize: "14px",
-  fontWeight: 300,
-  color: "$neutral",
-});
-
 export const Input = styled("input", {
   width: "100%",
   flex: "1",
@@ -87,6 +81,12 @@ export const Input = styled("input", {
       },
     },
   },
+});
+
+export const Label = styled("label", {
+  fontSize: "14px",
+  fontWeight: 300,
+  color: "$neutral",
 });
 
 export const InputFeedback = styled("p", {

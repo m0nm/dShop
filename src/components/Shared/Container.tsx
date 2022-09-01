@@ -27,4 +27,8 @@ export const Container = styled("div", {
   "@xl": {
     width: "1200px",
   },
+
+  "@2xl": {
+    width: "90%",
+  },
 });

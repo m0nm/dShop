@@ -1,12 +1,13 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { ModalClose, ModalContent, ModalOverlay } from "./modal.styles";
-import { Icon } from "ts-react-feather-icons";
+import { ModalClose, ModalContent, ModalOverlay } from "@/components/Shared";
 import { useAuthModalStore } from "../../store";
+
 import { Login } from "../Login";
 import { Register } from "../Register";
 import { ForgotPassword } from "../ForgotPassword";
 import { ResetPassword } from "../ResetPassword";
+import { Icon } from "ts-react-feather-icons";
 
 export const Modal = () => {
   const { open, handleOpen, display } = useAuthModalStore();

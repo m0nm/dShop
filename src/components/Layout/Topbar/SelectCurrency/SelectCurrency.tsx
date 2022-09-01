@@ -7,7 +7,7 @@ import {
   SelectPortal,
   SelectTrigger,
   SelectViewport,
-} from "./selectCurrency.styles";
+} from "@/components/Shared";
 
 type currency = "usd" | "dzd" | "eur";
 
@@ -16,6 +16,7 @@ export const SelectCurrency = () => {
 
   return (
     <Select.Root
+      name="select currency"
       value={currency}
       onValueChange={(value: currency) => setCurrency(value)}
     >

@@ -8,7 +8,9 @@ export type INewUser = {
 };
 
 export const registerUser = (user: INewUser) => {
-  return axios.post<INewUser, any>("/api/register", user);
+  return axios
+    .post<INewUser, any>("/api/register", user)
+    .then((res) => res.data);
 };
 
 export type IUser = {
@@ -18,7 +20,7 @@ export type IUser = {
 };
 
 export const loginUser = (user: IUser) => {
-  return axios.post<IUser, any>("/api/login", user);
+  return axios.post<IUser, any>("/api/login", user).then((res) => res.data);
 };
 
 export const logoutUser = () => {
@@ -30,7 +32,7 @@ export const loginSocial = (provider: "facebook" | "google") => {
 };
 
 export const forgotPassword = (email: string) => {
-  return axios.post("/api/user/forgot", { email });
+  return axios.post("/api/user/forgot", { email }).then((res) => res.data);
 };
 
 export type IResetPassword = {
@@ -40,5 +42,7 @@ export type IResetPassword = {
 };
 
 export const resetPassword = (data: IResetPassword) => {
-  return axios.post<IResetPassword, any>("/api/user/reset", data);
+  return axios
+    .post<IResetPassword, any>("/api/user/reset", data)
+    .then((res) => res.data);
 };
