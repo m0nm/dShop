@@ -1,6 +1,7 @@
-import { Banner, getBanners, IBanner } from "@/features/banner";
 import type { GetServerSideProps } from "next";
 import Head from "next/head";
+import { Banner, getBanners, IBanner } from "@/features/banner";
+import { HomeProducts } from "@/features/products";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const banners = await getBanners();
@@ -22,6 +23,8 @@ const Home = ({ banners }: IProps) => {
       </Head>
 
       <Banner banners={banners} />
+
+      <HomeProducts />
     </div>
   );
 };

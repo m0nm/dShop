@@ -23,6 +23,7 @@ axios.interceptors.response.use(
     return res;
   },
   (error) => {
+    console.log("error: ", error);
     const { errors } = error.response?.data;
 
     const message = Object.values<any>(errors)[0][0] || error.message;

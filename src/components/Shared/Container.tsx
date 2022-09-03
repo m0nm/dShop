@@ -10,6 +10,10 @@ export const Container = styled("div", {
     justify: {
       between: { justifyContent: "space-between" },
     },
+
+    flexCol: {
+      true: { flexDirection: "column" },
+    },
   },
 
   "@sm": {
