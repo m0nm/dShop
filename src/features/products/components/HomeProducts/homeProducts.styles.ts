@@ -19,8 +19,7 @@ export const ProductLabel = styled("h1", {
 });
 
 export const ProductItem = styled("div", {
-  height: 280,
-  width: 233,
+  height: 302,
   cursor: "pointer",
   border: "1px solid transparent",
   transition: "border 300ms",
@@ -35,7 +34,7 @@ export const ProductItem = styled("div", {
 });
 
 export const ProductThumbnail = styled("div", {
-  width: 231,
+  width: "100%",
   height: 213,
   transform: "scale(0.93)",
   transition: "transform 500ms",
@@ -79,7 +78,7 @@ export const ProductTitle = styled("span", {
   fontSize: 13,
   color: "#222",
   lineHeight: "1.3em",
-  height: "3em",
+  maxHeight: "3em",
   overflow: "hidden",
   textOverflow: "ellipsis",
   width: "100%",

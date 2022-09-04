@@ -4,19 +4,22 @@ import { MobileNavbar } from "./Navbar/MobileNavbar/MobileNavbar";
 import { Navbar } from "./Navbar/Navbar";
 import { Menubar } from "./Menubar/Menubar";
 import { Topbar } from "./Topbar";
+import { Footer } from "./Footer/Footer";
 
 export const Layout = ({ children }: { children: ReactNode }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
   return (
-    <div>
+    <>
       <Topbar />
 
       {isTabletOrMobile ? <MobileNavbar /> : <Navbar />}
 
       {!isTabletOrMobile && <Menubar />}
 
-      {children}
-    </div>
+      <main>{children}</main>
+
+      <Footer />
+    </>
   );
 };

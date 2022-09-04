@@ -9,6 +9,7 @@ export const Container = styled("div", {
   variants: {
     justify: {
       between: { justifyContent: "space-between" },
+      center: { justifyContent: "center" },
     },
 
     flexCol: {
