@@ -14,6 +14,9 @@ type IProps = {
 };
 
 export const MobileNavbarModal = ({ open, setOpen }: IProps) => {
+  // to close modal when clicking on an item because it still persits
+  const closeModal = () => setOpen(false);
+
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Portal>
@@ -35,7 +38,7 @@ export const MobileNavbarModal = ({ open, setOpen }: IProps) => {
           </ContentItem>
 
           <ContentItem css={{ justifyContent: "left", marginTop: "3rem" }}>
-            <Menubar />
+            <Menubar closeModal={closeModal} />
           </ContentItem>
         </MobileNavbarContent>
       </Dialog.Portal>

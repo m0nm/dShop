@@ -2,7 +2,9 @@ import Link from "next/link";
 import React, { useRef, useEffect, useState } from "react";
 import { MenubarContainer, MenubarItem, MenubarRoot } from "./menubar.styles";
 
-export const Menubar = () => {
+type IProps = { closeModal: () => void };
+
+export const Menubar = ({ closeModal }: IProps) => {
   // get y position of container element
   // to change position to fixed on scroll
   const [fixed, setFixed] = useState(false);
@@ -21,24 +23,24 @@ export const Menubar = () => {
   return (
     <MenubarRoot fixed={{ "@lg": fixed }}>
       <MenubarContainer as="ul">
-        <MenubarItem>
+        <MenubarItem onClick={closeModal}>
           <Link href="/">Home</Link>
         </MenubarItem>
 
-        <MenubarItem>
-          <Link href="/">About us</Link>
-        </MenubarItem>
-
-        <MenubarItem>
+        <MenubarItem onClick={closeModal}>
           <Link href="/">Shop</Link>
         </MenubarItem>
 
-        <MenubarItem>
+        <MenubarItem onClick={closeModal}>
           <Link href="/">Cart</Link>
         </MenubarItem>
 
-        <MenubarItem>
-          <Link href="/">Contact us</Link>
+        <MenubarItem onClick={closeModal}>
+          <Link href="/aboutus">About us</Link>
+        </MenubarItem>
+
+        <MenubarItem onClick={closeModal}>
+          <Link href="/contactus">Contact us</Link>
         </MenubarItem>
       </MenubarContainer>
     </MenubarRoot>

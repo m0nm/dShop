@@ -1,5 +1,6 @@
-import { Container, Flex } from "@/components/Shared";
+import Link from "next/link";
 import React from "react";
+import { Container, Flex } from "@/components/Shared";
 import { Icon } from "ts-react-feather-icons";
 import {
   FooterBottom,
@@ -128,16 +129,16 @@ export const Footer = () => {
 
               <ul>
                 <li>
-                  <a href="">Home</a>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>
                   <a href="">Shop</a>
                 </li>
                 <li>
-                  <a href="">About us</a>
+                  <Link href="/aboutus">About us</Link>
                 </li>
                 <li>
-                  <a href="">Contact Us</a>
+                  <Link href="/contactus">Contact Us</Link>
                 </li>
               </ul>
             </FooterContentItem>
