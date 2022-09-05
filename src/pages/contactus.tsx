@@ -1,7 +1,17 @@
 import React from "react";
 import { styled } from "@/stitches.config";
-import { Container } from "@/components/Shared";
+import { Breadcrumb, Container } from "@/components/Shared";
 import { Icon } from "ts-react-feather-icons";
+
+const ContactusContainer = styled("div", {
+  width: "100%",
+  display: "flex",
+  alignItems: "center",
+  gap: 22,
+  marginTop: "3rem",
+  flexDirection: "column",
+  "@lg": { flexDirection: "row" },
+});
 
 const Form = styled("div", {
   width: "100%",
@@ -92,76 +102,79 @@ const ContactInfo = styled("div", {
 
 const Contactus = () => {
   return (
-    <Container
-      flexCol
-      css={{ gap: 22, marginTop: "3rem", "@lg": { flexDirection: "row" } }}
-    >
-      <Form>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input type="text" id="name" />
-        </div>
+    <>
+      <Container flexCol>
+        <Breadcrumb content="contact us" />
 
-        <div>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" />
-        </div>
+        <ContactusContainer>
+          <Form>
+            <div>
+              <label htmlFor="name">Name</label>
+              <input type="text" id="name" />
+            </div>
 
-        <div>
-          <label htmlFor="phone">Phone</label>
-          <input type="tel" id="phone" />
-        </div>
+            <div>
+              <label htmlFor="email">Email</label>
+              <input type="email" id="email" />
+            </div>
 
-        <div>
-          <label htmlFor="message">Message</label>
-          <textarea id="message" />
-        </div>
+            <div>
+              <label htmlFor="phone">Phone</label>
+              <input type="tel" id="phone" />
+            </div>
 
-        <button>Send</button>
-      </Form>
+            <div>
+              <label htmlFor="message">Message</label>
+              <textarea id="message" />
+            </div>
 
-      <ContactInfo>
-        <div className="map">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1755.8025896670804!2d-0.12671225440344083!3d51.511751311270686!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x343c268c1ba619bd!2zNTHCsDMwJzQ0LjciTiAwwrAwNyczOC4yIlc!5e0!3m2!1sen!2sus!4v1662326158022!5m2!1sen!2sus"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
+            <button>Send</button>
+          </Form>
 
-        <h4 className="title">Contact Details</h4>
+          <ContactInfo>
+            <div className="map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1755.8025896670804!2d-0.12671225440344083!3d51.511751311270686!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x343c268c1ba619bd!2zNTHCsDMwJzQ0LjciTiAwwrAwNyczOC4yIlc!5e0!3m2!1sen!2sus!4v1662326158022!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
 
-        <div className="detail-box">
-          <Icon name="mail" />
-          <div>
-            <span className="detail-title">Email</span>
-            <p className="detail-info">dshop@support.com</p>
-          </div>
-        </div>
+            <h4 className="title">Contact Details</h4>
 
-        <div className="detail-box">
-          <Icon name="phone" />
-          <div>
-            <span className="detail-title">Phone</span>
-            <p className="detail-info">0123-465-789-111</p>
-          </div>
-        </div>
+            <div className="detail-box">
+              <Icon name="mail" />
+              <div>
+                <span className="detail-title">Email</span>
+                <p className="detail-info">dshop@support.com</p>
+              </div>
+            </div>
 
-        <div className="detail-box">
-          <Icon name="map-pin" />
-          <div>
-            <span className="detail-title">Mail Office</span>
-            <p className="detail-info">
-              Sed ut perspiciatis unde omnis Street Name, Los Angeles
-            </p>
-          </div>
-        </div>
-      </ContactInfo>
-    </Container>
+            <div className="detail-box">
+              <Icon name="phone" />
+              <div>
+                <span className="detail-title">Phone</span>
+                <p className="detail-info">0123-465-789-111</p>
+              </div>
+            </div>
+
+            <div className="detail-box">
+              <Icon name="map-pin" />
+              <div>
+                <span className="detail-title">Mail Office</span>
+                <p className="detail-info">
+                  Sed ut perspiciatis unde omnis Street Name, Los Angeles
+                </p>
+              </div>
+            </div>
+          </ContactInfo>
+        </ContactusContainer>
+      </Container>
+    </>
   );
 };
 

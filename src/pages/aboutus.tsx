@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { Container } from "@/components/Shared";
+import { Container, Breadcrumb } from "@/components/Shared";
 import { styled } from "@/stitches.config";
 import member1 from "@/../public/team/1.jpg";
 import member2 from "@/../public/team/2.jpg";
@@ -12,7 +12,7 @@ const Grid = styled("div", {
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
   gap: 12,
-  margin: "4rem 0",
+  margin: "3rem 0",
 });
 
 const InfoBox = styled("div", {
@@ -78,6 +78,8 @@ const TeamBox = styled("div", {
 const Aboutus = () => {
   return (
     <Container flexCol>
+      <Breadcrumb content="About us" />
+
       <Grid>
         <InfoBox>
           <h1>10000</h1>
