@@ -38,8 +38,6 @@ class AuthController extends Controller
 
         $credentials = $request->validate(['email' => 'required', 'password' => 'required']);
 
-        $remember_me = $request->has('remember_me');
-
         if (User::where('email', $credentials['email'])->doesntExist()) {
             return response()->json([
                 'errors' => ['credentials' => ['User does not exist']]
@@ -60,7 +58,6 @@ class AuthController extends Controller
             return response()
                 ->json([
                     'token' => $token,
-                    'remember_me' => $remember_me
                 ], 200);
         } catch (\Exception $exception) {
             return response()->json(['message' => $exception->getMessage()], 400);
