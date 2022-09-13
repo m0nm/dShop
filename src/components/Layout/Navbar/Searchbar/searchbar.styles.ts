@@ -1,7 +1,9 @@
 import { Flex } from "@/components/Shared";
 import { styled } from "@/stitches.config";
 
-export const SearchbarForm = styled(Flex, {
+export const SearchbarForm = styled("form", {
+  display: "flex",
+  alignItems: "center",
   border: "2px solid $primary",
   width: "100%",
   height: 43,

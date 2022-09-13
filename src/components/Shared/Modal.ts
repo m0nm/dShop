@@ -10,6 +10,7 @@ const overlayShow = keyframes({
 export const ModalOverlay = styled(DialogPrimitive.Overlay, {
   backgroundColor: "$overlay",
   position: "fixed",
+  zIndex: 1000,
   inset: 0,
   "@media (prefers-reduced-motion: no-preference)": {
     animation: `${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
@@ -31,6 +32,7 @@ export const ModalContent = styled(DialogPrimitive.Content, {
   position: "fixed",
   top: "50%",
   left: "50%",
+  zIndex: 1200,
   transform: "translate(-50%, -50%)",
   width: "90vw",
   maxWidth: "450px",

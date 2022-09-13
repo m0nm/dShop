@@ -9,5 +9,7 @@ export const Flex = styled("div", {
         alignItems: "center",
       },
     },
+
+    flexCol: { true: { flexDirection: "column" } },
   },
 });

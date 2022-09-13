@@ -2,7 +2,7 @@ import React from "react";
 
 import { IProduct } from "../../api";
 import { ProductLabel } from "./homeProducts.styles";
-import { ProductCard } from "./ProductCard";
+import { ProductCard } from "../ProductCard/ProductCard";
 import { ProductCarousel } from "./ProductCarousel";
 
 type IProps = {

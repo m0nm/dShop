@@ -2,7 +2,7 @@ import Link from "next/link";
 import React, { useRef, useEffect, useState } from "react";
 import { MenubarContainer, MenubarItem, MenubarRoot } from "./menubar.styles";
 
-type IProps = { closeModal: () => void };
+type IProps = { closeModal?: () => void };
 
 export const Menubar = ({ closeModal }: IProps) => {
   // get y position of container element
@@ -23,25 +23,25 @@ export const Menubar = ({ closeModal }: IProps) => {
   return (
     <MenubarRoot fixed={{ "@lg": fixed }}>
       <MenubarContainer as="ul">
-        <MenubarItem onClick={closeModal}>
-          <Link href="/">Home</Link>
-        </MenubarItem>
+        <Link href="/">
+          <MenubarItem onClick={closeModal}>Home</MenubarItem>
+        </Link>
 
-        <MenubarItem onClick={closeModal}>
-          <Link href="/">Shop</Link>
-        </MenubarItem>
+        <Link href="/shop">
+          <MenubarItem onClick={closeModal}>Shop</MenubarItem>
+        </Link>
 
-        <MenubarItem onClick={closeModal}>
-          <Link href="/">Cart</Link>
-        </MenubarItem>
+        <Link href="/">
+          <MenubarItem onClick={closeModal}>Cart</MenubarItem>
+        </Link>
 
-        <MenubarItem onClick={closeModal}>
-          <Link href="/aboutus">About us</Link>
-        </MenubarItem>
+        <Link href="/aboutus">
+          <MenubarItem onClick={closeModal}>About us</MenubarItem>
+        </Link>
 
-        <MenubarItem onClick={closeModal}>
-          <Link href="/contactus">Contact us</Link>
-        </MenubarItem>
+        <Link href="/contactus">
+          <MenubarItem onClick={closeModal}>Contact us</MenubarItem>
+        </Link>
       </MenubarContainer>
     </MenubarRoot>
   );

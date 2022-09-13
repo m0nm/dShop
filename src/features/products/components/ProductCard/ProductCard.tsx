@@ -9,7 +9,7 @@ import {
   ProductPrice,
   ProductThumbnail,
   ProductTitle,
-} from "./homeProducts.styles";
+} from "./productCard.styles";
 
 export const ProductCard = ({ product }: { product: IProduct }) => {
   return (

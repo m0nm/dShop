@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { IProduct } from "../..";
 import { ProductLabel } from "./homeProducts.styles";
-import { ProductCard } from "./ProductCard";
+import { ProductCard } from "../ProductCard/ProductCard";
 import { ProductCarousel } from "./ProductCarousel";
 import miniBanner from "@/../public/mini-banners/2.jpg";
 

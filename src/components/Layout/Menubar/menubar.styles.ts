@@ -39,6 +39,8 @@ export const MenubarItem = styled("li", {
   fontWeight: 600,
   padding: "13px 20px",
   transition: "background 300ms",
+  cursor: "pointer",
+
   "@lg": {
     "&:hover": {
       backgroundColor: "#444",

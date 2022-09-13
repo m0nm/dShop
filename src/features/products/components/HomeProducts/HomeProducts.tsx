@@ -5,7 +5,7 @@ import {
   filterFeaturedProducts,
   filterLatestProducts,
   filterSaleProducts,
-} from "../../utils/filterProducts";
+} from "../../utils/filterHomeProducts";
 import { Container } from "@/components/Shared";
 import { LatestProducts } from "./LatestProducts";
 import { SaleProducts } from "./SaleProducts";

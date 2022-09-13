@@ -1,5 +1,4 @@
 import { styled } from "@/stitches.config";
-import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 
 export const Form = styled("form", {
   padding: "0",
@@ -94,19 +93,6 @@ export const InputFeedback = styled("p", {
   color: "$error",
   marginTop: 2,
 });
-
-export const Checkbox = styled(CheckboxPrimitive.Root, {
-  all: "unset",
-  backgroundColor: "white",
-  width: 12,
-  height: 12,
-  borderRadius: 4,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-});
-
-export const CheckboxIndicator = styled(CheckboxPrimitive.Indicator, {});
 
 export const ForgotPasswordButton = styled("button", {
   all: "unset",

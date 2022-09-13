@@ -8,7 +8,7 @@ import { IUser } from "../api";
 import { useAuthModalStore, useLogin } from "..";
 import { SocialAuth } from "./SocialAuth";
 import { Icon } from "ts-react-feather-icons";
-import { Flex } from "@/components/Shared";
+import { Flex, Checkbox, CheckboxIndicator } from "@/components/Shared";
 
 export const Login = () => {
   const {
@@ -72,17 +72,17 @@ export const Login = () => {
         }}
       >
         <Flex css={{ alignItems: "center" }}>
-          <Form.Checkbox
+          <Checkbox
             {...register("remember_me")}
             css={{ width: "fit-content" }}
             defaultChecked
             ref={checkboxRef}
             id="remember_me"
           >
-            <Form.CheckboxIndicator>
+            <CheckboxIndicator>
               <Icon name="check" size={14} />
-            </Form.CheckboxIndicator>
-          </Form.Checkbox>
+            </CheckboxIndicator>
+          </Checkbox>
           <Form.Label
             css={{ fontSize: 12, paddingLeft: 4 }}
             htmlFor="remember_me"

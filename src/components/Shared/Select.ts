@@ -1,55 +1,63 @@
-import { styled } from "@/stitches.config";
-import * as SelectPrimitive from "@radix-ui/react-select";
+import { StylesConfig } from "react-select";
 
-export const SelectTrigger = styled(SelectPrimitive.SelectTrigger, {
-  all: "unset",
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  borderRadius: 4,
-  fontSize: 13,
-  lineHeight: 1,
-  height: 35,
-  gap: 3,
-  backgroundColor: "white",
-});
+export const SelectStyles: StylesConfig = {
+  container: () => ({
+    fontSize: 13,
+    width: 180,
+    border: "none",
+    zIndex: 100,
+    outline: "none",
+  }),
 
-export const SelectValue = styled(SelectPrimitive.SelectValue, {});
+  indicatorsContainer: () => ({
+    all: "unset",
+    width: 30,
+    height: "100%",
+    padding: "0 !important",
+  }),
 
-export const SelectPortal = styled(SelectPrimitive.Portal, {
-  position: "relative",
-});
+  indicatorSeparator: () => ({
+    display: "none",
+  }),
 
-export const SelectContent = styled(SelectPrimitive.Content, {
-  position: "absolute",
-  top: "2rem",
-  overflow: "hidden",
-  backgroundColor: "white",
-  borderRadius: 6,
-  boxShadow:
-    "0px 10px 10px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)",
-});
+  control: (styles) => ({
+    ...styles,
+    backgrounColor: "transparent",
+    border: 0,
+    borderRadius: 0,
+    boxShadow: "none",
+    cursor: "pointer",
+  }),
 
-export const SelectViewport = styled(SelectPrimitive.Viewport, {
-  padding: 5,
-});
+  option: (styles) => {
+    return {
+      ...styles,
+      fontSize: 13,
+      background: "none",
+      color: "black",
+      cursor: "pointer",
 
-export const SelectItem = styled(SelectPrimitive.Item, {
-  all: "unset",
-  fontSize: 13,
-  lineHeight: 1,
-  color: "$neutral",
-  borderRadius: 3,
-  display: "flex",
-  alignItems: "center",
-  width: "100%",
-  height: 25,
-  padding: "0 35px 0 25px",
-  position: "relative",
-  cursor: "pointer",
-  userSelect: "none",
+      ":hover": {
+        color: "#333",
+      },
 
-  "&[data-highlighted]": {
-    color: "$primary",
+      ":active": {
+        background: "none",
+      },
+    };
   },
-});
+
+  menu: (styles) => ({
+    ...styles,
+    width: "50%",
+    left: "50%",
+    zIndex: 100,
+  }),
+
+  placeholder: (styles) => ({
+    ...styles,
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
+  }),
+};
