@@ -1,11 +1,11 @@
 import { styled } from "@/stitches.config";
 
 export const ProductItem = styled("div", {
-  height: 302,
+  position: "relative",
   cursor: "pointer",
   border: "1px solid transparent",
+  paddingBottom: "10px",
   transition: "border 300ms",
-  position: "relative",
 
   "&:hover": {
     "& .thumbnail": {
@@ -17,7 +17,7 @@ export const ProductItem = styled("div", {
 
 export const ProductThumbnail = styled("div", {
   width: "100%",
-  height: 213,
+  height: 240,
   transform: "scale(0.93)",
   transition: "transform 500ms",
   userSelect: "none",
@@ -53,7 +53,10 @@ export const ProductBadge = styled("div", {
   },
 });
 
-export const ProductInfo = styled("div", { padding: "0 10px" });
+export const ProductInfo = styled("div", {
+  padding: "0 10px",
+  marginTop: "1rem",
+});
 
 export const ProductTitle = styled("span", {
   display: "inline-block",

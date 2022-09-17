@@ -1,48 +1,50 @@
-import React, { useState } from "react";
+import React from "react";
 import { Icon } from "ts-react-feather-icons";
-import * as Select from "@radix-ui/react-select";
+import { useCurrencyStore } from "@/store/currencyStore";
 import {
   SelectContent,
+  SelectIcon,
   SelectItem,
+  SelectItemText,
   SelectPortal,
+  SelectRoot,
   SelectTrigger,
+  SelectValue,
   SelectViewport,
 } from "./selectCurrency.styles";
 
-type currency = "usd" | "dzd" | "eur";
-
 export const SelectCurrency = () => {
-  const [currency, setCurrency] = useState<currency>("usd");
+  const { currency, setCurrency } = useCurrencyStore();
 
   return (
-    <Select.Root
+    <SelectRoot
       name="select currency"
       value={currency}
-      onValueChange={(value: currency) => setCurrency(value)}
+      onValueChange={(value: typeof currency) => setCurrency(value)}
     >
       <SelectTrigger>
-        <Select.SelectValue placeholder="usd" />
-        <Select.SelectIcon>
+        <SelectValue placeholder="usd" />
+        <SelectIcon>
           <Icon name="chevron-down" size="12" />
-        </Select.SelectIcon>
+        </SelectIcon>
       </SelectTrigger>
 
       <SelectPortal>
         <SelectContent>
           <SelectViewport>
             <SelectItem value="usd">
-              <Select.SelectItemText>Dollar (USD)</Select.SelectItemText>
+              <SelectItemText>Dollar (USD)</SelectItemText>
             </SelectItem>
 
             <SelectItem value="eur">
-              <Select.SelectItemText>Euro (EUR)</Select.SelectItemText>
+              <SelectItemText>Euro (EUR)</SelectItemText>
             </SelectItem>
             <SelectItem value="dzd">
-              <Select.SelectItemText>Dinnar (DZD)</Select.SelectItemText>
+              <SelectItemText>Dinnar (DZD)</SelectItemText>
             </SelectItem>
           </SelectViewport>
         </SelectContent>
       </SelectPortal>
-    </Select.Root>
+    </SelectRoot>
   );
 };

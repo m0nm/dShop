@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { IProduct } from "../../api";
+import { useConvertCurrency } from "../../hooks/useConvertCurency";
 
 import {
   ProductBadge,
@@ -12,6 +13,9 @@ import {
 } from "./productCard.styles";
 
 export const ProductCard = ({ product }: { product: IProduct }) => {
+  const currencyPrice = useConvertCurrency(product.price);
+  const currencySalePrice = useConvertCurrency(product.sale_price);
+
   return (
     <ProductItem>
       {product.sale_price && <ProductBadge variant="sale">Sale</ProductBadge>}
@@ -37,12 +41,12 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
         <ProductTitle>{product.name}</ProductTitle>
         {product.sale_price ? (
           <ProductPrice>
-            <span className="sale-price">${product.sale_price}</span>
-            <del>${product.price}</del>
+            <span className="sale-price">{currencySalePrice}</span>
+            <del>{currencyPrice}</del>
           </ProductPrice>
         ) : (
           <ProductPrice>
-            <span className="normal-price">${product.price}</span>
+            <span className="normal-price">{currencyPrice}</span>
           </ProductPrice>
         )}
       </ProductInfo>
