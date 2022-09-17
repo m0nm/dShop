@@ -50,6 +50,7 @@ export const SelectStyles: StylesConfig = {
 
   menu: (styles) => ({
     ...styles,
+    minWidth: 200,
     zIndex: 10,
   }),
 
