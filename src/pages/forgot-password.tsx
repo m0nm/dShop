@@ -1,8 +1,8 @@
 import React from "react";
+import { ForgotPassword } from "@/features/auth";
 import { Breadcrumb, Container } from "@/components/Shared";
-import { ResetPassword } from "@/features/auth";
 
-const ResetPasswordPage = () => {
+const ForgotPasswordPage = () => {
   return (
     <Container
       flexCol
@@ -11,11 +11,11 @@ const ResetPasswordPage = () => {
         paddingBottom: "4rem",
       }}
     >
-      <Breadcrumb content="reset password" />
+      <Breadcrumb content="Forgot password" />
 
-      <ResetPassword />
+      <ForgotPassword />
     </Container>
   );
 };
 
-export default ResetPasswordPage;
+export default ForgotPasswordPage;

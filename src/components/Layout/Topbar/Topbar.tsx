@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { getCookie, CookieValueTypes } from "cookies-next";
+import { useAuthModalStore } from "@/features/auth";
+import { AccountMenu } from "@/features/account";
 import { Container } from "../../Shared";
 import { Icon } from "ts-react-feather-icons";
 import { SelectCurrency } from "./SelectCurrency/SelectCurrency";
-import { Account } from "./Account/Account";
 import { Menu, MenuItem } from "./topbar.styles";
-import { useAuthModalStore } from "@/features/auth";
-import { getCookie, CookieValueTypes } from "cookies-next";
 
 export const Topbar = () => {
   const { handleOpen, handleDisplay } = useAuthModalStore();
@@ -28,7 +28,7 @@ export const Topbar = () => {
           {/* account or auth links */}
           {token ? (
             <MenuItem>
-              <Account />
+              <AccountMenu />
             </MenuItem>
           ) : (
             <>

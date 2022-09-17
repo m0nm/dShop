@@ -7,12 +7,17 @@ const fadeIn = keyframes({
   "100%": { opacity: 1 },
 });
 
+export const DropdownRoot = styled(DropdownMenuPrimitive.Root);
+export const DropdownPortal = styled(DropdownMenuPrimitive.Portal);
+
 export const DropdownContent = styled(DropdownMenuPrimitive.Content, {
-  minWidth: 115,
   backgroundColor: "white",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  padding: "10px 5px",
+  paddingBottom: "1rem",
   borderRadius: 6,
-  padding: "0",
-  //   boxShadow: "0 0 7px 0 rgba(0,0,0,0.18)",
   border: "1px solid rgba(0,0,0,0.18)",
 
   "@media (prefers-reduced-motion: no-preference)": {
@@ -32,14 +37,12 @@ export const DropdownItem = styled(DropdownMenuPrimitive.Item, {
   all: "unset",
   fontSize: 13,
   color: "#444",
-  lineHeight: 1,
   borderRadius: 3,
   display: "flex",
   alignItems: "center",
-  height: 10,
-  padding: "7px 5px",
+  height: 14,
+  padding: "7px 1rem",
   position: "relative",
-  paddingLeft: 25,
   userSelect: "none",
   cursor: "pointer",
 

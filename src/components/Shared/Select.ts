@@ -7,6 +7,7 @@ export const SelectStyles: StylesConfig = {
     border: "none",
     zIndex: 100,
     outline: "none",
+    position: "relative",
   }),
 
   indicatorsContainer: () => ({
@@ -49,9 +50,7 @@ export const SelectStyles: StylesConfig = {
 
   menu: (styles) => ({
     ...styles,
-    width: "50%",
-    left: "50%",
-    zIndex: 100,
+    zIndex: 10,
   }),
 
   placeholder: (styles) => ({

@@ -8,6 +8,7 @@ import { Register } from "../Register";
 import { ForgotPassword } from "../ForgotPassword";
 import { ResetPassword } from "../ResetPassword";
 import { Icon } from "ts-react-feather-icons";
+import { Title } from "../auth.styles";
 
 export const Modal = () => {
   const { open, handleOpen, display } = useAuthModalStore();
@@ -25,9 +26,15 @@ export const Modal = () => {
           </ModalClose>
 
           {display === "login" ? (
-            <Login />
+            <>
+              <Title>Login</Title>
+              <Login />
+            </>
           ) : display === "register" ? (
-            <Register />
+            <>
+              <Title>Register</Title>
+              <Register />
+            </>
           ) : display === "forgot-password" ? (
             <ForgotPassword />
           ) : (

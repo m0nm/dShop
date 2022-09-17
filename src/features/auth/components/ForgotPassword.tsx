@@ -4,7 +4,7 @@ import { forgotPassword } from "../api";
 import { useMutation } from "react-query";
 
 import * as Form from "./auth.styles";
-import { Alert } from "@/components/Shared";
+import { Alert, Input } from "@/components/Shared";
 
 export const ForgotPassword = () => {
   const mutation = useMutation((email: string) => forgotPassword(email));
@@ -20,8 +20,18 @@ export const ForgotPassword = () => {
     <Form.Form onSubmit={handleSubmit}>
       <Form.Title>Forgot Your Password?</Form.Title>
 
-      <p style={{ textAlign: "center", marginBottom: 12, fontSize: 16 }}>
-        Don&apos;t worry, Enter your email
+      <p
+        style={{
+          textAlign: "center",
+          margin: "0 auto",
+          marginBottom: 12,
+          fontSize: 14,
+          color: "#666",
+          width: "80%",
+        }}
+      >
+        Please enter your username or email address. You will receive a link to
+        create a new password via email.
       </p>
 
       {mutation.isSuccess && (
@@ -34,7 +44,7 @@ export const ForgotPassword = () => {
       <Form.InputField>
         <Form.Label htmlFor="email">Email*</Form.Label>
 
-        <Form.Input
+        <Input
           ref={emailRef}
           required
           type="email"

@@ -7,6 +7,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { formRules } from "../utils/auth_form_rules";
 import { INewUser } from "../api";
 import { useRegister } from "../hooks/useRegister";
+import { Input, InputFeedback } from "@/components/Shared";
 
 export const Register = () => {
   const {
@@ -24,15 +25,13 @@ export const Register = () => {
 
   return (
     <Form.Form onSubmit={handleSubmit(onSubmit)}>
-      <Form.Title>Register</Form.Title>
-
       <SocialAuth />
 
       <Form.DividerText>Or continue with</Form.DividerText>
 
       <Form.InputField>
         <Form.Label htmlFor="name">Name*</Form.Label>
-        <Form.Input
+        <Input
           {...register("name", formRules().name)}
           invalid={errors.name && true}
           id="name"
@@ -40,36 +39,36 @@ export const Register = () => {
           placeholder="type your name..."
         />
 
-        <Form.InputFeedback>{errors.name?.message}</Form.InputFeedback>
+        <InputFeedback>{errors.name?.message}</InputFeedback>
       </Form.InputField>
 
       <Form.InputField>
         <Form.Label htmlFor="email">Email*</Form.Label>
-        <Form.Input
+        <Input
           {...register("email", formRules().email)}
           invalid={errors.email && true}
           id="email"
           type="email"
           placeholder="type your email..."
         />
-        <Form.InputFeedback>{errors.email?.message}</Form.InputFeedback>
+        <InputFeedback>{errors.email?.message}</InputFeedback>
       </Form.InputField>
 
       <Form.InputField>
         <Form.Label htmlFor="password">Password*</Form.Label>
-        <Form.Input
+        <Input
           {...register("password", formRules().password)}
           invalid={errors.password && true}
           id="password"
           type="password"
           placeholder="type your password..."
         />
-        <Form.InputFeedback>{errors.password?.message}</Form.InputFeedback>
+        <InputFeedback>{errors.password?.message}</InputFeedback>
       </Form.InputField>
 
       <Form.InputField>
         <Form.Label htmlFor="passwordConfirm">Confirm Password*</Form.Label>
-        <Form.Input
+        <Input
           {...register(
             "password_confirmation",
             formRules(getValues("password")).passwordConfirm
@@ -79,9 +78,7 @@ export const Register = () => {
           type="password"
           placeholder="confirm your password..."
         />
-        <Form.InputFeedback>
-          {errors.password_confirmation?.message}
-        </Form.InputFeedback>
+        <InputFeedback>{errors.password_confirmation?.message}</InputFeedback>
       </Form.InputField>
 
       <Form.SubmitButton disabled={isLoading}>Register</Form.SubmitButton>

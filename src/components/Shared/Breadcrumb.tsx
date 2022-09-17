@@ -16,7 +16,11 @@ export const Breadcrumb = ({ content }: { content: string }) => {
         alignSelf: "flex-start",
       }}
     >
-      <Link href="/">Home</Link>
+      <Link href="/">
+        <a style={{ fill: "#333", color: "#333" }}>
+          <Icon name="home" size={15} />
+        </a>
+      </Link>
       <Icon name="chevron-right" size="14" />
       {content}
     </Flex>

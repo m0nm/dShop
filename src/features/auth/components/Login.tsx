@@ -1,14 +1,13 @@
-import Router from "next/router";
+import Link from "next/link";
 import React, { useRef } from "react";
-import * as Form from "./auth.styles";
-
 import { SubmitHandler, useForm } from "react-hook-form";
 import { formRules } from "../utils/auth_form_rules";
 import { IUser } from "../api";
 import { useAuthModalStore, useLogin } from "..";
 import { SocialAuth } from "./SocialAuth";
 import { Icon } from "ts-react-feather-icons";
-import { Flex, Checkbox, CheckboxIndicator } from "@/components/Shared";
+import { Flex, Input, InputFeedback } from "@/components/Shared";
+import * as Form from "./auth.styles";
 
 export const Login = () => {
   const {
@@ -28,19 +27,17 @@ export const Login = () => {
     handleLogin(data);
   };
 
-  const { handleDisplay } = useAuthModalStore();
+  const { handleOpen } = useAuthModalStore();
 
   return (
     <Form.Form onSubmit={handleSubmit(onSubmit)}>
-      <Form.Title>Login</Form.Title>
-
       <SocialAuth />
 
       <Form.DividerText>Or continue with</Form.DividerText>
 
       <Form.InputField>
         <Form.Label htmlFor="email">Email*</Form.Label>
-        <Form.Input
+        <Input
           {...register("email", formRules().email)}
           invalid={errors.email && true}
           id="email"
@@ -48,12 +45,12 @@ export const Login = () => {
           placeholder="type your email..."
         />
 
-        <Form.InputFeedback>{errors.email?.message}</Form.InputFeedback>
+        <InputFeedback>{errors.email?.message}</InputFeedback>
       </Form.InputField>
 
       <Form.InputField>
         <Form.Label htmlFor="password">Password*</Form.Label>
-        <Form.Input
+        <Input
           {...register("password", formRules().password)}
           invalid={errors.password && true}
           id="password"
@@ -61,7 +58,7 @@ export const Login = () => {
           placeholder="type your password..."
         />
 
-        <Form.InputFeedback>{errors.password?.message}</Form.InputFeedback>
+        <InputFeedback>{errors.password?.message}</InputFeedback>
       </Form.InputField>
 
       <Flex
@@ -72,31 +69,28 @@ export const Login = () => {
         }}
       >
         <Flex css={{ alignItems: "center" }}>
-          <Checkbox
+          <Form.Checkbox
             {...register("remember_me")}
-            css={{ width: "fit-content" }}
-            defaultChecked
             ref={checkboxRef}
-            id="remember_me"
+            id="checkbox"
           >
-            <CheckboxIndicator>
-              <Icon name="check" size={14} />
-            </CheckboxIndicator>
-          </Checkbox>
-          <Form.Label
-            css={{ fontSize: 12, paddingLeft: 4 }}
-            htmlFor="remember_me"
-          >
+            <Form.CheckboxIndicator>
+              <Icon name="check" size={8} />
+            </Form.CheckboxIndicator>
+          </Form.Checkbox>
+          <Form.Label css={{ fontSize: 12, paddingLeft: 4 }} htmlFor="checkbox">
             remember me
           </Form.Label>
         </Flex>
 
-        <Form.ForgotPasswordButton
-          type="button"
-          onClick={() => handleDisplay("forgot-password")}
-        >
-          forgot your password?
-        </Form.ForgotPasswordButton>
+        <Link href="/forgot-password">
+          <Form.ForgotPasswordButton
+            type="button"
+            onClick={() => handleOpen(false)}
+          >
+            forgot your password?
+          </Form.ForgotPasswordButton>
+        </Link>
       </Flex>
 
       <Form.SubmitButton disabled={isLoading}>LOGIN</Form.SubmitButton>

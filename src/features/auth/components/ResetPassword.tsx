@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { ReactNode } from "react";
+import React from "react";
 
 import { useMutation } from "react-query";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -7,7 +7,7 @@ import { IResetPassword, resetPassword } from "../api";
 import { formRules } from "../utils/auth_form_rules";
 
 import * as Form from "./auth.styles";
-import { Alert } from "@/components/Shared";
+import { Alert, Input, InputFeedback } from "@/components/Shared";
 import { useAuthModalStore } from "..";
 
 export const ResetPassword = () => {
@@ -51,33 +51,32 @@ export const ResetPassword = () => {
       <Form.InputField>
         <Form.Label htmlFor="password">New Password*</Form.Label>
 
-        <Form.Input
+        <Input
           {...register("password", formRules().password)}
           type="password"
           id="password"
+          placeholder="Enter your new password..."
           invalid={errors.password && true}
         />
 
-        <Form.InputFeedback>{errors.password?.message}</Form.InputFeedback>
+        <InputFeedback>{errors.password?.message}</InputFeedback>
       </Form.InputField>
 
       <Form.InputField>
         <Form.Label htmlFor="password">Confirm Password*</Form.Label>
 
-        <Form.Input
+        <Input
           {...register(
             "password_confirmation",
             formRules(getValues("password")).passwordConfirm
           )}
           type="password"
           id="password"
-          placeholder="confirm your password..."
+          placeholder="Confirm your password..."
           invalid={errors.password_confirmation && true}
         />
 
-        <Form.InputFeedback>
-          {errors.password_confirmation?.message}
-        </Form.InputFeedback>
+        <InputFeedback>{errors.password_confirmation?.message}</InputFeedback>
       </Form.InputField>
 
       <Form.SubmitButton disabled={mutation.isLoading}>

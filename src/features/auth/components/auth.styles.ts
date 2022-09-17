@@ -1,4 +1,5 @@
 import { styled } from "@/stitches.config";
+import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 
 export const Form = styled("form", {
   padding: "0",
@@ -57,41 +58,10 @@ export const DividerText = styled("p", {
 
 export const InputField = styled("div", { marginBottom: 10 });
 
-export const Input = styled("input", {
-  width: "100%",
-  flex: "1",
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  borderRadius: 4,
-  padding: "0 10px",
-  fontSize: 15,
-  lineHeight: 1,
-  height: 35,
-  marginTop: 6,
-  border: "1px solid #d4d4d4",
-
-  "&:focus": { borderColor: "$primary" },
-
-  variants: {
-    invalid: {
-      true: {
-        borderColor: "$error",
-      },
-    },
-  },
-});
-
 export const Label = styled("label", {
   fontSize: "14px",
   fontWeight: 300,
   color: "$neutral",
-});
-
-export const InputFeedback = styled("p", {
-  fontSize: 13,
-  color: "$error",
-  marginTop: 2,
 });
 
 export const ForgotPasswordButton = styled("button", {
@@ -126,3 +96,22 @@ export const SubmitButton = styled("button", {
     },
   },
 });
+
+export const Checkbox = styled(CheckboxPrimitive.Root, {
+  all: "unset",
+  backgroundColor: "transparent",
+  height: 10,
+  width: 10,
+  border: "1px solid #aaa",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+});
+
+export const CheckboxLabel = styled("label", {
+  fontSize: 14,
+  fontWeight: 400,
+  userSelect: "none",
+});
+
+export const CheckboxIndicator = styled(CheckboxPrimitive.Indicator, {});

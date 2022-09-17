@@ -14,7 +14,7 @@ export const MenubarRoot = styled("ul", {
       true: {
         position: "fixed",
         top: 0,
-        zIndex: 40,
+        zIndex: 1200,
       },
     },
   },
