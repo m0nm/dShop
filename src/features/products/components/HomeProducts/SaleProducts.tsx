@@ -2,7 +2,7 @@ import React from "react";
 
 import { IProduct } from "../../api";
 import { ProductLabel } from "./homeProducts.styles";
-import { ProductCard } from "../ProductCard/ProductCard";
+import { ProductCard, skeletons } from "../ProductCard/ProductCard";
 import { ProductCarousel } from "./ProductCarousel";
 
 type IProps = {
@@ -17,7 +17,7 @@ export const SaleProducts = ({ saleProducts }: IProps) => {
   return (
     <section style={{ width: "100%" }}>
       <ProductLabel variant="sale">On Sale</ProductLabel>
-      <ProductCarousel>{items}</ProductCarousel>
+      <ProductCarousel>{items || skeletons}</ProductCarousel>
     </section>
   );
 };

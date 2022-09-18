@@ -2,7 +2,7 @@ import React from "react";
 import { useShopProducts } from "../../hooks/useShopProducts";
 import { Spinner } from "@/components/Misc/Spinner";
 import { NotFound } from "@/components/Misc/Shop";
-import { ProductCard } from "../ProductCard/ProductCard";
+import { ProductCard, skeletons } from "../ProductCard/ProductCard";
 import { ShopProductsContainer } from "./shopProducts.styles";
 import { Pagination } from "./Pagination";
 
@@ -26,6 +26,8 @@ export const ShopProducts = () => {
       {!isLoading && !isFetching && !products?.length && <NotFound />}
 
       <ShopProductsContainer>
+        {isLoading && skeletons}
+
         {(isLoading || isFetching) && <Spinner />}
 
         {products &&

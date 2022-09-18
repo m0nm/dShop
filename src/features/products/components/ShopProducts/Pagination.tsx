@@ -29,9 +29,11 @@ export const Pagination = ({
   return (
     <PageContainer>
       {/* info */}
-      <p style={{ fontSize: 14 }}>
-        Showing {firstItem} - {lastItem} of {totalItems}
-      </p>
+      {lastItem && (
+        <p style={{ fontSize: 14 }}>
+          Showing {firstItem} - {lastItem} of {totalItems}
+        </p>
+      )}
 
       {/* buttons */}
       <Flex alignCenter>

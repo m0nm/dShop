@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { IProduct } from "../..";
 import { ProductLabel } from "./homeProducts.styles";
-import { ProductCard } from "../ProductCard/ProductCard";
+import { ProductCard, skeletons } from "../ProductCard/ProductCard";
 import { ProductCarousel } from "./ProductCarousel";
 import miniBanner from "@/../public/mini-banners/2.jpg";
 
@@ -30,7 +30,7 @@ export const FeaturedProducts = ({ featuredProducts }: IProps) => {
         <Image src={miniBanner} alt="" layout="fill" quality={100} />
       </div>
 
-      <ProductCarousel>{items}</ProductCarousel>
+      <ProductCarousel>{items || skeletons}</ProductCarousel>
     </section>
   );
 };
