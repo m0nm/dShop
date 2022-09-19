@@ -54,7 +54,6 @@ class FilterProducts
                     if ($category == (null || -1)) {
                         return $query->where('name', 'like', "%$search%")
                             ->when($price_range, function ($query, $price_range) {
-                                // dd($price_range[0]);
                                 $query->where(function ($q) use ($price_range) {
                                     $q->whereBetween('price', $price_range)
                                         ->orWhereBetween('sale_price', $price_range);
@@ -66,7 +65,6 @@ class FilterProducts
                         })->where('name', 'like', "%$search%")
 
                             ->when($price_range, function ($query, $price_range) {
-                                // dd($price_range[0]);
                                 $query->where(function ($q) use ($price_range) {
                                     $q->whereBetween('price', $price_range)
                                         ->orWhereBetween('sale_price', $price_range);

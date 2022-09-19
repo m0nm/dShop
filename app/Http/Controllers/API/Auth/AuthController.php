@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Auth;
 
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\RegisterRequest;
+use App\Models\Cart;
 use App\Models\User;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -22,6 +24,9 @@ class AuthController extends Controller
 
         try {
             $user = User::create($data);
+
+            Cart::create(['user_id' => $user->id]);
+            Wishlist::create(['user_id' => $user->id]);
 
             $token  = $user->createToken('dShop_token')->accessToken;
 
