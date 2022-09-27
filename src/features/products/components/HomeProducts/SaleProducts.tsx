@@ -1,9 +1,9 @@
 import React from "react";
 
 import { IProduct } from "../../api";
-import { ProductLabel } from "./homeProducts.styles";
+import { ProductLabel } from "../../styles/productLabel";
 import { ProductCard, skeletons } from "../ProductCard/ProductCard";
-import { ProductCarousel } from "./ProductCarousel";
+import { ProductCarousel } from "../ProductCarousel";
 
 type IProps = {
   saleProducts: IProduct[] | undefined;

@@ -10,6 +10,20 @@ import {
   CategoryToggleGroup,
   CategoryToggleGroupItem,
 } from "./categoryAccordion.styles";
+import Skeleton from "react-loading-skeleton";
+
+// skeletons
+const AccodionSkeleton = () => {
+  return (
+    <div style={{ width: "100%", height: 200 }}>
+      <Skeleton
+        height={18}
+        count={4}
+        style={{ margin: "20px 0 0 10px", width: "80%" }}
+      />
+    </div>
+  );
+};
 
 export const CategoryAccordion = () => {
   const { data } = useCategory();
@@ -23,6 +37,10 @@ export const CategoryAccordion = () => {
     // clear seach if exist
     setFilterSearch(undefined);
   };
+
+  if (!data) {
+    return <AccodionSkeleton />;
+  }
 
   return (
     <CategoryAccordionRoot type="single" collapsible>

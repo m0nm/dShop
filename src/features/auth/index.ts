@@ -1,4 +1,4 @@
-export * from "./components/AuthModal";
+export * from "./components/AuthModal/AuthModal";
 export * from "./components/Login";
 export * from "./components/Register";
 export * from "./components/ForgotPassword";

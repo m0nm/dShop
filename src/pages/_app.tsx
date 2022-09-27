@@ -1,11 +1,14 @@
 import "normalize.css";
 import "../styles/globals.css";
+import "react-multi-carousel/lib/styles.css";
+
 import Head from "next/head";
 import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import { Layout } from "@/components/Layout/Layout";
-import { Modal } from "@/features/auth";
+import { AuthModal } from "@/features/auth";
+import { ViewProductModal } from "@/features/products";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -39,8 +42,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         theme="colored"
       />
 
-      {/* auth modal */}
-      <Modal />
+      {/* modals */}
+      <AuthModal />
+      <ViewProductModal />
 
       <Layout>
         <Component {...pageProps} />

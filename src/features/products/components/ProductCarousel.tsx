@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 
 export const ProductCarousel = ({ children }: { children: ReactNode }) => {
   const responsive = {
@@ -10,7 +9,7 @@ export const ProductCarousel = ({ children }: { children: ReactNode }) => {
   };
 
   return children ? (
-    <Carousel draggable swipeable ssr responsive={responsive}>
+    <Carousel draggable swipeable responsive={responsive}>
       {children}
     </Carousel>
   ) : null;

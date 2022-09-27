@@ -87,7 +87,7 @@ export const Footer = () => {
 
             <ul>
               <li>
-                <span>Call Us toll Free</span>
+                <span>Call Us</span>
                 <b>(+123) 456 789 - (+123) 666 888</b>
               </li>
 
@@ -129,16 +129,24 @@ export const Footer = () => {
 
               <ul>
                 <li>
-                  <Link href="/">Home</Link>
+                  <Link href="/">
+                    <a>Home</a>
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/shop">Shop</Link>
+                  <Link href="/shop">
+                    <a>Shop</a>
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/aboutus">About us</Link>
+                  <Link href="/aboutus">
+                    <a>About us</a>
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/contactus">Contact Us</Link>
+                  <Link href="/contactus">
+                    <a>Contact Us</a>
+                  </Link>
                 </li>
               </ul>
             </FooterContentItem>

@@ -1,10 +1,13 @@
 import Image from "next/image";
 import React from "react";
 import { Container, Flex } from "@/components/Shared";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Carousel from "react-multi-carousel";
 import { IBanner } from "../api";
-import { CarouselContainer, CarouselItem } from "./banner.styles";
+import {
+  CarouselContainer,
+  CarouselItem,
+  MiniBannerContainer,
+} from "./banner.styles";
 import miniBanner3 from "@/../public/mini-banners/3.jpg";
 import miniBanner4 from "@/../public/mini-banners/4.jpg";
 
@@ -12,18 +15,17 @@ type IProps = {
   banners: IBanner[];
 };
 
+const responsive = {
+  mobile: { breakpoint: { min: 0, max: 768 }, items: 1 },
+  tablet: { breakpoint: { min: 768, max: 1024 }, items: 1 },
+  desktop: { breakpoint: { min: 1024, max: 30000 }, items: 1 },
+};
+
 export const Banner = ({ banners }: IProps) => {
   return (
     <Container css={{ flexDirection: "column" }}>
       <CarouselContainer>
-        <Carousel
-          showStatus={false}
-          showThumbs={false}
-          autoPlay
-          swipeable
-          emulateTouch
-          infiniteLoop
-        >
+        <Carousel responsive={responsive} autoPlay swipeable draggable infinite>
           {banners.map((banner) => (
             <CarouselItem key={banner.id}>
               <Image src={banner.url} alt="" layout="fill" />
@@ -33,15 +35,15 @@ export const Banner = ({ banners }: IProps) => {
       </CarouselContainer>
 
       {/* mini banenrs */}
-      <Flex css={{ gap: 4, width: "100%" }}>
-        <figure style={{ position: "relative", width: "50%", height: 190 }}>
+      <MiniBannerContainer>
+        <figure>
           <Image src={miniBanner3} alt="" layout="fill" quality={100} />
         </figure>
 
-        <figure style={{ position: "relative", width: "50%", height: 190 }}>
+        <figure>
           <Image src={miniBanner4} alt="" layout="fill" quality={100} />
         </figure>
-      </Flex>
+      </MiniBannerContainer>
     </Container>
   );
 };

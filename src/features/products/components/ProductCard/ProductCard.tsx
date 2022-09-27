@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React from "react";
 import { IProduct } from "../../api";
 import { useConvertCurrency } from "../../hooks/useConvertCurency";
@@ -13,6 +14,7 @@ import {
   ProductThumbnail,
   ProductTitle,
 } from "./productCard.styles";
+import { useViewProductStore } from "../../store/viewProductStore";
 
 // skeletons
 const ProductCardSkeleton = () => {
@@ -31,8 +33,21 @@ export const skeletons = Array.apply(null, Array(10)).map((n, i) => (
 
 // card
 export const ProductCard = ({ product }: { product: IProduct }) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/product/${product.slug}`);
+  };
+
   const currencyPrice = useConvertCurrency(product.price);
   const currencySalePrice = useConvertCurrency(product.sale_price);
+
+  const { setOpen, setProduct } = useViewProductStore();
+
+  const onQuickViewClick = () => {
+    setOpen(true);
+    setProduct(product);
+  };
 
   return (
     <ProductItem>
@@ -45,7 +60,7 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
       )}
 
       <ProductThumbnail className="thumbnail">
-        <figure>
+        <figure onClick={handleClick}>
           <Image
             src={product.images[0]}
             alt={product.name}
@@ -53,9 +68,13 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
             objectFit="contain"
           />
         </figure>
+
+        <button onClick={onQuickViewClick} className="view-btn">
+          quick view
+        </button>
       </ProductThumbnail>
 
-      <ProductInfo>
+      <ProductInfo onClick={handleClick}>
         <ProductTitle>{product.name}</ProductTitle>
         {product.sale_price ? (
           <ProductPrice>

@@ -20,6 +20,7 @@ export const ShopProducts = () => {
     lastItem,
     totalItems,
   } = useShopProducts();
+  console.log("products: ", products);
 
   return (
     <>
@@ -28,7 +29,7 @@ export const ShopProducts = () => {
       <ShopProductsContainer>
         {isLoading && skeletons}
 
-        {(isLoading || isFetching) && <Spinner />}
+        {isFetching && <Spinner />}
 
         {products &&
           products.map((product) => {

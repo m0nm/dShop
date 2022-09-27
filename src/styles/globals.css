@@ -22,3 +22,19 @@ a {
   outline: none;
   list-style: none;
 }
+
+/* curstom scrollbar */
+
+*::-webkit-scrollbar {
+  width: 7px;
+  border-radius: 13px;
+  background-clip: padding-box;
+  background-color: #f0f0f0;
+  border: 0px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 13px;
+  background-clip: padding-box;
+  background-color: #c6c4c3;
+}

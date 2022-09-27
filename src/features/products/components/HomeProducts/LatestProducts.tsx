@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
 import { IProduct } from "../..";
-import { ProductLabel } from "./homeProducts.styles";
+import { ProductLabel } from "../../styles/productLabel";
 import { ProductCard, skeletons } from "../ProductCard/ProductCard";
-import { ProductCarousel } from "./ProductCarousel";
+import { ProductCarousel } from "../ProductCarousel";
 import miniBanner from "@/../public/mini-banners/1.jpg";
 
 type IProps = {

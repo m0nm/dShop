@@ -39,6 +39,7 @@ export const FooterContent = styled("div", {
   gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
   width: "100%",
   marginTop: "2rem",
+  gap: "2rem",
 });
 
 export const FooterContentItem = styled("div", {

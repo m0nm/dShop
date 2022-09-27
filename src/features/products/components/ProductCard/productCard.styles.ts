@@ -16,14 +16,44 @@ export const ProductItem = styled("div", {
 });
 
 export const ProductThumbnail = styled("div", {
+  position: "relative",
   width: "100%",
   height: 240,
   transform: "scale(0.93)",
   transition: "transform 500ms",
   userSelect: "none",
-  pointerEvents: "none",
+  overflow: "hidden",
 
-  "& figure": { position: "relative", width: "100%", height: "100%" },
+  "& figure": {
+    position: "relative",
+    width: "100%",
+    height: "100%",
+
+    "& img": { userSelect: "none", pointerEvents: "none" },
+  },
+
+  // view product button
+  "&:hover .view-btn": { opacity: "1 !important", right: 0 },
+
+  "& .view-btn": {
+    position: "absolute",
+    bottom: 4,
+    right: "-100%",
+    zIndex: 2,
+    backgroundColor: "#000",
+    color: "white",
+    padding: "10px 12px",
+    fontWeight: 500,
+    fontSize: 13,
+    lineHeight: 1,
+    textTransform: "uppercase",
+    border: 0,
+    cursor: "pointer",
+    opacity: 0,
+    transition: "all 600ms ease-in-out",
+
+    "&:hover": { backgroundColor: "#111" },
+  },
 });
 
 export const ProductBadge = styled("div", {
@@ -55,7 +85,6 @@ export const ProductBadge = styled("div", {
 
 export const ProductInfo = styled("div", {
   padding: "0 10px",
-  marginTop: "1rem",
 });
 
 export const ProductTitle = styled("span", {

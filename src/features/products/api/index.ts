@@ -5,15 +5,15 @@ export type IProduct = {
   id: number;
   name: string;
   slug: string;
-  images: string;
+  images: string[];
   category: string;
-  subcategories: string;
+  subcategory: string;
   description: string;
   price: number;
   sale_price: number;
   stock: number;
   condition: "default" | "new" | "featured";
-  attributes: { id: number; name: string; value: any[] }[];
+  attributes: { id: number; name: string; value: string[] }[];
   created_at: string;
 };
 
@@ -56,5 +56,18 @@ export const getShopProducts = async (
   };
 
   const res = await axios.get<IShopProduct>("/api/products", request);
+  return res.data;
+};
+
+// -----------------------------------------------------
+
+export type IProductDetail = {
+  product: IProduct;
+  relatedProducts: IProduct[];
+};
+
+export const getProductDetail = async (slug: string) => {
+  const res = await axios.get<IProductDetail>("/api/products/" + slug);
+
   return res.data;
 };
