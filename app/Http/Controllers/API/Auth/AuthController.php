@@ -63,6 +63,7 @@ class AuthController extends Controller
             return response()
                 ->json([
                     'token' => $token,
+                    "cartCount" => $user->cart()->count()
                 ], 200);
         } catch (\Exception $exception) {
             return response()->json(['message' => $exception->getMessage()], 400);

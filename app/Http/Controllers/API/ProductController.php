@@ -12,18 +12,53 @@ class ProductController extends Controller
 {
     public function index(Request $request, ProductApiResponse $res_action, FilterProducts $filter_action)
     {
+
+        // $res = [];
+
         $products_query = Product::where('status', 'active');
 
+        // shop page products with query params filters
         if ($request->query('page')) {
-            // shop page products with query params filters
-            $products = $filter_action->handle($request, $products_query);
-        } else {
-            // home page products
-            $products = $products_query->get();
+            $shopProducts = $filter_action->handle($request, $products_query);
+
+            foreach ($shopProducts as $product) {
+                $product = $res_action->handle($product);
+            }
+
+            return response()->json($shopProducts);
         }
 
-        $products = $res_action->handle($products);
+        // home page products
+        $products = $products_query->get();
+
+        foreach ($products as $product) {
+            $product = $res_action->handle($product);
+        }
 
         return response()->json($products);
+    }
+
+    public function show($slug, ProductApiResponse $res_action)
+    {
+        $product = Product::where('slug', $slug)->first();
+
+
+        $related = Product::where('subcategory_id', $product->subcategory_id)
+            ->where('slug', "!=", $product->slug)
+            ->inRandomOrder()->take(10)->get();
+
+        // dd($related);
+
+        $res = [];
+
+        $productRes = $res_action->handle($product);
+        $res['product'] = $productRes;
+
+        $res['relatedProducts'] = [];
+        foreach ($related as $relatedProduct) {
+            array_push($res['relatedProducts'], $res_action->handle($relatedProduct));
+        }
+
+        return response()->json($res);
     }
 }

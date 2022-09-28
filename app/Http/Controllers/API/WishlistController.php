@@ -18,9 +18,12 @@ class WishlistController extends Controller
 
         $wishlist = Auth::user()->wishlist;
 
-        $products = $res_action->handle($wishlist->products);
+        $res = [];
+        foreach ($wishlist->products as $product) {
+            array_push($res, $res_action->handle($product));
+        }
 
-        return response()->json($products);
+        return response()->json($res);
     }
 
     public function store(Request $request)

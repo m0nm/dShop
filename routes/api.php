@@ -60,6 +60,7 @@ Route::get('/banners', [BannerController::class, 'index']);
 
 // < ------ productss ------- >
 Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{slug}', [ProductController::class, 'show']);
 
 // < ------ End ------- >
 
