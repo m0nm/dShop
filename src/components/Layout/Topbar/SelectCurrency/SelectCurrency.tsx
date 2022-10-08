@@ -39,6 +39,7 @@ export const SelectCurrency = () => {
             <SelectItem value="eur">
               <SelectItemText>Euro (EUR)</SelectItemText>
             </SelectItem>
+
             <SelectItem value="dzd">
               <SelectItemText>Dinnar (DZD)</SelectItemText>
             </SelectItem>

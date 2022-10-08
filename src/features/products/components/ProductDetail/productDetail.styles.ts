@@ -18,7 +18,6 @@ export const ImagesBox = styled("div", {
   flexDirection: "column-reverse",
   flexWrap: "wrap",
   width: "100%",
-  // maxHeight: 580,
 
   "@lg": { width: "45%", flexWrap: "nowrap" },
 

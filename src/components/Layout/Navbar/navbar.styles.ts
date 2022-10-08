@@ -1,7 +1,8 @@
 import { styled } from "@/stitches.config";
-import { Flex } from "@/components/Shared";
 
-export const NavbarItem = styled(Flex, {
+export const NavbarItem = styled("a", {
+  display: "flex",
+  alignItems: "center",
   gap: 4,
   cursor: "pointer",
 });

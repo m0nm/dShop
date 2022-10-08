@@ -1,7 +1,8 @@
 import Router from "next/router";
 import React, { useState } from "react";
 import { IProduct, useShopProductStore } from "../..";
-import { useConvertCurrency } from "../../hooks/useConvertCurency";
+import { useConvertCurrency } from "@/hooks";
+import { useAddToCart } from "@/features/cart";
 import {
   ProductDetailContainer,
   DetailBox,
@@ -13,8 +14,9 @@ import { QuantityInput } from "./QuantityInput";
 import { ProductAttributes } from "./ProductAttributes";
 
 export const ProductDetail = ({ product }: { product: IProduct }) => {
-  const price = useConvertCurrency(product.price);
-  const salePrice = useConvertCurrency(product.sale_price);
+  const { convertCurrency } = useConvertCurrency();
+  const price = convertCurrency(product.price);
+  const salePrice = convertCurrency(product.sale_price);
 
   const [quantity, setQuantity] = useState(0);
 
@@ -24,6 +26,9 @@ export const ProductDetail = ({ product }: { product: IProduct }) => {
     setFilterSubcategories([product.subcategory]);
     Router.push("/shop");
   };
+
+  // add to cart
+  const { handleAddToCart, isLoading } = useAddToCart(product, quantity);
 
   return (
     <ProductDetailContainer>
@@ -83,7 +88,12 @@ export const ProductDetail = ({ product }: { product: IProduct }) => {
 
         <QuantityInput quantity={quantity} setQuantity={setQuantity} />
 
-        <AddToCartButton disabled={quantity === 0}>add to cart</AddToCartButton>
+        <AddToCartButton
+          disabled={quantity === 0 || isLoading}
+          onClick={handleAddToCart}
+        >
+          add to cart
+        </AddToCartButton>
       </DetailBox>
     </ProductDetailContainer>
   );

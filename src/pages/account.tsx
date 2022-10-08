@@ -16,7 +16,7 @@ const AccountPage = ({ token }: { token: string }) => {
     <Container flexCol>
       <Breadcrumb content="My Account" />
 
-      <h1 style={{ textAlign: "center" }}>My Account</h1>
+      <h1 style={{ textAlign: "center", margin: 0 }}>My Account</h1>
 
       {token ? <AccountTabs /> : <AuthTabs />}
     </Container>

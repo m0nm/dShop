@@ -2,10 +2,11 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 import { IProduct } from "../../api";
-import { useConvertCurrency } from "../../hooks/useConvertCurency";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
+import { useViewProductStore } from "../../store/viewProductStore";
+import { useConvertCurrency } from "@/hooks";
 import {
   ProductBadge,
   ProductInfo,
@@ -14,7 +15,6 @@ import {
   ProductThumbnail,
   ProductTitle,
 } from "./productCard.styles";
-import { useViewProductStore } from "../../store/viewProductStore";
 
 // skeletons
 const ProductCardSkeleton = () => {
@@ -39,8 +39,9 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
     router.push(`/product/${product.slug}`);
   };
 
-  const currencyPrice = useConvertCurrency(product.price);
-  const currencySalePrice = useConvertCurrency(product.sale_price);
+  const { convertCurrency } = useConvertCurrency();
+  const currencyPrice = convertCurrency(product.price);
+  const currencySalePrice = convertCurrency(product.sale_price);
 
   const { setOpen, setProduct } = useViewProductStore();
 

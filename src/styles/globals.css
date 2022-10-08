@@ -8,6 +8,7 @@ html,
 body {
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  pointer-events: all !important;
 }
 
 a {
@@ -37,4 +38,9 @@ a {
   border-radius: 13px;
   background-clip: padding-box;
   background-color: #c6c4c3;
+}
+
+/* specifically for <CartToast /> toast */
+.Toastify__toast-container--bottom-left {
+  width: auto !important;
 }

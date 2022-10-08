@@ -24,9 +24,11 @@ axios.interceptors.response.use(
   },
   (error) => {
     console.log("error: ", error);
-    const { errors } = error.response?.data;
+    const { data } = error.response;
+    const { errors } = data;
 
-    const message = Object.values<any>(errors)[0][0] || error.message;
+    const message =
+      data.message || Object.values<any>(errors)[0][0] || error.message;
     toast.error(message);
 
     return Promise.reject(error);

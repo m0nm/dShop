@@ -1,6 +1,7 @@
 export * from "./components/HomeProducts/HomeProducts";
 export * from "./components/ShopProducts/ShopProducts";
 export * from "./components/ProductDetail/ProductDetail";
+export * from "./components/ProductDetail/QuantityInput";
 export * from "./components/RelatedProducts/RelatedProducts";
 export * from "./components/ViewProductModal/ViewProductModal";
 
