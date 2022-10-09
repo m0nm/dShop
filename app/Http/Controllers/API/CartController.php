@@ -5,10 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Actions\ProductApiResponse;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
-use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -23,7 +21,7 @@ class CartController extends Controller
         try {
 
             $cart = Auth::user()->cart;
-            $products = $cart->products()->withPivot("quantity")->get();
+            $products = $cart->products()->withPivot("quantity")->latest()->get();
 
             $res = [];
             foreach ($products as $product) {
@@ -59,26 +57,54 @@ class CartController extends Controller
             // increase quantity if cart item already exists
             $record = $cart->products()->where('product_id', $product_id);
             if ($record->exists()) {
-                $record->increment('quantity', $quantity);
+                $record->increment('quantity', (int) $quantity);
             } else {
                 $cart->products()->attach($product_id, ['quantity' => $quantity]);
             }
 
-            return response()->json(['message' => 'Added product to cart successfully']);
+            return response()->json([
+                'message' => 'Added product to cart successfully',
+                "cartCount" => $cart->products->count(),
+            ]);
         } catch (\Exception $exception) {
             return response()->json(['message' => $exception->getMessage()], 400);
         }
     }
 
-    public function destroy(Request $request)
+    public function update(Request $request)
+    {
+        try {
+
+            $items = $request->input('items');
+
+            $updateCart = [];
+
+            foreach ($items as $item) {
+                $updateCart[$item['productId']] = ['quantity' => $item['quantity']];
+            }
+
+            $cart = Cart::where('user_id', Auth::user()->id)->first();
+
+            $cart->products()->sync($updateCart, false);
+
+            response()->json([
+                'message' => 'Updated cart successfully',
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json(['message' => $exception->getMessage()], 400);
+        }
+    }
+
+    public function destroy($product_id)
     {
 
         $cart = Cart::where('user_id', Auth::user()->id)->first();
 
-        $product_id = $request->input('productId');
-
         $cart->products()->detach($product_id);
 
-        return response()->json(['message' => 'Removed product from cart successfully']);
+        return response()->json([
+            'message' => 'Removed product from cart successfully',
+            "cartCount" => $cart->products->count(),
+        ]);
     }
 }
