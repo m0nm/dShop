@@ -2,7 +2,7 @@ import { useMutation } from "react-query";
 import { IProduct } from "@/features/products";
 import { addToCart, changeCartCount } from "..";
 import { toast } from "react-toastify";
-import { ProductToast } from "@/components/Misc/ProductToast";
+import { ProductToast } from "@/components/Misc/product-toast";
 import { getCookie } from "cookies-next";
 
 export const useAddToCart = (product: IProduct, quantity: number) => {

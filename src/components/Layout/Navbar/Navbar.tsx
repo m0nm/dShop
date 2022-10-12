@@ -3,7 +3,7 @@ import { Container } from "@/components/Shared";
 
 import { Searchbar } from "./Searchbar/Searchbar";
 import { Logo } from "./Logo";
-import { NavbarItems } from "./NavbarItems";
+import { NavbarItems } from "./navbar-items";
 
 export const Navbar = () => {
   return (

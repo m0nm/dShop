@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "react-query";
 import { deleteWishlistItem } from "..";
-import { changeWishlistCount } from "../utils/changeWishlistCount";
+import { changeWishlistCount } from "../utils/change-wishlist-count";
 
 export const useDeleteWishlistItem = (id: number) => {
   const queryClient = useQueryClient();

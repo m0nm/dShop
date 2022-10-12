@@ -1,2 +1,2 @@
-export * from "./components/AccountTabs/AccountTabs";
-export * from "./components/AccountMenu/AccountMenu";
+export * from "./components/account-tabs/AccountTabs";
+export * from "./components/account-menu/AccountMenu";

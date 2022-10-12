@@ -2,9 +2,9 @@ import { useMutation } from "react-query";
 import { IProduct } from "@/features/products";
 import { getCookie } from "cookies-next";
 import { addToWishlist } from "..";
-import { changeWishlistCount } from "../utils/changeWishlistCount";
+import { changeWishlistCount } from "../utils/change-wishlist-count";
 import { toast } from "react-toastify";
-import { ProductToast } from "@/components/Misc/ProductToast";
+import { ProductToast } from "@/components/Misc/product-toast";
 
 export const useAddToWishlist = (product: IProduct) => {
   const { mutate, isLoading } = useMutation(() => addToWishlist(product.id), {

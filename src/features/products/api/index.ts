@@ -1,5 +1,5 @@
 import { axios } from "@/lib/axios";
-import { IStore } from "../store/shopProductStore";
+import { IStore } from "../store/shop-product-store";
 
 export type IProduct = {
   id: number;

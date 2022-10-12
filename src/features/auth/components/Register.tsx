@@ -1,10 +1,10 @@
 import React from "react";
 
 import * as Form from "./auth.styles";
-import { SocialAuth } from "./SocialAuth";
+import { SocialAuth } from "./social-auth";
 
 import { SubmitHandler, useForm } from "react-hook-form";
-import { formRules } from "../utils/auth_form_rules";
+import { formRules } from "../utils/auth-form-rules";
 import { INewUser } from "../api";
 import { useRegister } from "../hooks/useRegister";
 import { Input, InputFeedback } from "@/components/Shared";

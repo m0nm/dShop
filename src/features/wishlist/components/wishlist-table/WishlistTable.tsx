@@ -1,6 +1,6 @@
 import React from "react";
 import { useGetWishlist } from "../..";
-import { WishlistItem } from "./WishlistItem";
+import { WishlistItem } from "./wishlist-item";
 import { LoadingOverlay } from "@/components/Shared";
 import { Box, Table } from "./wishlist-table.styles";
 

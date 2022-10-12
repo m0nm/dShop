@@ -1,6 +1,6 @@
 import { useMutation } from "react-query";
 import { checkCoupon } from "..";
-import { useCartTotalStore } from "../store/carttotalStore";
+import { useCartTotalStore } from "../store/cart-total-store";
 
 export const useCoupon = () => {
   const { setTotal, total } = useCartTotalStore();

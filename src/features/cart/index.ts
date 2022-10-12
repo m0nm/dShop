@@ -1,9 +1,9 @@
 export * from "./api";
 export * from "./hooks/useAddToCart";
 export * from "./hooks/useGetCart";
-export * from "./utils/changeCartCount";
+export * from "./utils/change-cart-count";
 
-export * from "./components/CartTable/CartTable";
-export * from "./components/Aside/Aside";
-export * from "./components/EmptyCart";
-export * from "./components/AddToCart";
+export * from "./components/cart-table/CartTable";
+export * from "./components/cart-checkout/CartCheckout";
+export * from "./components/empty-cart";
+export * from "./components/add-to-cart-button";

@@ -1,10 +1,10 @@
-export * from "./components/HomeProducts/HomeProducts";
-export * from "./components/ShopProducts/ShopProducts";
-export * from "./components/ProductDetail/ProductDetail";
-export * from "./components/ProductDetail/QuantityInput";
-export * from "./components/RelatedProducts/RelatedProducts";
-export * from "./components/ViewProductModal/ViewProductModal";
+export * from "./components/home-products/HomeProducts";
+export * from "./components/shop-products/ShopProducts";
+export * from "./components/product-detail/ProductDetail";
+export * from "./components/product-detail/quantity-input";
+export * from "./components/related-products/related-products";
+export * from "./components/view-product-modal/ViewProductModal";
 
 export * from "./api";
-export * from "./store/shopProductStore";
+export * from "./store/shop-product-store";
 export * from "./hooks/useShopProducts";

@@ -1,2 +1,2 @@
-export * from "./components/SelectCategory/SelectCategory";
-export * from "./components/CategoryAccordion/CategoryAccordion";
+export * from "./components/select-category/select-category";
+export * from "./components/category-accordion/CategoryAccordion";

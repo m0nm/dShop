@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "react-query";
 import { changeCartCount, deleteCartItem } from "..";
-import { useCartTotalStore } from "../store/carttotalStore";
+import { useCartTotalStore } from "../store/cart-total-store";
 
 export const useDeleteCartItem = (id: number) => {
   const { setCouponCode } = useCartTotalStore();

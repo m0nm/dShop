@@ -5,7 +5,7 @@ import { AccountMenu } from "@/features/account";
 
 import { Container } from "../../Shared";
 import { Icon } from "ts-react-feather-icons";
-import { SelectCurrency } from "./SelectCurrency/SelectCurrency";
+import { SelectCurrency } from "./select-currency/SelectCurrency";
 import { Menu, MenuItem } from "./topbar.styles";
 
 export const Topbar = () => {

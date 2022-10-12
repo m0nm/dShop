@@ -1,10 +1,10 @@
 import Link from "next/link";
 import React, { useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { formRules } from "../utils/auth_form_rules";
+import { formRules } from "../utils/auth-form-rules";
 import { IUser } from "../api";
 import { useAuthModalStore, useLogin } from "..";
-import { SocialAuth } from "./SocialAuth";
+import { SocialAuth } from "./social-auth";
 import { Icon } from "ts-react-feather-icons";
 import { Flex, Input, InputFeedback } from "@/components/Shared";
 import * as Form from "./auth.styles";

@@ -1,4 +1,4 @@
-import { useCurrencyStore } from "@/store/currencyStore";
+import { useCurrencyStore } from "@/store/currency-store";
 
 export const useConvertCurrency = () => {
   const { currency } = useCurrencyStore();

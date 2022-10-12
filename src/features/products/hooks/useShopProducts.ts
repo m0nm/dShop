@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import { useShopProductStore } from "../store/shopProductStore";
+import { useShopProductStore } from "../store/shop-product-store";
 import { getShopProducts } from "../api";
 
 export const useShopProducts = () => {
