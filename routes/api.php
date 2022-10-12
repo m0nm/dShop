@@ -73,7 +73,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::get('user/wishlist', [WishlistController::class, 'index']);
     Route::post('user/wishlist', [WishlistController::class, 'store']);
-    Route::delete('user/wishlist', [WishlistController::class, 'destroy']);
+    Route::delete('user/wishlist/{id}', [WishlistController::class, 'destroy']);
 });
 // < ------ End ------- >
 

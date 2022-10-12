@@ -16,14 +16,19 @@ class WishlistController extends Controller
             return response()->json(['message' => 'Unauthorized request'], 401);
         }
 
-        $wishlist = Auth::user()->wishlist;
+        try {
 
-        $res = [];
-        foreach ($wishlist->products as $product) {
-            array_push($res, $res_action->handle($product));
+            $wishlist = Auth::user()->wishlist;
+
+            $res = [];
+            foreach ($wishlist->products as $product) {
+                array_push($res, $res_action->handle($product));
+            }
+
+            return response()->json($res);
+        } catch (\Exception $exception) {
+            return response()->json(['message' => $exception->getMessage()], 400);
         }
-
-        return response()->json($res);
     }
 
     public function store(Request $request)
@@ -33,24 +38,48 @@ class WishlistController extends Controller
             return response()->json(['message' => 'Unauthorized request'], 401);
         }
 
-        $product_id = $request->input('product_id');
+        try {
 
-        $wishlist = Wishlist::where('user_id', Auth::user()->id)->first();
+            $product_id = $request->input('productId');
 
-        $wishlist->products()->attach($product_id);
+            $wishlist = Wishlist::where('user_id', Auth::user()->id)->first();
 
-        return response()->json(['message' => 'Added product to wishlist successfully']);
+            $record = $wishlist->products()->where('product_id', $product_id);
+            if ($record->exists()) {
+
+                return response()->json([
+                    'message' => 'Already in the wishlist',
+                ], 204);
+            } else {
+                $wishlist->products()->attach($product_id);
+            }
+
+
+            return response()->json([
+                'message' => 'Added product to wishlist successfully',
+                "wishlistCount" => $wishlist->products->count(),
+
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json(['message' => $exception->getMessage()], 400);
+        }
     }
 
-    public function destroy(Request $request)
+    public function destroy($product_id)
     {
 
-        $wishlist = Wishlist::where('user_id', Auth::user()->id)->first();
+        try {
 
-        $product_id = $request->input('product_id');
+            $wishlist = Wishlist::where('user_id', Auth::user()->id)->first();
 
-        $wishlist->products()->detach($product_id);
+            $wishlist->products()->detach($product_id);
 
-        return response()->json(['message' => 'Removed product from wishlist successfully']);
+            return response()->json([
+                'message' => 'Removed product from wishlist successfully',
+                'wishlistCount' => $wishlist->products->count()
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json(['message' => $exception->getMessage()], 400);
+        }
     }
 }

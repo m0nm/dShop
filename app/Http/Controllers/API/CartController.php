@@ -98,13 +98,18 @@ class CartController extends Controller
     public function destroy($product_id)
     {
 
-        $cart = Cart::where('user_id', Auth::user()->id)->first();
+        try {
 
-        $cart->products()->detach($product_id);
+            $cart = Cart::where('user_id', Auth::user()->id)->first();
 
-        return response()->json([
-            'message' => 'Removed product from cart successfully',
-            "cartCount" => $cart->products->count(),
-        ]);
+            $cart->products()->detach($product_id);
+
+            return response()->json([
+                'message' => 'Removed product from cart successfully',
+                "cartCount" => $cart->products->count(),
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json(['message' => $exception->getMessage()], 400);
+        }
     }
 }
