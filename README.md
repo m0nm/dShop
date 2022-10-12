@@ -1,5 +1,3 @@
-add wishlsit
-
 rename folders
 add 404 (for miswritten product detail page)
 add scroll to top button

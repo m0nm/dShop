@@ -27,6 +27,8 @@ export const DropdownContent = styled(DropdownMenuPrimitive.Content, {
 
 export const DropdownTrigger = styled(DropdownMenuPrimitive.Trigger, {
   all: "unset",
+  maxWidth: 65, 
+  "@lg": {maxWidth: "unset"}
 });
 
 export const DropdownArrow = styled(DropdownMenuPrimitive.Arrow, {

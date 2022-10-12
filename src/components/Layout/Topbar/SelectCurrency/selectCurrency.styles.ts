@@ -14,9 +14,14 @@ export const SelectTrigger = styled(SelectPrimitive.SelectTrigger, {
   borderRadius: 4,
   fontSize: 13,
   lineHeight: 1,
+  maxWidth: 100,
   height: 35,
-  gap: 3,
   backgroundColor: "white",
+
+  "@lg": {
+    gap: 3,
+    maxWidth: "unset",
+  },
 });
 
 export const SelectPortal = styled(SelectPrimitive.Portal, {

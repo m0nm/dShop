@@ -2,11 +2,11 @@ import Router from "next/router";
 import React, { useState } from "react";
 import { IProduct, useShopProductStore } from "../..";
 import { useConvertCurrency } from "@/hooks";
-import { useAddToCart } from "@/features/cart";
+import { AddToCart } from "@/features/cart";
+
 import {
   ProductDetailContainer,
   DetailBox,
-  AddToCartButton,
   AttributeItem,
 } from "./productDetail.styles";
 import { ImagesCarousel } from "./ImagesCarousel";
@@ -26,9 +26,6 @@ export const ProductDetail = ({ product }: { product: IProduct }) => {
     setFilterSubcategories([product.subcategory]);
     Router.push("/shop");
   };
-
-  // add to cart
-  const { handleAddToCart, isLoading } = useAddToCart(product, quantity);
 
   return (
     <ProductDetailContainer>
@@ -88,12 +85,7 @@ export const ProductDetail = ({ product }: { product: IProduct }) => {
 
         <QuantityInput quantity={quantity} setQuantity={setQuantity} />
 
-        <AddToCartButton
-          disabled={quantity === 0 || isLoading}
-          onClick={handleAddToCart}
-        >
-          add to cart
-        </AddToCartButton>
+        <AddToCart product={product} quantity={quantity} />
       </DetailBox>
     </ProductDetailContainer>
   );

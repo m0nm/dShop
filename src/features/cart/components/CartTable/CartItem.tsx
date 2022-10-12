@@ -32,7 +32,7 @@ export const CartItem = ({ item }: { item: ICart }) => {
   }, [quantity, initialQuantity, product.id, setUpdateItems, setUpdate]);
 
   return (
-    <TableRow key={product.id}>
+    <TableRow>
       <td className="product-name">
         <Flex alignCenter>
           <Link href={`/product/${product.slug}`}>

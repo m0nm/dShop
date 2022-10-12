@@ -7,6 +7,8 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 import { useViewProductStore } from "../../store/viewProductStore";
 import { useConvertCurrency } from "@/hooks";
+import { useAddToWishlist } from "@/features/wishlist";
+
 import {
   ProductBadge,
   ProductInfo,
@@ -15,6 +17,8 @@ import {
   ProductThumbnail,
   ProductTitle,
 } from "./productCard.styles";
+import { Icon } from "ts-react-feather-icons";
+import { LoadingOverlay } from "@/components/Shared";
 
 // skeletons
 const ProductCardSkeleton = () => {
@@ -33,16 +37,19 @@ export const skeletons = Array.apply(null, Array(10)).map((n, i) => (
 
 // card
 export const ProductCard = ({ product }: { product: IProduct }) => {
+  // routing
   const router = useRouter();
 
   const handleClick = () => {
     router.push(`/product/${product.slug}`);
   };
 
+  // product currency
   const { convertCurrency } = useConvertCurrency();
   const currencyPrice = convertCurrency(product.price);
   const currencySalePrice = convertCurrency(product.sale_price);
 
+  // handle quick view
   const { setOpen, setProduct } = useViewProductStore();
 
   const onQuickViewClick = () => {
@@ -50,8 +57,13 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
     setProduct(product);
   };
 
+  // handle wishlist
+  const { handleAddToWishlist, isLoading } = useAddToWishlist(product);
+
   return (
     <ProductItem>
+      {isLoading && <LoadingOverlay />}
+
       {product.sale_price && <ProductBadge variant="sale">Sale</ProductBadge>}
 
       {product.condition !== "default" && (
@@ -70,6 +82,16 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
           />
         </figure>
 
+        {/* wishlist button */}
+        <button
+          onClick={handleAddToWishlist}
+          className="wishlist-btn"
+          title="Add to wishlist"
+        >
+          <Icon name="heart" size={18} />
+        </button>
+
+        {/* quick view btn */}
         <button onClick={onQuickViewClick} className="view-btn">
           quick view
         </button>

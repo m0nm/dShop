@@ -155,33 +155,6 @@ export const ProductQuantity = styled("div", {
 
 // ------------------------------------
 
-export const AddToCartButton = styled("button", {
-  display: "inline-block",
-  border: 0,
-  fontSize: 15,
-  fontWeight: 600,
-  lineHeight: 1,
-  padding: "1rem 2rem",
-  borderRadius: 3,
-  textTransform: "uppercase",
-  color: "white",
-  backgroundColor: "$primary",
-  transition: "all 300ms",
-  cursor: "pointer",
-
-  "&:hover": {
-    backgroundColor: "#252525",
-  },
-
-  "&:disabled, &[disabled]": {
-    backgroundColor: "#E4EAEC",
-    color: "#999",
-    cursor: "not-allowed",
-  },
-});
-
-// ------------------------------------
-
 export const AttributeGroup = styled(ToggleGroupPrimitive.Root, {
   display: "flex",
   alignItems: "center",

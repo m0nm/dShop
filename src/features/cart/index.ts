@@ -6,3 +6,4 @@ export * from "./utils/changeCartCount";
 export * from "./components/CartTable/CartTable";
 export * from "./components/Aside/Aside";
 export * from "./components/EmptyCart";
+export * from "./components/AddToCart";

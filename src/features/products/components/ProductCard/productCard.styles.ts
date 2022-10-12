@@ -32,6 +32,32 @@ export const ProductThumbnail = styled("div", {
     "& img": { userSelect: "none", pointerEvents: "none" },
   },
 
+  // wishlist button
+  "&:hover .wishlist-btn": { opacity: "1 !important" },
+
+  "& .wishlist-btn": {
+    display: "grid",
+    placeItems: "center",
+    position: "absolute",
+    top: 10,
+    right: 10,
+    zIndex: 2,
+    backgroundColor: "white",
+    padding: 10,
+    lineHeight: 1,
+    border: 0,
+    borderRadius: "100%",
+    boxShadow: "0 0 5px #f5f5f5",
+    cursor: "pointer",
+    opacity: 0,
+    transition: "all 300ms ease-in-out",
+
+    "&:hover": {
+      backgroundColor: "#EC0F24",
+      color: "white",
+    },
+  },
+
   // view product button
   "&:hover .view-btn": { opacity: "1 !important", right: 0 },
 

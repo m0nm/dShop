@@ -54,6 +54,8 @@ const ModalContent = styled(DialogPrimitive.Content, {
     type: {
       "mobile-navbar": {
         height: "100vh",
+        width: "80%",
+        padding: 12,
         top: 0,
         right: 0,
         left: "unset",

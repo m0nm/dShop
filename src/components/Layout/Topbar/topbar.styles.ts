@@ -6,10 +6,14 @@ export const Menu = styled("ul", {
 });
 
 export const MenuItem = styled("li", {
-  padding: "10px 5px",
+  padding: "10px 0",
   fontSize: "13px",
   cursor: "pointer",
   transition: "color 50ms",
+
+  "@lg": {
+    padding: "10px 5px",
+  },
 
   "&:hover": {
     color: "$primary",

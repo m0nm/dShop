@@ -23,20 +23,20 @@ export const Menubar = ({ closeModal }: IProps) => {
   return (
     <MenubarRoot fixed={{ "@lg": fixed }}>
       <MenubarContainer as="ul">
-          <MenubarItem onClick={closeModal}>
-        <Link href="/">
-            <a>Home</a>
-        </Link>
-          </MenubarItem>
-
-          <MenubarItem onClick={closeModal}>
-        <Link href="/shop">
-            <a>Shop</a>
-        </Link>
-          </MenubarItem>
-
         <MenubarItem onClick={closeModal}>
           <Link href="/">
+            <a>Home</a>
+          </Link>
+        </MenubarItem>
+
+        <MenubarItem onClick={closeModal}>
+          <Link href="/shop">
+            <a>Shop</a>
+          </Link>
+        </MenubarItem>
+
+        <MenubarItem onClick={closeModal}>
+          <Link href="/cart">
             <a>Cart</a>
           </Link>
         </MenubarItem>

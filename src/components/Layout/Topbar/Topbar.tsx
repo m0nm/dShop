@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getCookie, CookieValueTypes } from "cookies-next";
 import { useAuthModalStore } from "@/features/auth";
 import { AccountMenu } from "@/features/account";
+
 import { Container } from "../../Shared";
 import { Icon } from "ts-react-feather-icons";
 import { SelectCurrency } from "./SelectCurrency/SelectCurrency";
@@ -24,7 +25,7 @@ export const Topbar = () => {
           <MenuItem>Hotline: (+123) 456 789</MenuItem>
         </Menu>
 
-        <Menu css={{ gap: "1rem" }}>
+        <Menu css={{ gap: 10, "@lg": { gap: "1rem" } }}>
           {/* account or auth links */}
           {token ? (
             <MenuItem>

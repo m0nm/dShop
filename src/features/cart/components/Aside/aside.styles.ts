@@ -6,7 +6,7 @@ export const Wrapper = styled("aside", {
   border: "1px solid #d4d4d4",
 
   "@lg": {
-    width: "33%",
+    width: "40%",
   },
 
   "& .heading": { marginBottom: "1rem", fontSize: 18 },

@@ -7,8 +7,9 @@ export type ICart = {
   quantity: number;
 };
 
-export const getCart = async (token: string) => {
+export const getCart = async (token?: string) => {
   const res = await axios.get<ICart[]>("/api/user/cart", {
+    // token is for ssr
     headers: { authorization: "Bearer " + token },
   });
 

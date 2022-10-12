@@ -1,6 +1,9 @@
 import { GetServerSideProps } from "next";
 import React from "react";
+import { dehydrate, QueryClient } from "react-query";
 import { getCookie } from "cookies-next";
+
+import { Container, Flex } from "@/components/Shared";
 import {
   Aside,
   CartTable,
@@ -8,8 +11,6 @@ import {
   getCart,
   useGetCart,
 } from "@/features/cart";
-import { Container } from "@/components/Shared";
-import { dehydrate, QueryClient } from "react-query";
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const token = getCookie("token", { req, res });
@@ -37,17 +38,19 @@ const CartPage = () => {
       flexCol
       css={{
         gap: "3rem",
-        "@lg": { flexDirection: "row", marginTop: "20vh" },
+        "@lg": { marginTop: "20vh" },
         alignItems: "flex-start",
       }}
     >
+      <h1 style={{ margin: "auto", marginBottom: "3rem" }}>My Cart</h1>
+
       {!data?.length ? (
         <EmptyCart />
       ) : (
-        <>
+        <Flex css={{ gap: "3rem" }}>
           <CartTable />
           <Aside />
-        </>
+        </Flex>
       )}
     </Container>
   );

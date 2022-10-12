@@ -5,13 +5,20 @@ import { IProduct } from "@/features/products";
 import { styled } from "@/stitches.config";
 
 const Box = styled("div", {
-  width: 400,
+  width: 320,
   height: 280,
-  padding: "2rem",
+  padding: "12px 0",
   backgroundColor: "white",
   borderRadius: 12,
   boxShadow: "0 0 10px #f9f9f9",
   textAlign: "center",
+  marginLeft: "0.5rem",
+
+  "@lg": {
+    width: 400,
+    padding: "2rem",
+    marginLeft: "0",
+  },
 
   "& h3": {
     textAlign: "center",
@@ -49,10 +56,15 @@ const Box = styled("div", {
   },
 });
 
-export const CartToast = ({ product }: { product: IProduct }) => {
+type IToast = {
+  product: IProduct;
+  type: "Cart" | "Wishlist";
+};
+
+export const ProductToast = ({ product, type }: IToast) => {
   return (
     <Box>
-      <h3>Successfully Added To Cart</h3>
+      <h3>Successfully Added To {type}</h3>
 
       <Image
         src={product.images[0]}
@@ -63,8 +75,8 @@ export const CartToast = ({ product }: { product: IProduct }) => {
 
       <p>{product.name}</p>
 
-      <Link href="/cart">
-        <button>View Cart</button>
+      <Link href={"/" + type.toLowerCase()}>
+        <button>View {type}</button>
       </Link>
     </Box>
   );

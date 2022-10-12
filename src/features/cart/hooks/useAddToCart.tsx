@@ -1,8 +1,8 @@
 import { useMutation } from "react-query";
-import { toast } from "react-toastify";
-import { CartToast } from "../components/CartToast";
-import { addToCart, changeCartCount } from "..";
 import { IProduct } from "@/features/products";
+import { addToCart, changeCartCount } from "..";
+import { toast } from "react-toastify";
+import { ProductToast } from "@/components/Misc/ProductToast";
 import { getCookie } from "cookies-next";
 
 export const useAddToCart = (product: IProduct, quantity: number) => {
@@ -14,7 +14,7 @@ export const useAddToCart = (product: IProduct, quantity: number) => {
 
         changeCartCount(cartCount);
 
-        toast(<CartToast product={product} />, {
+        toast(<ProductToast product={product} type="Cart" />, {
           position: "bottom-left",
           pauseOnHover: true,
         });
