@@ -1,3 +1,4 @@
+import { Button } from "@/components/Shared";
 import { styled } from "@/stitches.config";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 
@@ -15,19 +16,14 @@ export const Title = styled("h1", {
   textAlign: "center",
 });
 
-export const SocialButton = styled("button", {
+export const SocialButton = styled(Button, {
   width: "100%",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
   gap: 4,
   fontSize: 14,
-  fontWeight: 600,
   borderRadius: "18px",
   border: 0,
   padding: "0.5rem",
   marginBottom: 12,
-  cursor: "pointer",
 
   "&.ml": { gap: 8 },
 
@@ -64,14 +60,12 @@ export const Label = styled("label", {
   color: "$neutral",
 });
 
-export const ForgotPasswordButton = styled("button", {
-  all: "unset",
+export const ForgotPasswordButton = styled(Button, {
   fontSize: 13,
   float: "right",
-  cursor: "pointer",
 });
 
-export const SubmitButton = styled("button", {
+export const SubmitButton = styled(Button, {
   width: "100%",
   background: "$primary",
   fontWeight: 500,
@@ -79,7 +73,6 @@ export const SubmitButton = styled("button", {
   padding: "10px 0",
   color: "white",
   marginTop: 16,
-  cursor: "pointer",
   border: "none",
 
   "&:hover": {

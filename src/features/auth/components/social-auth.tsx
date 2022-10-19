@@ -25,6 +25,7 @@ export const SocialAuth = () => {
         className="ml"
         type="button"
         variant="google"
+        tabIndex={-1}
       >
         <Image
           src={googleIcon}
@@ -39,6 +40,7 @@ export const SocialAuth = () => {
         onClick={() => mutate("facebook")}
         type="button"
         variant="facebook"
+        tabIndex={-1}
       >
         <Image
           src={facebookIcon}

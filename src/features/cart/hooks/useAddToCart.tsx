@@ -23,6 +23,10 @@ export const useAddToCart = (product: IProduct, quantity: number) => {
   );
 
   const handleAddToCart = () => {
+    if (quantity > product.stock) {
+      return toast("We currently only have " + product.stock + " in stock");
+    }
+
     getCookie("token") === "" ? toast.error("Please login first") : mutate();
   };
 

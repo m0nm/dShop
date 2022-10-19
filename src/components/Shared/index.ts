@@ -6,3 +6,4 @@ export * from "./Breadcrumb";
 export * from "./Select";
 export * from "./Input";
 export * from "./LoadingOverlay";
+export * from "./Button";

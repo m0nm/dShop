@@ -1,5 +1,5 @@
-import { Flex } from "@/components/Shared";
 import { styled } from "@/stitches.config";
+import { Button, Flex } from "@/components/Shared";
 
 export const ShopProductsContainer = styled("div", {
   width: "100%",
@@ -11,11 +11,9 @@ export const ShopProductsContainer = styled("div", {
   position: "relative",
 });
 
-export const AddToCartButton = styled("button", {
-  all: "unset",
+export const AddToCartButton = styled(Button, {
   width: "100%",
   fontSize: 14,
-  fontWeight: 600,
   lineHeight: "34px",
   color: "#888",
   border: "1px solid #e6e6e6",
@@ -43,8 +41,7 @@ export const PageContainer = styled(Flex, {
   },
 });
 
-export const PageButton = styled("button", {
-  all: "unset",
+export const PageButton = styled(Button, {
   display: "inline",
   width: "fit-content",
   padding: "0px 14px",
@@ -54,7 +51,6 @@ export const PageButton = styled("button", {
   textAlign: "center",
   border: "1px solid #e6e6e6",
   backgroundColor: "transparent",
-  cursor: "pointer",
   transition: "all 300ms",
 
   "&:hover": { backgroundColor: "$primary", color: "white" },

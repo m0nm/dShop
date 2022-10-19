@@ -24,6 +24,13 @@ a {
   list-style: none;
 }
 
+button:disabled,
+button[disabled] {
+  background-color: "#E4EAEC";
+  color: "#999";
+  cursor: "not-allowed";
+}
+
 /* curstom scrollbar */
 
 *::-webkit-scrollbar {

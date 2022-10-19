@@ -1,5 +1,7 @@
+import Image from "next/image";
 import React from "react";
 import { BackButton } from "./go-back-button";
+import cart from "@/../public/icons/cart.svg";
 
 const style = {
   textAlign: "center",
@@ -20,10 +22,16 @@ export const EmptyCart = () => {
         placeItems: "center",
       }}
     >
-      <div>
-        <small style={{ display: "block" }}>Your cart is currently empty</small>
-        <BackButton />
-      </div>
+      <>
+        <Image src={cart} alt="" width={120} height={120} />
+
+        <div>
+          <small style={{ display: "block" }}>
+            Your cart is currently empty
+          </small>
+          <BackButton />
+        </div>
+      </>
     </div>
   );
 };

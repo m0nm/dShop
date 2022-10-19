@@ -11,7 +11,9 @@ export const useAddToWishlist = (product: IProduct) => {
     onSuccess: (res) => {
       const { wishlistCount } = res;
 
-      changeWishlistCount(wishlistCount);
+      if (wishlistCount) {
+        changeWishlistCount(wishlistCount);
+      }
 
       toast(<ProductToast product={product} type="Wishlist" />, {
         position: "bottom-left",

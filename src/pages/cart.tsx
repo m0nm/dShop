@@ -37,8 +37,7 @@ const CartPage = () => {
     <Container
       flexCol
       css={{
-        gap: "3rem",
-        "@lg": { marginTop: "20vh" },
+        "@lg": { marginTop: "15vh" },
         alignItems: "flex-start",
       }}
     >

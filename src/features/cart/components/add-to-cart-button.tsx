@@ -2,12 +2,12 @@ import React from "react";
 import { styled } from "@/stitches.config";
 import { IProduct } from "@/features/products";
 import { useAddToCart } from "..";
+import { Button as BasicButton } from "@/components/Shared";
 
-const Button = styled("button", {
+const Button = styled(BasicButton, {
   display: "inline-block",
   border: 0,
   fontSize: 15,
-  fontWeight: 600,
   lineHeight: 1,
   padding: "1rem 2rem",
   borderRadius: 3,
@@ -15,7 +15,6 @@ const Button = styled("button", {
   color: "white",
   backgroundColor: "$primary",
   transition: "all 300ms",
-  cursor: "pointer",
 
   "&:hover": {
     backgroundColor: "#252525",

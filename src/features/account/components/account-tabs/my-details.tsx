@@ -1,24 +1,29 @@
 import React from "react";
+import { useGetAccount } from "../../hooks/useGetAccount";
+import { useUpdateAccount } from "../../hooks/useUpdateAccount";
 import { useForm } from "react-hook-form";
 import { formRules } from "../../utils/account-form-rules";
 import { Input, InputFeedback, Flex } from "@/components/Shared";
 
 type IDetails = {
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   email: string;
-  phone: number;
+  phone_number: string;
 };
 
 export const MyDetails = () => {
+  const { data } = useGetAccount();
+
   const {
     handleSubmit,
     formState: { errors },
-    getValues,
     register,
-  } = useForm<IDetails>();
+  } = useForm<IDetails>({ defaultValues: data });
 
-  const onSubmit = () => console.log("");
+  const { handleUpdate, isLoading } = useUpdateAccount();
+
+  const onSubmit = (data: IDetails) => handleUpdate(data);
 
   return (
     <>
@@ -26,37 +31,38 @@ export const MyDetails = () => {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <h4 className="sub-title">Personal information</h4>
+
         <Flex alignCenter css={{ gap: 20 }}>
           <div className="input-field">
             <label htmlFor="first_name">first name*</label>
             <Input
-              {...register("firstName", formRules().firstName)}
-              invalid={errors.firstName && true}
+              {...register("first_name", formRules().firstName)}
+              invalid={errors.first_name && true}
               id="first_name"
             />
-            <InputFeedback>{errors.firstName?.message}</InputFeedback>
+            <InputFeedback>{errors.first_name?.message}</InputFeedback>
           </div>
 
           <div className="input-field">
             <label htmlFor="last_name">last name*</label>
             <Input
-              {...register("lastName", formRules().lastName)}
-              invalid={errors.lastName && true}
+              {...register("last_name", formRules().lastName)}
+              invalid={errors.last_name && true}
               id="last_name"
             />
-            <InputFeedback>{errors.lastName?.message}</InputFeedback>
+            <InputFeedback>{errors.last_name?.message}</InputFeedback>
           </div>
         </Flex>
 
         <div className="input-field">
-          <label htmlFor="phone">phone number*</label>
+          <label htmlFor="phone">phone number (optional)</label>
           <Input
-            {...register("phone", formRules().phone)}
-            invalid={errors.phone && true}
+            {...register("phone_number", formRules().phone)}
+            invalid={errors.phone_number && true}
             id="phone"
             type="tel"
           />
-          <InputFeedback>{errors.phone?.message}</InputFeedback>
+          <InputFeedback>{errors.phone_number?.message}</InputFeedback>
           <small>Keep 9-digit format with no spaces and dashes</small>
         </div>
 
@@ -73,7 +79,7 @@ export const MyDetails = () => {
           <InputFeedback>{errors.email?.message}</InputFeedback>
         </div>
 
-        <button>Save changes</button>
+        <button disabled={isLoading}>Save changes</button>
       </form>
     </>
   );

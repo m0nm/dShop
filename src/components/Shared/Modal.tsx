@@ -108,8 +108,26 @@ const ModalContent = styled(DialogPrimitive.Content, {
       },
 
       auth: {
-        maxWidth: "450px",
-        padding: 25,
+        padding: 20,
+        width: "85vw",
+        "@lg": {
+          maxWidth: "450px",
+        },
+      },
+
+      "delete-account": {
+        padding: "1rem 2rem",
+        height: 230,
+
+        "& h4": { fontSize: 20, margin: "1rem 0" },
+        "& button": {
+          padding: "1rem 2rem",
+          fontWeight: 600,
+          position: "absolute",
+          bottom: 18,
+          right: 18,
+          textTransform: "uppercase",
+        },
       },
     },
   },
@@ -129,7 +147,7 @@ const ModalClose = styled(DialogPrimitive.Close, {
 // component
 type IModal = {
   children: ReactNode;
-  type?: "mobile-navbar" | "auth" | "quick-view";
+  type?: "mobile-navbar" | "auth" | "quick-view" | "delete-account";
   open: boolean;
   onOpenChange: (open: boolean) => void;
 };

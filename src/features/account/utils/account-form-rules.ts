@@ -1,9 +1,20 @@
 import { formRules as authRules } from "@/features/auth";
 
 export const formRules = (password?: string) => ({
-  newPassword: authRules().password,
   confirmPassword: authRules(password).passwordConfirm,
   email: authRules().email,
+
+  newPassword: {
+    ...authRules().password,
+    validate: (value: string) => {
+      if (password) {
+        return (
+          password !== value ||
+          "New password must be different from the current password!"
+        );
+      }
+    },
+  },
 
   currentPassword: {
     required: "Current password field is required",
@@ -18,7 +29,7 @@ export const formRules = (password?: string) => ({
   },
 
   phone: {
-    required: "Phone number field is required",
+    required: "Phone number is required",
     pattern: { value: /^[0-9]*$/, message: "remove spaces or dashes" },
   },
 

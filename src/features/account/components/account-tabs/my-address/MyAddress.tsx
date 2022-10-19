@@ -1,26 +1,31 @@
 import React from "react";
 import { Flex, Input, InputFeedback } from "@/components/Shared";
 import { useForm, Controller } from "react-hook-form";
+import { useGetAccount } from "../../../hooks/useGetAccount";
+import { useUpdateAccount } from "../../../hooks/useUpdateAccount";
 import { formRules } from "../../../utils/account-form-rules";
 import { SelectCountry } from "./select-country";
 
 type IAddress = {
   country: string;
-  city: string;
   state: string;
-  street: string;
-  zipCode: number;
+  city: string;
+  street_address: string;
+  zip_code: string;
 };
 
 export const MyAddress = () => {
+  const { data } = useGetAccount();
+  const { handleUpdate } = useUpdateAccount();
+
   const {
     handleSubmit,
     formState: { errors },
     register,
     control,
-  } = useForm<IAddress>();
+  } = useForm<IAddress>({ defaultValues: data });
 
-  const onSubmit = () => console.log("");
+  const onSubmit = (updateData: IAddress) => handleUpdate(updateData);
 
   return (
     <>
@@ -42,8 +47,11 @@ export const MyAddress = () => {
 
         <div className="input-field">
           <label htmlFor="street">Street Address*</label>
-          <Input {...register("street", formRules().street)} id="street" />
-          <InputFeedback>{errors.street?.message}</InputFeedback>
+          <Input
+            {...register("street_address", formRules().street)}
+            id="street"
+          />
+          <InputFeedback>{errors.street_address?.message}</InputFeedback>
         </div>
 
         <Flex alignCenter css={{ gap: 20 }}>
@@ -61,14 +69,14 @@ export const MyAddress = () => {
         </Flex>
 
         <div className="input-field">
-          <label htmlFor="zip">ZIP Code*</label>
+          <label htmlFor="zip-code">ZIP Code*</label>
           <Input
-            {...register("zipCode", formRules().zipCode)}
-            id="zip"
+            {...register("zip_code", formRules().zipCode)}
+            id="zip-code"
             type="number"
             step={1}
           />
-          <InputFeedback>{errors.zipCode?.message}</InputFeedback>
+          <InputFeedback>{errors.zip_code?.message}</InputFeedback>
         </div>
 
         <button>Save changes</button>

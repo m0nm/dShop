@@ -43,6 +43,7 @@ export const SelectCountry = forwardRef((props: any, ref: any) => {
       options={options}
       styles={styles}
       ref={ref}
+      placeholder={props.value || "Select..."}
       value={props.value}
       onChange={props.onChange}
     />

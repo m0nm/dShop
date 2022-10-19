@@ -1,4 +1,5 @@
 import { styled } from "@/stitches.config";
+import { Button } from "@/components/Shared";
 
 export const Table = styled("table", {
   width: "100%",
@@ -73,20 +74,17 @@ export const TableRow = styled("tr", {
   },
 });
 
-export const UpdateButton = styled("button", {
+export const UpdateButton = styled(Button, {
   fontWeight: 700,
   fontSize: 13,
   textTransform: "uppercase",
   color: "black",
   backgroundColor: "transparent",
-  height: 50,
   border: "1px solid black",
   padding: "14px 1.2rem",
   display: "inline-flex",
-  alignItems: "center",
   marginTop: "2rem",
   float: "right",
-  cursor: "pointer",
 
   "&:disabled, &[disabled]": {
     backgroundColor: "#E4EAEC",

@@ -1,4 +1,4 @@
-import { Flex } from "@/components/Shared";
+import { Button, Flex } from "@/components/Shared";
 import { styled } from "@/stitches.config";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
@@ -75,15 +75,12 @@ export const SliderThumb = styled(SliderPrimitive.Thumb, {
   borderRadius: 10,
 });
 
-export const SliderButton = styled("button", {
-  all: "unset",
+export const SliderButton = styled(Button, {
   padding: "10px 12px",
   background: "#444",
   color: "white",
-  fontWeight: 600,
   fontSize: 13,
   transition: "background 400ms",
-  cursor: "pointer",
 
   "&:hover": {
     background: "$primary",

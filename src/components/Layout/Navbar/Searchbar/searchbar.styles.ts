@@ -1,4 +1,4 @@
-import { Flex } from "@/components/Shared";
+import { Button } from "@/components/Shared";
 import { styled } from "@/stitches.config";
 
 export const SearchbarForm = styled("form", {
@@ -19,13 +19,9 @@ export const SearchbarInput = styled("input", {
   border: 0,
 });
 
-export const SearchbarButton = styled("button", {
-  all: "unset",
+export const SearchbarButton = styled(Button, {
   background: "$primary",
   color: "white",
   width: 60,
   height: "100%",
-  display: "grid",
-  placeItems: "center",
-  cursor: "pointer",
 });
