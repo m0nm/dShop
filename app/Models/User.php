@@ -43,6 +43,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function account()
+    {
+        return $this->hasOne(Account::class);
+    }
+
     public function cart()
     {
         return $this->hasOne(Cart::class);

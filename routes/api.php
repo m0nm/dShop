@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AccountController;
 use App\Http\Controllers\API\Auth\AuthController;
 use App\Http\Controllers\API\Auth\ForgotPasswordController;
 use App\Http\Controllers\API\Auth\SocialController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\CouponController;
 use App\Http\Controllers\API\WishlistController;
+use App\Models\Wishlist;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +26,6 @@ use Illuminate\Support\Facades\Route;
 
 
 // < ------ User ------- >
-
 // auth
 Route::controller(AuthController::class)->group(function () {
     Route::post('/login', 'login');
@@ -46,17 +47,25 @@ Route::controller(ForgotPasswordController::class)->group(function () {
     Route::post('/user/forgot', 'forgot');
     Route::post('/user/reset', 'reset');
 });
+// < ------ End ------- >
 
+// < ------ Account ------- >
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::controller(AccountController::class)->group(function () {
+        Route::get('user/account', 'index');
+        Route::put('user/account', 'update');
+        Route::put('user/change-password', 'changePassword');
+        Route::delete('user', 'destroy');
+    });
+});
 // < ------ End ------- >
 
 // < ------ Categories ------- >
 Route::get('/categories', [CategoryController::class, 'index']);
-
 // < ------ End ------- >
 
 // < ------ Banners ------- >
 Route::get('/banners', [BannerController::class, 'index']);
-
 // < ------ End ------- >
 
 // < ------ productss ------- >
@@ -66,14 +75,18 @@ Route::get('/products/{slug}', [ProductController::class, 'show']);
 
 // < ------ cart and wishlist ------- >
 Route::group(['middleware' => 'auth:api'], function () {
-    Route::get('user/cart', [CartController::class, 'index']);
-    Route::post('user/cart', [CartController::class, 'store']);
-    Route::put('user/cart', [CartController::class, 'update']);
-    Route::delete('user/cart/{id}', [CartController::class, 'destroy']);
+    Route::controller(CartController::class)->group(function () {
+        Route::get('user/cart', 'index');
+        Route::post('user/cart', 'store');
+        Route::put('user/cart', 'update');
+        Route::delete('user/cart/{id}', 'destroy');
+    });
 
-    Route::get('user/wishlist', [WishlistController::class, 'index']);
-    Route::post('user/wishlist', [WishlistController::class, 'store']);
-    Route::delete('user/wishlist/{id}', [WishlistController::class, 'destroy']);
+    Route::controller(WishlistController::class)->group(function () {
+        Route::get('user/wishlist',  'index');
+        Route::post('user/wishlist',  'store');
+        Route::delete('user/wishlist/{id}',  'destroy');
+    });
 });
 // < ------ End ------- >
 

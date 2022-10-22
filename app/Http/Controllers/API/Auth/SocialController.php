@@ -31,6 +31,10 @@ class SocialController extends Controller
             ]
         );
 
+        $user->account()->create(['user_id' => $user->id]);
+        $user->cart()->create(['user_id' => $user->id]);
+        $user->wishlist()->create(['user_id' => $user->id]);
+
         $token = $user->createToken('dShop_token')->accessToken;
 
         Auth::login($user, true);

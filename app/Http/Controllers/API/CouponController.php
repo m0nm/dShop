@@ -10,10 +10,10 @@ class CouponController extends Controller
 {
     public function check(Request $request)
     {
-        $coupon = Coupon::where('code', $request->code)->where('status', 'active')->first();
+        $coupon = Coupon::whereRaw("BINARY `code`= ?", [$request->code])->where('status', 'active')->first();
 
-        if ($coupon->doesntExist()) {
-            return response()->json(['errors' => ['message' => 'Invalid coupon']], 404);
+        if (!$coupon) {
+            return response()->json(['errors' => ['message' => ['Coupon is invalid']]], 404);
         }
 
         return response()->json($coupon);
