@@ -1,11 +1,12 @@
-import React, { useState, useRef, FormEvent, useEffect } from "react";
+import React, { useRef, FormEvent, useEffect } from "react";
 import { useCoupon } from "../../hooks/useCoupon";
+import { ICoupon } from "../..";
+import { useCartTotalStore } from "../../store/cart-total-store";
 import { toast } from "react-toastify";
 import { Input } from "@/components/Shared";
-import { useCartTotalStore } from "../../store/cart-total-store";
 
 export const CouponInput = () => {
-  const { couponCode, setCouponCode } = useCartTotalStore();
+  const { coupon, setCoupon } = useCartTotalStore();
   const { data, isLoading, isSuccess, handleCoupon } = useCoupon();
   const ref = useRef<HTMLInputElement>(null);
 
@@ -14,7 +15,7 @@ export const CouponInput = () => {
 
     const code = ref?.current?.value;
 
-    if (code === couponCode) {
+    if (code === coupon.code) {
       return toast("Coupon is already used");
     }
 
@@ -22,8 +23,8 @@ export const CouponInput = () => {
   };
 
   useEffect(() => {
-    if (isSuccess) setCouponCode(data?.code as string);
-  }, [isSuccess, data, setCouponCode]);
+    if (isSuccess) setCoupon(data as ICoupon);
+  }, [isSuccess, data, setCoupon]);
 
   return (
     <form onSubmit={handleSubmit} className="coupon">

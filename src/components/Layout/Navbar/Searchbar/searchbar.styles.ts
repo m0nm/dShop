@@ -24,4 +24,5 @@ export const SearchbarButton = styled(Button, {
   color: "white",
   width: 60,
   height: "100%",
+  padding: 0,
 });

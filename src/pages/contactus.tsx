@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React from "react";
 import { styled } from "@/stitches.config";
 import { Breadcrumb, Container } from "@/components/Shared";
@@ -61,9 +62,10 @@ const Form = styled("div", {
     marginTop: "2rem",
     cursor: "pointer",
     border: "none",
+    transition: "background-color 300ms",
 
     "&:hover": {
-      background: "#3a3a3a",
+      background: "#555",
     },
   },
 });
@@ -104,6 +106,10 @@ const Contactus = () => {
   return (
     <>
       <Container flexCol>
+        <Head>
+          <title>dShop | Contact Us</title>
+        </Head>
+
         <Breadcrumb content="contact us" />
 
         <ContactusContainer>

@@ -17,21 +17,21 @@ export const EmptyCart = () => {
       style={{
         textAlign: "center",
         margin: "0 auto",
-        height: "50vh",
+        height: "80vh",
         display: "grid",
         placeItems: "center",
       }}
     >
-      <>
+      <div>
         <Image src={cart} alt="" width={120} height={120} />
 
         <div>
-          <small style={{ display: "block" }}>
+          <small style={{ display: "block", marginTop: 25 }}>
             Your cart is currently empty
           </small>
           <BackButton />
         </div>
-      </>
+      </div>
     </div>
   );
 };

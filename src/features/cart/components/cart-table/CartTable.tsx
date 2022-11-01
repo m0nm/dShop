@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
-import { useGetCart } from "../..";
+import React, { useMemo } from "react";
+import { useCartTotalStore, useGetCart } from "../..";
 import { CartItem } from "./cart-item";
 import { useUpdateCartStore } from "../../store/update-cart-store";
 import { useUpdateCart } from "../../hooks/useUpdateCart";
-import { useCartTotalStore } from "../../store/cart-total-store";
 
 import { BackButton } from "../go-back-button";
 import { Flex, LoadingOverlay } from "@/components/Shared";
@@ -11,17 +10,16 @@ import { Table, UpdateButton } from "./cart-table.styles";
 
 export const CartTable = () => {
   const { data, isFetching } = useGetCart();
-  const { setTotal } = useCartTotalStore();
   const { updateItems, update } = useUpdateCartStore();
   const { handleUpdateCart, isLoading } = useUpdateCart();
+  const { setTotal } = useCartTotalStore();
 
   const handleClick = () => {
     handleUpdateCart(updateItems);
   };
 
-  useEffect(() => {
-    let total = 0;
-
+  let total = 0;
+  useMemo(() => {
     data?.forEach((item) => {
       total += (item.product.sale_price || item.product.price) * item.quantity;
     });

@@ -1,5 +1,6 @@
-import { GetServerSideProps } from "next";
+import Head from "next/head";
 import React from "react";
+import { GetServerSideProps } from "next";
 import { dehydrate, QueryClient } from "react-query";
 import { getCookie } from "cookies-next";
 import { getAccount } from "@/features/account";
@@ -28,6 +29,10 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 const AccountPage = ({ token }: { token: string }) => {
   return (
     <Container flexCol>
+      <Head>
+        <title>dShop | My Account</title>
+      </Head>
+
       <Breadcrumb content="My Account" />
 
       <h1 style={{ textAlign: "center", margin: 0 }}>My Account</h1>

@@ -29,7 +29,12 @@ axios.interceptors.response.use(
 
     const message =
       data.message || Object.values<any>(errors)[0][0] || error.message;
-    toast.error(message);
+
+    if (message === "Unauthenticated.") {
+      toast.error("Please login first");
+    } else {
+      toast.error(message);
+    }
 
     return Promise.reject(error);
   }

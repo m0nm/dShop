@@ -85,14 +85,6 @@ export const FooterContentItem = styled("div", {
       color: "#808080",
       border: "1px solid #e6e6e6",
     },
-
-    "& button": {
-      background: "$primary",
-      color: "white",
-      fontWeight: 600,
-      padding: "12px 20px",
-      cursor: "pointer",
-    },
   },
 });
 

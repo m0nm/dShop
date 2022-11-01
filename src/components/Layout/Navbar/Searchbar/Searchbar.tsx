@@ -35,7 +35,11 @@ export const Searchbar = () => {
 
   return (
     <SearchbarForm onSubmit={handleSubmit}>
-      <SearchbarInput ref={inputRef} placeholder="Search a product..." />
+      <SearchbarInput
+        required
+        ref={inputRef}
+        placeholder="Search a product..."
+      />
       <SelectCategory />
 
       <SearchbarButton>

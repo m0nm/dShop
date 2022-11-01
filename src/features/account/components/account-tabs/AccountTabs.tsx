@@ -1,14 +1,14 @@
 import React from "react";
 import { Container } from "@/components/Shared";
 import { Icon } from "ts-react-feather-icons";
-import { MyAddress, MyDetails, MyOrders, MySettings } from ".";
+import { useAccountStore } from "../../store";
+import { MyAddress, MyDetails, MyOrders, MySettings, OrderDetail } from ".";
 import {
   AccountTabsContainer,
   TabsList,
   TabTrigger,
   TabContent,
 } from "./account-tabs.styles";
-import { useAccountStore } from "../../store";
 
 export const AccountTabs = () => {
   const { tabValue, setTabValue } = useAccountStore();
@@ -59,6 +59,10 @@ export const AccountTabs = () => {
 
         <TabContent value="orders">
           <MyOrders />
+        </TabContent>
+
+        <TabContent value="order-detail">
+          <OrderDetail />
         </TabContent>
 
         <TabContent value="settings">

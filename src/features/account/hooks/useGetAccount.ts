@@ -2,7 +2,9 @@ import { useQuery } from "react-query";
 import { getAccount } from "../api";
 
 export const useGetAccount = () => {
-  const { data } = useQuery(["account"], () => getAccount());
+  const { data, isSuccess, isLoading } = useQuery(["account"], () =>
+    getAccount()
+  );
 
-  return { data };
+  return { data, isSuccess, isLoading };
 };

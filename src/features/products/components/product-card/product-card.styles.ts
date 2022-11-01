@@ -78,7 +78,7 @@ export const ProductThumbnail = styled("div", {
     opacity: 0,
     transition: "all 600ms ease-in-out",
 
-    "&:hover": { backgroundColor: "#111" },
+    "&:hover": { backgroundColor: "rgba(0,0,0,0.8)" },
   },
 });
 
@@ -119,6 +119,7 @@ export const ProductTitle = styled("span", {
   color: "#222",
   lineHeight: "1.3em",
   maxHeight: "3em",
+  minHeight: 33,
   overflow: "hidden",
   textOverflow: "ellipsis",
   width: "100%",

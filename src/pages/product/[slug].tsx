@@ -7,11 +7,21 @@ import {
   ProductDetail,
   RelatedProducts,
 } from "@/features/products";
+import Head from "next/head";
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  params,
+  res,
+}) => {
   const { product, relatedProducts } = await getProductDetail(
     params?.slug as string
   );
+
+  if (res.statusCode === 404) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
@@ -24,6 +34,10 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 const ProductDetailPage = ({ product, relatedProducts }: IProductDetail) => {
   return (
     <Container flexCol>
+      <Head>
+        <title>dShop | {product.name}</title>
+      </Head>
+
       <Breadcrumb content="product detail" />
 
       <ProductDetail product={product} />

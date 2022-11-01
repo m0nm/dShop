@@ -32,7 +32,7 @@ export const CategoryAccordionTrigger = styled(AccordionPrimitive.Trigger, {
   fontFamily: "inherit",
   backgroundColor: "transparent",
   padding: "0 5px",
-  height: 25,
+  // height: 25,
   flex: 1,
   display: "flex",
   alignItems: "center",
@@ -40,7 +40,7 @@ export const CategoryAccordionTrigger = styled(AccordionPrimitive.Trigger, {
   fontSize: 14,
   lineHeight: 1,
   cursor: "pointer",
-  marginBottom: "1rem",
+  marginTop: "1rem",
 
   "&:hover": { color: "$primary" },
 
@@ -69,7 +69,6 @@ export const CategoryAccordionContent = styled(AccordionPrimitive.Content, {
   display: "flex",
   flexDirection: "column",
   gap: 20,
-  paddingBottom: "2rem",
   marginLeft: "2rem",
 
   "& label": { cursor: "pointer" },
@@ -90,6 +89,7 @@ export const CategoryToggleGroup = styled(ToggleGroupPrimitive.Root, {
   flexDirection: "column",
   gap: 12,
   backgroundColor: "transparent",
+  marginTop: 10,
 });
 
 export const CategoryToggleGroupItem = styled(ToggleGroupPrimitive.Item, {

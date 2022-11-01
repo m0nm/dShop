@@ -20,7 +20,6 @@ export const ShopProducts = () => {
     lastItem,
     totalItems,
   } = useShopProducts();
-  console.log("products: ", products);
 
   return (
     <>

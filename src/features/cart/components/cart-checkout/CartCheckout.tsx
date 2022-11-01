@@ -1,9 +1,10 @@
+import Link from "next/link";
 import { useConvertCurrency } from "@/hooks";
 import { useCartTotalStore } from "../../store/cart-total-store";
 import { CouponInput } from "./coupon-input";
 import { Wrapper } from "./cart-checkout.styles";
 
-export const Aside = () => {
+export const CartCheckout = () => {
   const { total } = useCartTotalStore();
   const { convertCurrency } = useConvertCurrency();
 
@@ -54,7 +55,11 @@ export const Aside = () => {
 
       <CouponInput />
 
-      <button className="checkout-btn">Proceed to checkout</button>
+      <Link href="/checkout">
+        <a>
+          <button className="checkout-btn">Proceed to checkout</button>
+        </a>
+      </Link>
     </Wrapper>
   );
 };

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Image from "next/image";
 import React from "react";
 import { Container, Breadcrumb } from "@/components/Shared";
@@ -78,6 +79,10 @@ const TeamBox = styled("div", {
 const Aboutus = () => {
   return (
     <Container flexCol>
+      <Head>
+        <title>dShop | About Us</title>
+      </Head>
+
       <Breadcrumb content="About us" />
 
       <Grid>

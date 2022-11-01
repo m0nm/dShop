@@ -2,7 +2,7 @@ import { useMutation } from "react-query";
 import { IProduct } from "@/features/products";
 import { getCookie } from "cookies-next";
 import { addToWishlist } from "..";
-import { changeWishlistCount } from "../utils/change-wishlist-count";
+import { changeWishlistCount } from "../utils/wishlist-count";
 import { toast } from "react-toastify";
 import { ProductToast } from "@/components/Misc/product-toast";
 

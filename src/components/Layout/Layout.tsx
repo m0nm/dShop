@@ -5,6 +5,7 @@ import { Navbar } from "./Navbar/Navbar";
 import { Menubar } from "./Menubar/Menubar";
 import { Topbar } from "./Topbar";
 import { Footer } from "./Footer/Footer";
+import { BackToTopButton } from "../Misc/back-to-top-button";
 
 export const Layout = ({ children }: { children: ReactNode }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
@@ -20,6 +21,8 @@ export const Layout = ({ children }: { children: ReactNode }) => {
       <main>{children}</main>
 
       <Footer />
+
+      <BackToTopButton />
     </>
   );
 };

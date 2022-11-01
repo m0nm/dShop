@@ -43,7 +43,7 @@ export const deleteCartItem = async (id: number) => {
 };
 
 // coupon
-type ICoupon = {
+export type ICoupon = {
   code: string;
   value: number;
   type: "percent" | "fixed";

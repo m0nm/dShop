@@ -6,7 +6,7 @@ export const Wrapper = styled("aside", {
   border: "1px solid #d4d4d4",
 
   "@lg": {
-    width: "40%",
+    width: "50%",
   },
 
   "& .heading": { marginBottom: "1rem", fontSize: 18 },
@@ -16,6 +16,8 @@ export const Wrapper = styled("aside", {
     marginBottom: "1rem",
 
     "& tr": { height: 52 },
+
+    "& td": { width: "30%" },
 
     "& td:nth-child(even)": { paddingLeft: "5rem" },
   },

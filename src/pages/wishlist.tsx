@@ -1,5 +1,6 @@
-import { GetServerSideProps } from "next";
+import Head from "next/head";
 import React from "react";
+import { GetServerSideProps } from "next";
 import { getCookie } from "cookies-next";
 import { dehydrate, QueryClient } from "react-query";
 
@@ -41,6 +42,10 @@ const WishlistPage = () => {
         "@lg": { marginTop: "10vh" },
       }}
     >
+      <Head>
+        <title>dShop | My Wishlist</title>
+      </Head>
+
       <h1 style={{ marginBottom: "3rem" }}>My Wishlist</h1>
 
       {!data?.length ? (

@@ -1,6 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+
+import { getCartCount } from "@/features/cart";
+import { getWishlistCount } from "@/features/wishlist";
+
 import { Flex } from "@/components/Shared";
 import { Badge, NavbarItem } from "./navbar.styles";
 import cart from "@/../public/icons/cart.svg";
@@ -12,35 +16,33 @@ export const NavbarItems = () => {
 
   // update cart count
   useEffect(() => {
-    function getCount() {
-      const count: number =
-        JSON.parse(localStorage.getItem("cart-count") as string) || 0;
+    function updateCount() {
+      const count: number = getCartCount();
 
       count !== cartCount && setCartCount(count);
     }
 
-    getCount();
+    updateCount();
 
-    window.addEventListener("storage", getCount);
+    window.addEventListener("storage", updateCount);
     return () => {
-      window.removeEventListener("storage", getCount);
+      window.removeEventListener("storage", updateCount);
     };
   }, [cartCount]);
 
   // update wishlist count
   useEffect(() => {
-    function getCount() {
-      const count: number =
-        JSON.parse(localStorage.getItem("wishlist-count") as string) || 0;
+    function updateCount() {
+      const count: number = getWishlistCount();
 
       count !== wishlistCount && setWishlistCount(count);
     }
 
-    getCount();
+    updateCount();
 
-    window.addEventListener("storage", getCount);
+    window.addEventListener("storage", updateCount);
     return () => {
-      window.removeEventListener("storage", getCount);
+      window.removeEventListener("storage", updateCount);
     };
   }, [wishlistCount]);
 

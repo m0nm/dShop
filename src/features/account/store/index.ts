@@ -1,7 +1,7 @@
 import create from "zustand";
 
 type IStore = {
-  tabValue: "details" | "orders" | "address" | "settings";
+  tabValue: "details" | "orders" | "order-detail" | "address" | "settings";
   setTabValue: (value: IStore["tabValue"]) => void;
 };
 

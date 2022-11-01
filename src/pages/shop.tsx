@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Image from "next/image";
 import React from "react";
 import { Breadcrumb, Container, Flex } from "@/components/Shared";
@@ -21,6 +22,10 @@ import contentBanner from "@/../public/mini-banners/6.jpg";
 const Shop = () => {
   return (
     <Container flexCol>
+      <Head>
+        <title>dShop | Shop</title>
+      </Head>
+
       <Breadcrumb content="Shop" />
 
       <ShopContainer>

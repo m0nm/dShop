@@ -1,11 +1,12 @@
-import { GetServerSideProps } from "next";
+import Head from "next/head";
 import React from "react";
+import { GetServerSideProps } from "next";
 import { dehydrate, QueryClient } from "react-query";
 import { getCookie } from "cookies-next";
 
 import { Container, Flex } from "@/components/Shared";
 import {
-  Aside,
+  CartCheckout,
   CartTable,
   EmptyCart,
   getCart,
@@ -41,14 +42,18 @@ const CartPage = () => {
         alignItems: "flex-start",
       }}
     >
+      <Head>
+        <title>dShop | My Cart</title>
+      </Head>
+
       <h1 style={{ margin: "auto", marginBottom: "3rem" }}>My Cart</h1>
 
       {!data?.length ? (
         <EmptyCart />
       ) : (
-        <Flex css={{ gap: "3rem" }}>
+        <Flex css={{ gap: "2rem", margin: "auto" }}>
           <CartTable />
-          <Aside />
+          <CartCheckout />
         </Flex>
       )}
     </Container>

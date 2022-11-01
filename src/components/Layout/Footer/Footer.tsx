@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { Container, Flex } from "@/components/Shared";
+import { Button, Container, Flex } from "@/components/Shared";
 import { Icon } from "ts-react-feather-icons";
 import {
   FooterBottom,
@@ -95,7 +95,9 @@ export const Footer = () => {
                 <span>SIGN UP FOR NEWSLETTER</span>
                 <Flex>
                   <input type="email" placeholder="type your email" />
-                  <button>Subscribe</button>
+                  <Button variant="primary" style={{ padding: "0.5rem 1rem" }}>
+                    Subscribe
+                  </Button>
                 </Flex>
               </li>
             </ul>

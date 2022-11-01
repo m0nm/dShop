@@ -37,13 +37,19 @@ export const SelectCountry = forwardRef((props: any, ref: any) => {
     }),
   };
 
+  // need to parse twice to turn it into object
+  const placeholder =
+    typeof props.value === "string"
+      ? JSON.parse(JSON.parse(JSON.stringify(props.value)))
+      : props.value;
+
   return (
     <Select
       instanceId="select-country-id-75832"
       options={options}
       styles={styles}
       ref={ref}
-      placeholder={props.value || "Select..."}
+      placeholder={placeholder?.label || "Select..."}
       value={props.value}
       onChange={props.onChange}
     />

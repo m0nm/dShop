@@ -76,7 +76,7 @@ export const SubmitButton = styled(Button, {
   border: "none",
 
   "&:hover": {
-    background: "#3a3a3a",
+    background: "#555",
   },
 
   variants: {

@@ -13,6 +13,7 @@ const Box = styled("div", {
   boxShadow: "0 0 10px #f9f9f9",
   textAlign: "center",
   marginLeft: "0.5rem",
+  cursor: "default",
 
   "@lg": {
     width: 400,
@@ -39,20 +40,15 @@ const Box = styled("div", {
   },
 
   "& button": {
+    display: "inline-block",
     padding: "12px 2rem",
     fontWeight: 600,
     fontSize: 17,
     border: "1px solid $primary",
-    backgroundColor: "transparent",
-    color: "$primary",
     cursor: "pointer",
     transition: "all 300ms",
-
-    "&:hover": {
-      backgroundColor: "$primary",
-      color: "white",
-      borderColor: "transparent",
-    },
+    backgroundColor: "transparent",
+    color: "$primary",
   },
 });
 
@@ -76,7 +72,7 @@ export const ProductToast = ({ product, type }: IToast) => {
       <p>{product.name}</p>
 
       <Link href={"/" + type.toLowerCase()}>
-        <button>View {type}</button>
+        <button className="view">View {type}</button>
       </Link>
     </Box>
   );
