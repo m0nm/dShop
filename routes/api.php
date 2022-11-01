@@ -8,9 +8,9 @@ use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\BannerController;
 use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\CouponController;
 use App\Http\Controllers\API\WishlistController;
-use App\Models\Wishlist;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -92,4 +92,13 @@ Route::group(['middleware' => 'auth:api'], function () {
 
 // < ------ Coupon ------- >
 Route::post('coupons', [CouponController::class, 'check'])->middleware(('auth:api'));
+// < ------ End ------- >
+
+// < ------ Checkout ------- >
+Route::group(['middleware' => 'auth:api'], function () {
+
+    Route::get('user/orders', [OrderController::class, 'index']);
+    Route::get('user/orders/{tracking_no}', [OrderController::class, 'show']);
+    Route::post('user/orders', [OrderController::class, 'store']);
+}); 
 // < ------ End ------- >

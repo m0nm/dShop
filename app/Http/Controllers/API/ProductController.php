@@ -13,8 +13,6 @@ class ProductController extends Controller
     public function index(Request $request, ProductApiResponse $res_action, FilterProducts $filter_action)
     {
 
-        // $res = [];
-
         $products_query = Product::where('status', 'active');
 
         // shop page products with query params filters
@@ -42,12 +40,13 @@ class ProductController extends Controller
     {
         $product = Product::where('slug', $slug)->first();
 
+        if (!$product) {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
 
         $related = Product::where('subcategory_id', $product->subcategory_id)
             ->where('slug', "!=", $product->slug)
             ->inRandomOrder()->take(10)->get();
-
-        // dd($related);
 
         $res = [];
 
