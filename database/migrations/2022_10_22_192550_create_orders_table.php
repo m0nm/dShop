@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('zip_code');
             $table->string('tracking_no');
             $table->float('total_price');
-            $table->enum('status', ['pending', 'delivered, cancelled'])->default('pending');
+            $table->enum('status', ['pending', 'delivered', 'cancelled'])->default('pending');
 
             $table->timestamps();
         });

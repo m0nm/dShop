@@ -16,28 +16,63 @@
 						<div class="menu-title">Dashboard</div>
 					</a>
 				</li>
+					
 				
-				<li class="menu-label">Banner</li>
+				<li class="menu-label">Site</li>
+				
+				
+					<li>
+						<a href="javascript:;" class="has-arrow">
+							<div class="parent-icon"><i class='bx bx-images'></i>
+							</div>
+							<div class="menu-title">Banners</div>
+						</a>
+						<ul>
+							<li> <a href="{{ route('admin.banners.index') }}"><i class="bx bx-right-arrow-alt"></i>View Banners</a>
+							</li>
+							
+							<li> <a href="{{ route('admin.banners.create') }}"><i class="bx bx-right-arrow-alt"></i>Add New Banner</a>
+							</li>
+						</ul>
+					</li>
+					{{-- end --}}
+				
+				
+					<li>
+						<a href="javascript:;" class="has-arrow">
+							<div class="parent-icon">
+								<i class='bx bx-box'></i>
+							</div>
+							<div class="menu-title">Products</div>
+						</a>
+						<ul>
+							<li> <a href="{{ route('admin.products.index') }}"><i class="bx bx-right-arrow-alt"></i>View Products</a>
+							</li>
+							
+							<li> <a href="{{ route('admin.products.create') }}"><i class="bx bx-right-arrow-alt"></i>Add New Product</a>
+							</li>
+						</ul>
+				</li>
+				{{-- end --}}
 			
+
 				<li>
 					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='bx bx-images'></i>
+						<div class="parent-icon">
+							<i class='bx bx-purchase-tag-alt'></i>
 						</div>
-						<div class="menu-title">Banners</div>
+						<div class="menu-title">Product Attributes</div>
 					</a>
 					<ul>
-						<li> <a href="{{ route('admin.banners.index') }}"><i class="bx bx-right-arrow-alt"></i>View Banners</a>
+						<li> <a href="{{ route('admin.product_attributes.index') }}"><i class="bx bx-right-arrow-alt"></i>View Product Attributes</a>
 						</li>
 						
-						<li> <a href="{{ route('admin.banners.create') }}"><i class="bx bx-right-arrow-alt"></i>Add New Banner</a>
+						<li> <a href="{{ route('admin.product_attributes.create') }}"><i class="bx bx-right-arrow-alt"></i>Add New Product Attributes</a>
 						</li>
 					</ul>
 				</li>
 				{{-- end --}}
 				
-				
-				
-				<li class="menu-label">Category</li>
 				
 				<li>
 					<a href="javascript:;" class="has-arrow">
@@ -72,43 +107,10 @@
 				{{-- end --}}
 				
 				
-				<li class="menu-label">Product</li>
+			
+				<li class="menu-label">Others</li>
 				
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon">
-							<i class='bx bx-box'></i>
-						</div>
-						<div class="menu-title">Products</div>
-					</a>
-					<ul>
-						<li> <a href="{{ route('admin.products.index') }}"><i class="bx bx-right-arrow-alt"></i>View Products</a>
-						</li>
-						
-						<li> <a href="{{ route('admin.products.create') }}"><i class="bx bx-right-arrow-alt"></i>Add New Product</a>
-						</li>
-					</ul>
-				</li>
-				{{-- end --}}
-			
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon">
-							<i class='bx bx-purchase-tag-alt'></i>
-						</div>
-						<div class="menu-title">Product Attributes</div>
-					</a>
-					<ul>
-						<li> <a href="{{ route('admin.product_attributes.index') }}"><i class="bx bx-right-arrow-alt"></i>View Product Attributes</a>
-						</li>
-						
-						<li> <a href="{{ route('admin.product_attributes.create') }}"><i class="bx bx-right-arrow-alt"></i>Add New Product Attributes</a>
-						</li>
-					</ul>
-				</li>
-				{{-- end --}}
-			
-				<li class="menu-label">Coupons</li>
+				
 				
 				<li>
 					<a href="javascript:;" class="has-arrow">
@@ -126,19 +128,23 @@
 					</ul>
 				</li>
 				{{-- end --}}
-				
-			
-				
-				
-				<li class="menu-label">Others</li>
 			
 				<li>
-					<a href="https://themeforest.net/user/codervent" target="_blank">
-						<div class="parent-icon"><i class="bx bx-support"></i>
+					<a href="javascript:;" class="has-arrow">
+						<div class="parent-icon">
+							<i class='bx bx-list-ul'></i>
 						</div>
-						<div class="menu-title">Support</div>
+						<div class="menu-title">Orders</div>
 					</a>
+					<ul>
+						<li> 
+							<a href="{{ route('admin.orders.index') }}"><i class="bx bx-right-arrow-alt"></i>View Orders</a>
+						</li>
+						
+					</ul>
 				</li>
+				{{-- end --}}
+			
 			</ul>
 			<!--end navigation-->
 		</div>

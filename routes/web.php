@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminBannerController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminCouponController;
+use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminProductAttributesController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminSettingsController;
@@ -57,7 +58,10 @@ Route::prefix('admin')
         Route::resource('product_attributes', AdminProductAttributesController::class);
 
         // coupons
-        Route::resource('coupons', AdminCouponController::class)->except('shows');
+        Route::resource('coupons', AdminCouponController::class)->except('show');
+
+        // orders
+        Route::resource('orders', AdminOrderController::class);
     });
 
 Route::fallback(function () {
