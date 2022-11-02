@@ -30,6 +30,6 @@ class AdminOrderController extends Controller
         $order->status = $status;
         $order->update();
 
-        return redirect('admin/orders')->with(['message' => 'Order status updated successfully']);
+        return redirect(route('admin.orders.index'))->with(['message' => 'Order status updated successfully', 'alert-type' => 'success']);
     }
 }

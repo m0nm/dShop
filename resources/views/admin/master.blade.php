@@ -19,6 +19,8 @@
 	<link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('admin/assets/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('admin/assets/css/icons.css') }}" rel="stylesheet">
+	<!-- toastr -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- title -->
 	<title>dShop - Admin Panel</title>
 </head>
@@ -55,6 +57,30 @@
 	<script src="{{ asset('admin/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
 	<script src="{{ asset('admin/assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
 	<script src="{{ asset('admin/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	
+	<script>	
+		@if (Session::has('message'))
+			var type = "{{ Session::get('alert-type', 'info') }}"
+			var message = "{{ Session::get('message') }}"
+			
+			switch(type) {
+				case 'success': 
+					toastr.success(message)
+					break;
+				case 'info':
+					toastr.info(message)
+					break;
+				case 'warning':
+					toastr.warning(message)
+					break;
+				case 'error':
+					toastr.error(message)
+					break;		
+			}
+		@endif
+	</script>
+	
 	{{-- content scripts --}}
 	@yield('scripts')
 	@yield('edit-item-ajax-script')

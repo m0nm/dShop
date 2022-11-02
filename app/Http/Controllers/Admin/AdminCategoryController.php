@@ -28,7 +28,7 @@ class AdminCategoryController extends Controller
 
         Category::create($category);
 
-        return redirect(route('admin.categories.index'));
+        return redirect(route('admin.categories.index'))->with(['message' => 'Category added successfully', 'alert-type' => 'success']);
     }
     // <--------- END  -------->
 
@@ -42,7 +42,7 @@ class AdminCategoryController extends Controller
         $category->name = $new_category['name'];
         $category->save();
 
-        return redirect(route('admin.categories.index'));
+        return redirect(route('admin.categories.index'))->with(['message' => 'Category updated successfully', 'alert-type' => 'success']);
     }
     // <--------- END  -------->
 

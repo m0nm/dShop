@@ -36,7 +36,7 @@ class AdminCouponController extends Controller
 
         Coupon::create($data);
 
-        return redirect(route('admin.coupons.index'));
+        return redirect(route('admin.coupons.index'))->with(['message' => 'Coupon added successfully', 'alert-type' => 'success']);
     }
     // <--------- END  -------->
 
@@ -58,7 +58,7 @@ class AdminCouponController extends Controller
 
         Coupon::find($id)->update($data);
 
-        return redirect(route('admin.coupons.index'));
+        return redirect(route('admin.coupons.index'))->with(['message' => 'Coupon updated successfully', 'alert-type' => 'success']);
     }
     // <--------- END  -------->
 
@@ -66,7 +66,7 @@ class AdminCouponController extends Controller
     {
         Coupon::find($id)->delete();
 
-        return redirect(route('admin.coupons.index'));
+        return redirect(route('admin.coupons.index'))->with(['message' => 'Coupon deleted', 'alert-type' => 'success']);
     }
     // <--------- END  -------->
 

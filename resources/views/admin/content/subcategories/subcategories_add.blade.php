@@ -30,7 +30,7 @@
             
             <input class="form-control mb-3" type="text" name="name" value="{{ old('name') }}" placeholder="Enter category name" aria-label="Enter category name">
             
-            <button class="btn btn-primary mt-2">Add Category</button>
+            <button class="btn btn-primary mt-2">Add Subcategory</button>
         </form>
     </div>
 @endsection

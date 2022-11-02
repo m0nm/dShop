@@ -45,6 +45,7 @@
                         },
                         success: function (url){
                             window.location = url
+                            toastr.success('Success')
                         }
                     });
                 })

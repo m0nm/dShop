@@ -33,7 +33,7 @@ class AdminSubCategoryController extends Controller
 
         SubCategory::create($subcategory);
 
-        return redirect(route('admin.subcategories.index'));
+        return redirect(route('admin.subcategories.index'))->with(['message' => 'Subcategory added successfully', 'alert-type' => 'success']);
     }
     // <--------- END  -------->
 

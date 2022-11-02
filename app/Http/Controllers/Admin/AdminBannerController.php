@@ -35,7 +35,7 @@ class AdminBannerController extends Controller
 
         $request->image->storeAs('public/images/banners', $image);
 
-        return redirect(route('admin.banners.index'));
+        return redirect(route('admin.banners.index'))->with(['message' => 'Banner created successfully', 'alert-type' => 'success']);
     }
     // <--------- END  -------->
 

@@ -29,7 +29,7 @@ class AdminProductAttributesController extends Controller
 
         Attribute::create($data);
 
-        return redirect(route('admin.product_attributes.index'));
+        return redirect(route('admin.product_attributes.index'))->with(['message' => 'Product attribute added successfully', 'alert-type' => 'success']);
     }
     // <--------- END  -------->
 

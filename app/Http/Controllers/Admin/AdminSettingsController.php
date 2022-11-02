@@ -30,7 +30,7 @@ class AdminSettingsController extends Controller
 
         $admin->save();
 
-        return back()->with('message', 'Email changed successfully');
+        return back()->with(['message' => 'Email changed successfully', 'alert-type' => 'success']);
     }
     // < -------- END --------- >
 
@@ -52,7 +52,7 @@ class AdminSettingsController extends Controller
 
             $admin->save();
 
-            return back()->with('message', 'Password changed successfully');
+            return back()->with(['message' => 'Password changed successfully', 'alert-type' => 'success']);
         }
     }
     // < -------- END --------- >

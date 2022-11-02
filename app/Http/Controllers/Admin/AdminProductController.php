@@ -8,9 +8,7 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Models\Attribute;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\ProductAttribute;
 use App\Models\SubCategory;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 
@@ -64,7 +62,7 @@ class AdminProductController extends Controller
         }
 
 
-        return redirect(route('admin.products.index'));
+        return redirect(route('admin.products.index'))->with(['message' => 'Product added successfully', 'alert-type' => 'success']);
     }
     // <--------- END  -------->
     public function show(Product $product)
@@ -119,7 +117,7 @@ class AdminProductController extends Controller
             $product->attributes()->sync($updateAttributes);
         }
 
-        return redirect(route('admin.products.index'));
+        return redirect(route('admin.products.index'))->with(['message' => 'Product updated successfully', 'alert-type' => 'success']);
     }
     // <--------- END  -------->
 
@@ -127,7 +125,7 @@ class AdminProductController extends Controller
     {
         $product->delete();
 
-        return response()->json(route('admin.products.index'));
+        return response()->json(route('admin.products.index'))->with(['message' => 'Product deleted', 'alert-type' => 'success']);
     }
     // <--------- END  -------->
 
