@@ -144,6 +144,22 @@
 					</ul>
 				</li>
 				{{-- end --}}
+				
+				<li>
+					<a href="javascript:;" class="has-arrow">
+						<div class="parent-icon">
+							<i class='bx bx-user'></i>
+						</div>
+						<div class="menu-title">Users</div>
+					</a>
+					<ul>
+						<li> 
+							<a href="{{ route('admin.users.index') }}"><i class="bx bx-right-arrow-alt"></i>View Users</a>
+						</li>
+						
+					</ul>
+				</li>
+				{{-- end --}}
 			
 			</ul>
 			<!--end navigation-->

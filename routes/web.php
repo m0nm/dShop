@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminProductAttributesController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminSettingsController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
+use App\Http\Controllers\Admin\AdminUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,10 +31,9 @@ Route::post('/login', [AdminController::class, 'auth'])->name('admin.login');
 Route::prefix('admin')
     ->name('admin.')
     ->middleware('auth')
-    ->controller(AdminController::class)
     ->group(function () {
-        Route::get('/dashboard', 'dashboard')->name('dashboard');
-        Route::get('/logout', 'logout')->name('logout');
+        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+        Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 
         // settings
         Route::name('settings.')->controller(AdminSettingsController::class)->group(function () {
@@ -61,7 +61,10 @@ Route::prefix('admin')
         Route::resource('coupons', AdminCouponController::class)->except('show');
 
         // orders
-        Route::resource('orders', AdminOrderController::class);
+        Route::resource('orders', AdminOrderController::class)->except(['destroy', 'store', 'edit', 'create']);
+
+        // users
+        Route::resource('users', AdminUserController::class)->except(['destroy', 'store', 'edit', 'update', 'create']);
     });
 
 Route::fallback(function () {
