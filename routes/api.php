@@ -10,6 +10,7 @@ use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\CouponController;
+use App\Http\Controllers\API\ProductReviewController;
 use App\Http\Controllers\API\WishlistController;
 use Illuminate\Support\Facades\Route;
 
@@ -71,6 +72,14 @@ Route::get('/banners', [BannerController::class, 'index']);
 // < ------ productss ------- >
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{slug}', [ProductController::class, 'show']);
+// < ------ End ------- >
+
+
+// < ------ Product review ------- >
+Route::controller(ProductReviewController::class)->group(function () {
+    Route::get('/products/{id}/reviews', 'index');
+    Route::post('/products/{id}/reviews', 'store')->middleware('auth:api');
+});
 // < ------ End ------- >
 
 // < ------ cart and wishlist ------- >
