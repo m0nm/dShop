@@ -32,6 +32,7 @@
     "react-responsive": "^9.0.0-beta.10",
     "react-select": "^5.4.0",
     "react-select-country-list": "^2.2.3",
+    "react-simple-star-rating": "^5.1.6",
     "react-toastify": "^9.0.8",
     "ts-react-feather-icons": "^1.0.0",
     "uuid": "^8.3.2",

@@ -4,6 +4,8 @@ export * from "./components/product-detail/ProductDetail";
 export * from "./components/product-detail/quantity-input";
 export * from "./components/related-products/related-products";
 export * from "./components/view-product-modal/ViewProductModal";
+export * from "./components/product-reviews/PostReview";
+export * from "./components/product-reviews/ProductReviews";
 
 export * from "./api";
 export * from "./store/shop-product-store";

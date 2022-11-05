@@ -1,13 +1,14 @@
-import { GetServerSideProps } from "next";
+import Head from "next/head";
 import React from "react";
+import { GetServerSideProps } from "next";
 import { Breadcrumb, Container } from "@/components/Shared";
+import { ProductDetailsTabs } from "@/components/Misc/product-details-tabs";
 import {
   getProductDetail,
   IProductDetail,
   ProductDetail,
   RelatedProducts,
 } from "@/features/products";
-import Head from "next/head";
 
 export const getServerSideProps: GetServerSideProps = async ({
   params,
@@ -42,22 +43,8 @@ const ProductDetailPage = ({ product, relatedProducts }: IProductDetail) => {
 
       <ProductDetail product={product} />
 
-      {/* description */}
-      <h1
-        style={{
-          fontSize: 24,
-          textAlign: "left",
-          width: "100%",
-          marginTop: "4rem",
-        }}
-      >
-        Description
-      </h1>
-
-      <div
-        style={{ lineHeight: 1.6, width: "100%" }}
-        dangerouslySetInnerHTML={{ __html: product.description }}
-      />
+      {/* description and reviews*/}
+      <ProductDetailsTabs desc={product.description} productId={product.id} />
 
       {/* related products */}
       <RelatedProducts relatedProducts={relatedProducts} />

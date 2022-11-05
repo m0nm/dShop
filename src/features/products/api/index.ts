@@ -71,3 +71,29 @@ export const getProductDetail = async (slug: string) => {
 
   return res.data;
 };
+
+// -----------------------------------------------------
+type IReview = {
+  id: number;
+  name: string;
+  email: string;
+  content: string;
+  rating: number;
+  date: string
+};
+
+export const getProductReviews = async (id: number) => {
+  const res = await axios.get<IReview[]>(`/api/products/${id}/reviews`);
+
+  return res.data;
+};
+
+export type IPostReview = {
+  rating: number;
+  content: string | undefined;
+  name: string | undefined;
+};
+
+export const postReview = async (id: number, data: IPostReview) => {
+  return await axios.post<IPostReview>(`/api/products/${id}/reviews`, data);
+};

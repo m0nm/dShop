@@ -75,7 +75,8 @@ export const DetailBox = styled("div", {
     textAlign: "left",
     color: "#222",
     marginBottom: "0.5rem",
-    marginTop: -5,
+    marginTop: "1rem",
+    "@lg": { marginTop: -5 },
   },
 
   "& .product-meta": {
