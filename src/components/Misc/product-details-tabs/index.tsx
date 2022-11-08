@@ -22,7 +22,6 @@ export const ProductDetailsTabs = ({ desc, productId }: IProps) => {
             fontSize: 24,
             textAlign: "left",
             width: "100%",
-            marginTop: "4rem",
           }}
         >
           Description

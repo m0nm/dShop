@@ -46,9 +46,15 @@ const Box = styled("div", {
     fontSize: 17,
     border: "1px solid $primary",
     cursor: "pointer",
-    transition: "all 300ms",
     backgroundColor: "transparent",
     color: "$primary",
+    transition: "all 300ms",
+
+    "&:hover": {
+      color: "white",
+      backgroundColor: "$primary",
+      borderColor: "transparent",
+    },
   },
 });
 

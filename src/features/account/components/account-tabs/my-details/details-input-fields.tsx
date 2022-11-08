@@ -35,7 +35,7 @@ export const InputFields = ({ register, errors }: IProps) => {
       </Flex>
 
       <div className="input-field">
-        <label htmlFor="phone">phone number</label>
+        <label htmlFor="phone">phone number*</label>
         <Input
           {...register("phone_number", formRules().phone)}
           invalid={errors.phone_number && true}

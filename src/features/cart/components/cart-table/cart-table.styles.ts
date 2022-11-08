@@ -23,22 +23,36 @@ export const Table = styled("table", {
 
 export const TableRow = styled("tr", {
   "&:nth-child(even)": { backgroundColor: "#f1f1f1" },
-  "& td": { padding: "1rem 0", textAlign: "center" },
+  "& td": { padding: "2rem 0", textAlign: "center" },
 
   "& .product-name": {
-    "& figure": {
-      position: "relative",
-      width: 80,
-      height: 80,
-    },
+    position: "relative",
+    width: "70%",
 
-    "& span": {
-      marginLeft: "1rem",
-      fontWeight: 600,
-      fontSize: 14,
-      lineHeight: 1.3,
-      cursor: "pointer",
-      textAlign: "left",
+    "& > div": {
+      width: "100%",
+      position: "absolute",
+      left: 0,
+      top: "50%",
+      transform: "translateY(-50%)",
+
+      "& figure": {
+        position: "relative",
+        width: 80,
+        height: 80,
+      },
+
+      "& span": {
+        margin: "0 1rem",
+        fontWeight: 600,
+        fontSize: 14,
+        lineHeight: 1,
+        cursor: "pointer",
+        textAlign: "left",
+        overflow: "hidden",
+        "white-space": "nowrap",
+        "text-overflow": "ellipsis",
+      },
     },
   },
 

@@ -52,7 +52,7 @@ export const ProductReviews = ({ productId }: { productId: number }) => {
             </div>
 
             {/* content */}
-            <div>
+            <div className="content">
               {/* rating */}
               <Rating
                 readonly

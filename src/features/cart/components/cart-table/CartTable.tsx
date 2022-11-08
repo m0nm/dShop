@@ -41,6 +41,7 @@ export const CartTable = () => {
           position: "relative",
           whiteSpace: "nowrap",
           overflowX: "auto",
+          overflowY: "hidden",
         }}
       >
         {isFetching && <LoadingOverlay />}

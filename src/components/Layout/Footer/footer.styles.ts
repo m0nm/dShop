@@ -23,6 +23,8 @@ export const FooterTopItem = styled("li", {
 
   "& .desc": { color: "#888", fontSize: 14 },
 
+  "& svg": { color: "white !important" },
+
   "@lg": {
     flexDirection: "row",
     justifyContent: "left",

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
 import React from "react";
 import { IProduct } from "../../api";
 import Skeleton from "react-loading-skeleton";
@@ -37,13 +36,6 @@ export const skeletons = Array.apply(null, Array(10)).map((n, i) => (
 
 // card
 export const ProductCard = ({ product }: { product: IProduct }) => {
-  // routing
-  const router = useRouter();
-
-  const handleClick = () => {
-    router.push(`/product/${product.slug}`);
-  };
-
   // product currency
   const { convertCurrency } = useConvertCurrency();
   const currencyPrice = convertCurrency(product.price);
@@ -73,14 +65,16 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
       )}
 
       <ProductThumbnail className="thumbnail">
-        <figure onClick={handleClick}>
-          <Image
-            src={product.images[0]}
-            alt={product.name}
-            layout="fill"
-            objectFit="contain"
-          />
-        </figure>
+        <a href={`/product/${product.slug}`}>
+          <figure>
+            <Image
+              src={product.images[0]}
+              alt={product.name}
+              layout="fill"
+              objectFit="contain"
+            />
+          </figure>
+        </a>
 
         {/* wishlist button */}
         <button
@@ -97,19 +91,21 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
         </button>
       </ProductThumbnail>
 
-      <ProductInfo onClick={handleClick}>
-        <ProductTitle>{product.name}</ProductTitle>
-        {product.sale_price ? (
-          <ProductPrice>
-            <span className="sale-price">{currencySalePrice}</span>
-            <del>{currencyPrice}</del>
-          </ProductPrice>
-        ) : (
-          <ProductPrice>
-            <span className="normal-price">{currencyPrice}</span>
-          </ProductPrice>
-        )}
-      </ProductInfo>
+      <a href={`/product/${product.slug}`}>
+        <ProductInfo>
+          <ProductTitle>{product.name}</ProductTitle>
+          {product.sale_price ? (
+            <ProductPrice>
+              <span className="sale-price">{currencySalePrice}</span>
+              <del>{currencyPrice}</del>
+            </ProductPrice>
+          ) : (
+            <ProductPrice>
+              <span className="normal-price">{currencyPrice}</span>
+            </ProductPrice>
+          )}
+        </ProductInfo>
+      </a>
     </ProductItem>
   );
 };

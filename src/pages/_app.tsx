@@ -12,7 +12,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { Layout } from "@/components/Layout/Layout";
 import { AuthModal } from "@/features/auth";
 import { ViewProductModal } from "@/features/products";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, Slide } from "react-toastify";
 
 const defaultOptions = {
   queries: {
@@ -35,12 +35,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         {/* notifications */}
         <ToastContainer
-          position="top-center"
+          position="top-right"
+          transition={Slide}
           autoClose={2000}
           hideProgressBar
           newestOnTop
           closeOnClick={false}
           rtl={false}
+          icon={false}
           pauseOnFocusLoss
           draggable
           pauseOnHover

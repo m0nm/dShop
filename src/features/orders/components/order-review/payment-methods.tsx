@@ -13,7 +13,13 @@ export const PaymentMethods = () => {
       <AccordionItem value="method-1">
         <AccordionHeader>
           <AccordionTrigger>
-            <input type="radio" name="payment-methods" id="method-1" />
+            <input
+              form="checkout-form"
+              required
+              type="radio"
+              name="payment-methods"
+              id="method-1"
+            />
             <label htmlFor="method-1">Direct bank transfer</label>
           </AccordionTrigger>
         </AccordionHeader>
@@ -30,7 +36,12 @@ export const PaymentMethods = () => {
       <AccordionItem value="method-2">
         <AccordionHeader>
           <AccordionTrigger>
-            <input type="radio" name="payment-methods" id="method-2" />
+            <input
+              form="checkout-form"
+              type="radio"
+              name="payment-methods"
+              id="method-2"
+            />
             <label htmlFor="method-2">Check payments</label>
           </AccordionTrigger>
         </AccordionHeader>
@@ -46,7 +57,12 @@ export const PaymentMethods = () => {
       <AccordionItem value="method-3">
         <AccordionHeader>
           <AccordionTrigger>
-            <input type="radio" name="payment-methods" id="method-3" />
+            <input
+              form="checkout-form"
+              type="radio"
+              name="payment-methods"
+              id="method-3"
+            />
             <label htmlFor="method-3">Cash on delivery</label>
           </AccordionTrigger>
         </AccordionHeader>

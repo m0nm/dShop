@@ -51,7 +51,15 @@ const CartPage = () => {
       {!data?.length ? (
         <EmptyCart />
       ) : (
-        <Flex css={{ gap: "2rem", margin: "auto" }}>
+        <Flex
+          flexCol
+          css={{
+            gap: "2rem",
+            margin: "auto",
+            width: "100%",
+            "@lg": { flexDirection: "row" },
+          }}
+        >
           <CartTable />
           <CartCheckout />
         </Flex>

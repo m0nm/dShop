@@ -78,5 +78,11 @@ export const OrderBtn = styled(Button, {
     backgroundColor: "#E4EAEC",
     color: "#999",
     cursor: "not-allowed",
+
+    "&:hover": {
+      backgroundColor: "#E4EAEC",
+      color: "#999",
+      cursor: "not-allowed",
+    },
   },
 });

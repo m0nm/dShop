@@ -2,8 +2,8 @@ import React from "react";
 import { useAuthModalStore } from "../../store";
 import { Modal } from "@/components/Shared";
 
-import { Login } from "../login";
-import { Register } from "../register";
+import { Login } from "../Login";
+import { Register } from "../Register";
 import { ForgotPassword } from "../forgot-password";
 import { ResetPassword } from "../reset-password";
 import { Title } from "../auth.styles";

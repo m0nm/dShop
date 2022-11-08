@@ -1,14 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useMemo, useState } from "react";
-import { useDeleteCartItem } from "../../hooks/useDeleteCartItem";
+
 import { useConvertCurrency } from "@/hooks";
+import { useDeleteCartItem } from "../../hooks/useDeleteCartItem";
+import { useUpdateCartStore } from "../../store/update-cart-store";
+import { ICart } from "../..";
+
 import { QuantityInput } from "@/features/products";
 import { Flex } from "@/components/Shared";
-import { TableRow } from "./cart-table.styles";
-import { ICart } from "../..";
 import { Icon } from "ts-react-feather-icons";
-import { useUpdateCartStore } from "../../store/update-cart-store";
+import { TableRow } from "./cart-table.styles";
 
 export const CartItem = ({ item }: { item: ICart }) => {
   const { product, quantity: initialQuantity } = item;
@@ -49,7 +51,7 @@ export const CartItem = ({ item }: { item: ICart }) => {
           </Link>
 
           <Link href={`/product/${product.slug}`}>
-            <span>{product.name}</span>
+            <span title={product.name}>{product.name}</span>
           </Link>
         </Flex>
       </td>

@@ -28,7 +28,7 @@ export const Footer = () => {
           </FooterTopItem>
 
           <FooterTopItem>
-            <Icon name="repeat" fill="white" />
+            <Icon name="repeat" />
 
             <div className="info">
               <h4 className="name">GUARANTEE</h4>
@@ -117,11 +117,15 @@ export const Footer = () => {
                 </li>
 
                 <li>
-                  <a href="#">Cart</a>
+                  <Link href="/cart">
+                    <a>Cart</a>
+                  </Link>
                 </li>
 
                 <li>
-                  <a href="#">Wishlist</a>
+                  <Link href="/wishlist">
+                    <a>Wishlist</a>
+                  </Link>
                 </li>
               </ul>
             </FooterContentItem>

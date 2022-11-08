@@ -22,8 +22,15 @@ export const Box = styled("div", {
       "& img": { borderRadius: "50%" },
     },
 
+    "& .content": { width: "80%" },
+
     "& .name": { color: "#222", fontSize: 14, marginTop: 5 },
 
-    "& .comment": { marginTop: "1rem", color: "#666" },
+    "& .comment": {
+      marginTop: "1rem",
+      color: "#434343",
+      lineHeight: 1.4,
+      fontSize: 14,
+    },
   },
 });

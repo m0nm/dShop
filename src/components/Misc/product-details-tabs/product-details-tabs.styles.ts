@@ -43,6 +43,6 @@ export const TabsContent = styled(TabsPrimitive.Content, {
   "&.reviews": {
     display: "flex",
     flexDirection: "column",
-    "@lg": { flexDirection: "row" },
+    "@lg": { flexDirection: "row", gap: "3rem" },
   },
 });

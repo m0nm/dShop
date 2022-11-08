@@ -1,8 +1,8 @@
 import React from "react";
+import { useIsMutating } from "react-query";
 import { useGetCart } from "@/features/cart";
 import { useCartTotalStore } from "@/features/cart";
 import { useConvertCurrency } from "@/hooks";
-import { useCheckout } from "../../hooks/useCheckout";
 
 import { PaymentMethods } from "./payment-methods";
 import { OrderBtn, Wrapper } from "./order-review.styles";
@@ -11,7 +11,7 @@ export const OrderReview = () => {
   const { data } = useGetCart();
   const { total } = useCartTotalStore();
   const { convertCurrency } = useConvertCurrency();
-  const { isLoading, isSuccess } = useCheckout();
+  const isMutating = useIsMutating({ mutationKey: "place-order" });
 
   return (
     <Wrapper>
@@ -50,7 +50,7 @@ export const OrderReview = () => {
       <OrderBtn
         form="checkout-form"
         type="submit"
-        disabled={isLoading || isSuccess}
+        disabled={isMutating ? true : false}
         variant="primary"
       >
         Place Order

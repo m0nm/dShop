@@ -5,7 +5,7 @@ import { useGetOrderDetail } from "@/features/orders";
 import { Flex } from "@/components/Shared";
 
 const Box = styled("div", {
-  "& span": { fontSize: 14, lineHeight: 2.4, color: "#667070" },
+  "& span": { fontSize: 14, lineHeight: 2.4, color: "#3d3636" },
 
   "& table": { marginBottom: "2rem" },
 
