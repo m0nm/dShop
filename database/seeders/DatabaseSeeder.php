@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Account;
 use App\Models\Product;
 use App\Models\ProductReview;
+use App\Models\User;
+use Database\Factories\AccountFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -16,12 +19,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $users = User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        foreach ($users as $user) {
+            Account::factory()->create(['user_id' => $user->id]);
+        }
+
 
         foreach (Product::all() as $product) {
             ProductReview::factory()->count(3)->create(['product_id' => $product->id]);

@@ -17,7 +17,7 @@ class ProductReviewFactory extends Factory
     public function definition()
     {
         return [
-            'rating' => rand(0, 5),
+            'rating' => rand(1, 5),
             'content' => fake()->paragraph(),
             'name' => fake()->firstName() . ' ' . fake()->lastName(),
             'user_id' => 1,

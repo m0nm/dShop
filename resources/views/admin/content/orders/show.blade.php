@@ -74,7 +74,7 @@
                 <span>{{ $order->street_address }}</span>
                 <span>{{ $order->city }}</span>
                 <span>{{ $order->state }}</span>
-                <span>{{ $order->country }}</span>
+                <span>{{ json_decode($order->country, true)['label'] ?? $order->country }}</span>
             </div>
             
             <div class="my-2">

@@ -10,7 +10,7 @@ class AdminOrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::orderBy('id', 'desc')->get();
+        $orders = Order::all();
 
         return view('admin.content.orders.index', compact('orders'));
     }

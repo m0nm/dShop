@@ -23,7 +23,7 @@
                            <td scope="row">{{ $loop->iteration }}</td>
 
                            <td>{{ $user->name }}</td>
-                           <td>${{ $user->email }}</td>
+                           <td>{{ $user->email }}</td>
 
                            <td>                 
                                 <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-sm btn-info">

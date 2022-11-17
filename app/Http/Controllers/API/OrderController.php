@@ -42,12 +42,13 @@ class OrderController extends Controller
         $cart = Auth::user()->cart;
 
         $total_price = $cart->products->sum(function ($product) {
-            return $product->pivot->quantity * $product->sale_price ?? $product->price;
+            return $product->pivot->quantity * ($product->sale_price ?? $product->price);
         });
 
 
         $data = $request->validated();
         $data['user_id'] = Auth::id();
+        $data['country'] = json_encode($request->country);
         $data['total_price'] = $total_price;
         $data['tracking_no'] = rand(1000, 9999);
 
